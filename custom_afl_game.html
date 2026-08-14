@@ -1,0 +1,3062 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EFNL Ultimate Draft</title>
+
+<style>
+
+*{
+box-sizing:border-box;
+}
+
+body{
+margin:0;
+background:#101010;
+color:white;
+font-family:Arial,Helvetica,sans-serif;
+}
+
+button{
+padding:13px 18px;
+margin:6px;
+font-size:16px;
+font-weight:bold;
+border:0;
+border-radius:10px;
+cursor:pointer;
+background:#333;
+color:white;
+}
+
+button:hover{
+background:#444;
+}
+
+button:disabled{
+background:#111;
+color:#555;
+cursor:not-allowed;
+}
+
+.header{
+background:#181818;
+padding:18px;
+text-align:center;
+border-bottom:2px solid #333;
+}
+
+.header h1{
+margin:0 0 12px;
+}
+
+.nav{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.page{
+display:none;
+max-width:1000px;
+margin:auto;
+padding:25px;
+}
+
+.page.active{
+display:block;
+}
+
+.card{
+background:#1d1d1d;
+border-radius:15px;
+padding:20px;
+margin:15px 0;
+border:1px solid #333;
+}
+
+.center{
+text-align:center;
+}
+
+#spinner{
+background:#222;
+padding:35px;
+margin:20px auto;
+border-radius:20px;
+font-size:38px;
+font-weight:bold;
+max-width:700px;
+}
+
+.player{
+background:#292929;
+padding:15px;
+margin:10px auto;
+border-radius:12px;
+max-width:650px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+}
+
+.player-info{
+text-align:left;
+}
+
+.player-name{
+font-size:19px;
+font-weight:bold;
+}
+
+.player-rating{
+font-size:25px;
+font-weight:bold;
+}
+
+.stat-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.stat{
+background:#252525;
+padding:18px;
+border-radius:12px;
+text-align:center;
+}
+
+.stat-number{
+font-size:28px;
+font-weight:bold;
+}
+
+.stat-label{
+color:#aaa;
+margin-top:5px;
+}
+
+input{
+width:100%;
+padding:14px;
+margin:8px 0;
+border-radius:9px;
+border:1px solid #555;
+background:#111;
+color:white;
+font-size:16px;
+}
+
+.auth-box{
+max-width:450px;
+margin:50px auto;
+}
+
+.win{
+color:#35e875;
+}
+
+.loss{
+color:#ff5555;
+}
+
+.final{
+background:#202020;
+border:1px solid #555;
+border-radius:15px;
+padding:20px;
+margin:15px 0;
+}
+
+.award{
+background:#252525;
+border:2px solid #777;
+border-radius:18px;
+padding:25px;
+margin:20px 0;
+text-align:center;
+}
+
+.award h1{
+font-size:32px;
+}
+
+.award-winner{
+font-size:28px;
+font-weight:bold;
+margin:15px;
+}
+
+.premiers{
+background:#382900;
+border:2px solid #b98b00;
+padding:30px;
+border-radius:18px;
+text-align:center;
+font-size:22px;
+}
+
+.small{
+color:#aaa;
+font-size:14px;
+}
+
+.green{
+background:#174f2d;
+}
+
+.gold{
+background:#5a4300;
+}
+
+.red{
+background:#531b1b;
+}
+
+.error{
+color:#ff5555;
+}
+
+.success{
+color:#35e875;
+}
+
+@media(max-width:700px){
+
+.stat-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.player{
+flex-direction:column;
+align-items:flex-start;
+}
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- LOGIN -->
+
+<div id="loginPage" class="page active">
+
+<div class="auth-box card">
+
+<h1 class="center">
+🏉 EFNL ULTIMATE DRAFT
+</h1>
+
+<h2 class="center">
+👤 Sign In
+</h2>
+
+<input
+id="usernameInput"
+type="text"
+placeholder="Username"
+autocomplete="username"
+>
+
+<input
+id="passwordInput"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<div class="center">
+
+<button
+onclick="login()"
+class="green">
+
+SIGN IN
+
+</button>
+
+<button
+onclick="register()">
+
+CREATE ACCOUNT
+
+</button>
+
+</div>
+
+<p id="authMessage" class="center"></p>
+
+</div>
+
+</div>
+
+
+<!-- APP -->
+
+<div id="app" style="display:none;">
+
+
+<div class="header">
+
+<h1>
+🏉 EFNL ULTIMATE DRAFT
+</h1>
+
+<div class="nav">
+
+<button onclick="showPage('home')">
+🏠 Home
+</button>
+
+<button onclick="showPage('draft')">
+🎰 Draft
+</button>
+
+<button onclick="showPage('profile')">
+👤 Profile
+</button>
+
+<button onclick="showPage('saves')">
+💾 Saved Teams
+</button>
+
+<button onclick="logout()">
+🚪 Logout
+</button>
+
+</div>
+
+</div>
+
+
+<!-- HOME -->
+
+<div id="home" class="page">
+
+<div class="card center">
+
+<h2 id="welcomeText">
+Welcome to EFNL
+</h2>
+
+<p>
+Draft your squad, play the season,
+make finals and win the premiership.
+</p>
+
+<button onclick="showPage('draft')">
+🎰 GO TO DRAFT
+</button>
+
+</div>
+
+
+<div class="stat-grid">
+
+<div class="stat">
+
+<div id="careerSeasons" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Seasons
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="careerWins" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Wins
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="careerLosses" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Losses
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="careerPremierships" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Premierships
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+🏟️ Current Club
+</h2>
+
+<h2 id="homeClub">
+My EFNL Club
+</h2>
+
+<p id="homeRating">
+Team Rating: 0 OVR
+</p>
+
+</div>
+
+</div>
+
+
+<!-- DRAFT -->
+
+<div id="draft" class="page">
+
+<h2 class="center">
+
+🏟️
+<span id="clubNameDisplay">
+My EFNL Club
+</span>
+
+</h2>
+
+
+<div class="center">
+
+<button onclick="createClub()">
+🏟️ CREATE / RENAME CLUB
+</button>
+
+</div>
+
+
+<h2 id="count" class="center">
+
+Squad: 0 / 10
+
+</h2>
+
+
+<div id="spinner" class="center">
+
+🎰 PRESS SPIN
+
+</div>
+
+
+<div class="center">
+
+<button
+id="spinButton"
+onclick="spinTeam()">
+
+🎰 SPIN TEAM
+
+</button>
+
+</div>
+
+
+<div id="players"></div>
+
+
+<div class="card">
+
+<h2>
+Your Team
+</h2>
+
+<div id="teamlist">
+No players drafted
+</div>
+
+</div>
+
+
+<h2 id="rating" class="center">
+
+Team Rating: 0 OVR
+
+</h2>
+
+
+<div class="center">
+
+<button
+id="seasonButton"
+onclick="playSeason()">
+
+🏆 PLAY SEASON
+
+</button>
+
+</div>
+
+
+<div id="seasonResults"></div>
+
+</div>
+
+
+<!-- PROFILE -->
+
+<div id="profile" class="page">
+
+<div class="card">
+
+<h2>
+👤 Profile
+</h2>
+
+<h1 id="profileUsername">
+-
+</h1>
+
+<p id="profileClub">
+Club: -
+</p>
+
+</div>
+
+
+<div class="stat-grid">
+
+<div class="stat">
+
+<div id="profileSeasons" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Seasons
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="profileWins" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Wins
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="profileLosses" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Losses
+</div>
+
+</div>
+
+
+<div class="stat">
+
+<div id="profileFlags" class="stat-number">
+0
+</div>
+
+<div class="stat-label">
+Premierships
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>
+📊 Career Record
+</h2>
+
+<p id="profileRecord">
+No seasons played yet.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- SAVED TEAMS -->
+
+<div id="saves" class="page">
+
+<h2>
+💾 SAVED TEAMS
+</h2>
+
+<div id="savedTeams">
+No saved teams yet.
+</div>
+
+</div>
+
+
+</div>
+
+
+<script>
+
+
+/* ===============================
+PLAYER DATABASE
+================================ */
+
+const clubs={
+
+
+"South Croydon":[
+["Samuel Carbone","MID",99],
+["Noah Martin","MID",98],
+["Koby Stevens","MID/FWD",96],
+["Amos Flavel","RUCK",95],
+["Rowe Darby","HF",92],
+["Raphael Tupola","BACK",91],
+["Kasen Williams","BACK",89],
+["Dan Latu","HB",92],
+["Hunter Gale","HB",96]
+],
+
+
+"Blackburn":[
+["Lenny Woodhouse","MID",99],
+["Lewis Hollywood","UTIL",98],
+["Ethan Keeningham","WING/MID",93],
+["Josh StClair","FULL FORWARD",93],
+["Zander Brosolo","MID",92],
+["Connor Reilley","MID",90],
+["Eddie Flesser","BACK",92],
+["Jonothan Tsotinas","MID",88],
+["Beau Dove","HF/MID",95],
+["Lachie Symcock","FB",94],
+["Ollie Little","FWD",92],
+["Finn Gallagher","FWD/MID",93],
+["Jacko Oliver","MID",91]
+],
+
+
+"Montrose":[
+["Isaac Connors","MID",98],
+["Arlo Trigwell","CHB",97],
+["Darcy McKensie","RUCK",96],
+["Noah McCartney","UTIL",95],
+["Oliver Dowell","FWD",94],
+["Jack Lorkin","WING/MID",93],
+["James Atkinson","HF",87],
+["Blake Jackson","FWD",87]
+],
+
+
+"Heathmont":[
+["Johnny Bailiss","HB",98],
+["Cooper Rio","MID",97],
+["Luke Guilliano","RUCK",96],
+["Jesse Berka","HF/RUCK",85]
+],
+
+
+"Beaconsfield":[
+["Max Moody","MID/RUCK",98],
+["Ryder Terek","WING",89],
+["Fraser Jones","HB/HF",88],
+["Jackson Brown","FWD",86],
+["Liam Watson","FWD",85],
+["Ryker Holl","FF",94]
+],
+
+
+"Lysterfield":[
+["Phoenix Kidman","MID",95],
+["Jude Peace","UTIL",94],
+["Kyan Stone","FWD",87],
+["Kobe Masterson","FWD",93],
+["Zayne Weinert","HB",91]
+]
+
+};
+
+
+
+/* ===============================
+GAME VARIABLES
+================================ */
+
+let currentUser=null;
+
+let squad=[];
+
+let drafted=[];
+
+let currentTeam="";
+
+let spinning=false;
+
+let hasSpun=false;
+
+let seasonPlayed=false;
+
+let clubName="My EFNL Club";
+
+
+/* ===============================
+STORAGE
+================================ */
+
+function getUsers(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem("efnlUsers") || "{}"
+);
+
+}catch(error){
+
+return {};
+
+}
+
+}
+
+
+function saveUsers(users){
+
+localStorage.setItem(
+"efnlUsers",
+JSON.stringify(users)
+);
+
+}
+
+
+/* ===============================
+REGISTER
+================================ */
+
+function register(){
+
+let username=
+document.getElementById(
+"usernameInput"
+).value.trim();
+
+let password=
+document.getElementById(
+"passwordInput"
+).value;
+
+
+if(!username || !password){
+
+showAuthMessage(
+"❌ Enter a username and password.",
+"error"
+);
+
+return;
+
+}
+
+
+let users=getUsers();
+
+
+if(users[username]){
+
+showAuthMessage(
+"❌ Username already exists.",
+"error"
+);
+
+return;
+
+}
+
+
+users[username]={
+
+password:password,
+
+clubName:"My EFNL Club",
+
+currentTeam:[],
+
+currentDrafted:[],
+
+currentTeamName:"",
+
+seasonPlayed:false,
+
+career:{
+seasons:0,
+wins:0,
+losses:0,
+premierships:0
+},
+
+savedTeams:[]
+
+};
+
+
+saveUsers(users);
+
+currentUser=username;
+
+loadUser();
+
+showApp();
+
+showPage("home");
+
+}
+
+
+/* ===============================
+LOGIN
+================================ */
+
+function login(){
+
+let username=
+document.getElementById(
+"usernameInput"
+).value.trim();
+
+let password=
+document.getElementById(
+"passwordInput"
+).value;
+
+
+if(!username || !password){
+
+showAuthMessage(
+"❌ Enter your username and password.",
+"error"
+);
+
+return;
+
+}
+
+
+let users=getUsers();
+
+
+if(!users[username]){
+
+showAuthMessage(
+"❌ Account not found.",
+"error"
+);
+
+return;
+
+}
+
+
+if(users[username].password!==password){
+
+showAuthMessage(
+"❌ Incorrect password.",
+"error"
+);
+
+return;
+
+}
+
+
+currentUser=username;
+
+loadUser();
+
+showApp();
+
+showPage("home");
+
+}
+
+
+/* ===============================
+AUTH MESSAGE
+================================ */
+
+function showAuthMessage(
+message,
+type
+){
+
+let box=
+document.getElementById(
+"authMessage"
+);
+
+box.innerText=message;
+
+box.className=
+"center "+(type || "");
+
+}
+
+
+/* ===============================
+SHOW APP
+================================ */
+
+function showApp(){
+
+document.getElementById(
+"loginPage"
+).classList.remove("active");
+
+document.getElementById(
+"app"
+).style.display="block";
+
+}
+
+
+/* ===============================
+LOAD USER
+================================ */
+
+function loadUser(){
+
+let users=getUsers();
+
+let data=users[currentUser];
+
+if(!data){
+
+return;
+
+}
+
+
+if(!data.career){
+
+data.career={
+seasons:0,
+wins:0,
+losses:0,
+premierships:0
+};
+
+}
+
+
+if(!data.savedTeams){
+
+data.savedTeams=[];
+
+}
+
+
+if(!data.currentTeam){
+
+data.currentTeam=[];
+
+}
+
+
+if(!data.currentDrafted){
+
+data.currentDrafted=[];
+
+}
+
+
+clubName=
+data.clubName ||
+"My EFNL Club";
+
+
+squad=
+data.currentTeam || [];
+
+
+drafted=
+data.currentDrafted || [];
+
+
+currentTeam=
+data.currentTeamName || "";
+
+
+seasonPlayed=
+data.seasonPlayed || false;
+
+
+spinning=false;
+
+hasSpun=false;
+
+
+document.getElementById(
+"clubNameDisplay"
+).innerText=
+clubName;
+
+
+update();
+
+updateProfile();
+
+setSpinState();
+
+}
+
+
+/* ===============================
+SAVE
+================================ */
+
+function saveGame(){
+
+if(!currentUser){
+
+return;
+
+}
+
+
+let users=getUsers();
+
+let data=users[currentUser];
+
+if(!data){
+
+return;
+
+}
+
+
+data.clubName=clubName;
+
+data.currentTeam=squad;
+
+data.currentDrafted=drafted;
+
+data.currentTeamName=currentTeam;
+
+data.seasonPlayed=seasonPlayed;
+
+
+saveUsers(users);
+
+}
+
+
+/* ===============================
+NAVIGATION
+================================ */
+
+function showPage(page){
+
+if(!currentUser){
+
+return;
+
+}
+
+
+document.querySelectorAll(
+".page"
+).forEach(
+p=>{
+
+if(p.id!=="loginPage"){
+
+p.classList.remove("active");
+
+}
+
+});
+
+
+let target=
+document.getElementById(page);
+
+
+if(target){
+
+target.classList.add("active");
+
+}
+
+
+if(page==="profile"){
+
+updateProfile();
+
+}
+
+
+if(page==="saves"){
+
+showSavedTeams();
+
+}
+
+}
+
+
+/* ===============================
+CREATE CLUB
+================================ */
+
+function createClub(){
+
+if(seasonPlayed){
+
+alert(
+"This team has already played its season. Start a new team first."
+);
+
+return;
+
+}
+
+
+let name=
+prompt(
+"Enter your club name:",
+clubName
+);
+
+
+if(!name){
+
+return;
+
+}
+
+
+clubName=name.trim();
+
+
+if(!clubName){
+
+clubName="My EFNL Club";
+
+}
+
+
+document.getElementById(
+"clubNameDisplay"
+).innerText=
+clubName;
+
+
+saveGame();
+
+update();
+
+}
+
+
+/* ===============================
+SPIN BUTTON
+================================ */
+
+function setSpinState(){
+
+let button=
+document.getElementById(
+"spinButton"
+);
+
+
+if(!button){
+
+return;
+
+}
+
+
+if(
+spinning ||
+hasSpun ||
+seasonPlayed ||
+squad.length>=10
+){
+
+button.disabled=true;
+
+}else{
+
+button.disabled=false;
+
+}
+
+}
+
+
+/* ===============================
+AVAILABLE TEAMS
+================================ */
+
+function availableTeams(){
+
+let teams=[];
+
+
+for(let team in clubs){
+
+let available=
+clubs[team].filter(
+player=>
+!drafted.includes(player[0])
+);
+
+
+if(available.length>0){
+
+teams.push(team);
+
+}
+
+}
+
+
+return teams;
+
+}
+
+
+/* ===============================
+SPIN
+================================ */
+
+function spinTeam(){
+
+if(
+spinning ||
+hasSpun ||
+seasonPlayed ||
+squad.length>=10
+){
+
+return;
+
+}
+
+
+let teams=
+availableTeams();
+
+
+if(!teams.length){
+
+alert(
+"No more players are available."
+);
+
+return;
+
+}
+
+
+spinning=true;
+
+hasSpun=true;
+
+setSpinState();
+
+
+let box=
+document.getElementById(
+"spinner"
+);
+
+
+let count=0;
+
+
+let animation=
+setInterval(
+function(){
+
+let randomTeam=
+teams[
+Math.floor(
+Math.random()*teams.length
+)
+];
+
+
+box.innerText=
+randomTeam;
+
+
+count++;
+
+
+if(count>=30){
+
+clearInterval(animation);
+
+
+currentTeam=
+teams[
+Math.floor(
+Math.random()*teams.length
+)
+];
+
+
+box.innerText=
+"🎯 "+currentTeam;
+
+
+spinning=false;
+
+
+showPlayers();
+
+saveGame();
+
+}
+
+},
+100
+);
+
+}
+
+
+/* ===============================
+SHOW PLAYERS
+================================ */
+
+function showPlayers(){
+
+let box=
+document.getElementById(
+"players"
+);
+
+
+box.innerHTML=
+"<h2 class='center'>Pick ONE Player</h2>";
+
+
+clubs[currentTeam].forEach(
+player=>{
+
+
+if(
+drafted.includes(player[0])
+){
+
+return;
+
+}
+
+
+let div=
+document.createElement(
+"div"
+);
+
+
+div.className="player";
+
+
+div.innerHTML=
+
+`
+
+<div class="player-info">
+
+<div class="player-name">
+${player[0]}
+</div>
+
+<div>
+${player[1]}
+</div>
+
+</div>
+
+<div class="player-rating">
+${player[2]}
+</div>
+
+<button>
+DRAFT
+</button>
+
+`;
+
+
+div.querySelector(
+"button"
+).onclick=
+function(){
+
+draft(player);
+
+};
+
+
+box.appendChild(div);
+
+});
+
+}
+
+
+/* ===============================
+DRAFT
+================================ */
+
+function draft(player){
+
+if(
+!hasSpun ||
+squad.length>=10
+){
+
+return;
+
+}
+
+
+squad.push(player);
+
+drafted.push(player[0]);
+
+
+currentTeam="";
+
+hasSpun=false;
+
+spinning=false;
+
+
+document.getElementById(
+"spinner"
+).innerText=
+"🎰 PRESS SPIN";
+
+
+document.getElementById(
+"players"
+).innerHTML=
+
+`
+
+<div class="card center">
+
+<h2>
+✅ ${player[0]} drafted
+</h2>
+
+<p>
+Spin again for your next pick.
+</p>
+
+</div>
+
+`;
+
+
+update();
+
+saveGame();
+
+setSpinState();
+
+
+if(squad.length>=10){
+
+document.getElementById(
+"spinner"
+).innerText=
+"🏆 SQUAD COMPLETE";
+
+}
+
+}
+
+
+/* ===============================
+UPDATE
+================================ */
+
+function update(){
+
+let count=
+document.getElementById("count");
+
+
+if(count){
+
+count.innerText=
+`Squad: ${squad.length} / 10`;
+
+}
+
+
+let list=
+document.getElementById("teamlist");
+
+
+if(list){
+
+if(!squad.length){
+
+list.innerText=
+"No players drafted";
+
+}else{
+
+list.innerHTML="";
+
+
+squad.forEach(
+player=>{
+
+list.innerHTML+=
+`⭐ ${player[0]} | ${player[1]} | ${player[2]} OVR<br>`;
+
+});
+
+}
+
+}
+
+
+let total=
+squad.reduce(
+(sum,p)=>sum+p[2],
+0
+);
+
+
+let rating=
+squad.length
+?
+Math.round(total/squad.length)
+:
+0;
+
+
+let ratingBox=
+document.getElementById("rating");
+
+
+if(ratingBox){
+
+ratingBox.innerText=
+`Team Rating: ${rating} OVR`;
+
+}
+
+
+let homeClub=
+document.getElementById("homeClub");
+
+
+if(homeClub){
+
+homeClub.innerText=
+clubName;
+
+}
+
+
+let homeRating=
+document.getElementById("homeRating");
+
+
+if(homeRating){
+
+homeRating.innerText=
+`Team Rating: ${rating} OVR`;
+
+}
+
+}
+
+
+/* ===============================
+FORWARD CHECK
+================================ */
+
+function isForward(player){
+
+let position=
+player[1].toUpperCase();
+
+
+return(
+position.includes("FWD") ||
+position.includes("FORWARD") ||
+position==="FF" ||
+position==="HF"
+);
+
+}
+
+
+/* ===============================
+PLAY SEASON
+================================ */
+
+function playSeason(){
+
+if(squad.length<10){
+
+alert(
+"You need to draft 10 players first!"
+);
+
+return;
+
+}
+
+
+if(seasonPlayed){
+
+alert(
+"This team has already played a season. Start a new team."
+);
+
+return;
+
+}
+
+
+let rating=
+Math.round(
+squad.reduce(
+(sum,p)=>sum+p[2],
+0
+)/squad.length
+);
+
+
+let premiershipOdds=
+18+
+((rating-90)*6);
+
+
+premiershipOdds=
+Math.max(
+5,
+Math.min(
+80,
+premiershipOdds
+)
+);
+
+
+let start=
+confirm(
+
+`🏆 PREMIERSHIP ODDS
+
+${clubName}
+
+⭐ ${rating} OVR
+
+Chance of winning the premiership:
+
+${premiershipOdds}%
+
+Press OK to play the season.`
+
+);
+
+
+if(!start){
+
+return;
+
+}
+
+
+let stats={};
+
+
+squad.forEach(
+player=>{
+
+stats[player[0]]={
+
+player:player,
+
+goals:0,
+
+votes:0
+
+};
+
+});
+
+
+let wins=0;
+
+let losses=0;
+
+let points=0;
+
+let results="";
+
+
+let opponents=[
+"South Croydon",
+"Blackburn",
+"Montrose",
+"Heathmont",
+"Beaconsfield",
+"Lysterfield"
+];
+
+
+for(
+let round=1;
+round<=18;
+round++
+){
+
+
+let opponent=
+opponents[
+Math.floor(
+Math.random()*opponents.length
+)
+];
+
+
+let winChance=
+0.5+
+((rating-90)*0.007);
+
+
+winChance=
+Math.max(
+0.25,
+Math.min(
+0.85,
+winChance
+)
+);
+
+
+let win=
+Math.random()<winChance;
+
+
+let yourScore=
+Math.floor(Math.random()*50)+60;
+
+
+let enemyScore=
+Math.floor(Math.random()*50)+60;
+
+
+if(win){
+
+wins++;
+
+points+=4;
+
+
+if(yourScore<=enemyScore){
+
+yourScore=
+enemyScore+
+Math.floor(Math.random()*10)+1;
+
+}
+
+}else{
+
+losses++;
+
+
+if(enemyScore<=yourScore){
+
+enemyScore=
+yourScore+
+Math.floor(Math.random()*10)+1;
+
+}
+
+}
+
+
+/* PLAYER PERFORMANCE */
+
+let performances=[];
+
+
+squad.forEach(
+player=>{
+
+let performance=
+player[2]+
+Math.random()*30;
+
+
+if(isForward(player)){
+
+performance+=
+Math.random()*12;
+
+}
+
+
+performances.push({
+
+player:player,
+
+score:performance
+
+});
+
+
+let goalChance=0.08;
+
+
+if(isForward(player)){
+
+goalChance=0.45;
+
+}
+
+
+/*
+Jesse has a 3% Coleman goal chance.
+*/
+
+if(player[0]==="Jesse Berka"){
+
+goalChance=0.03;
+
+}
+
+
+if(player[1]==="FF"){
+
+goalChance=0.55;
+
+}
+
+
+if(Math.random()<goalChance){
+
+let goals=
+Math.floor(
+Math.random()*4
+)+1;
+
+
+stats[
+player[0]
+].goals+=goals;
+
+}
+
+});
+
+
+performances.sort(
+(a,b)=>b.score-a.score
+);
+
+
+if(performances[0]){
+
+stats[
+performances[0].player[0]
+].votes+=3;
+
+}
+
+if(performances[1]){
+
+stats[
+performances[1].player[0]
+].votes+=2;
+
+}
+
+if(performances[2]){
+
+stats[
+performances[2].player[0]
+].votes+=1;
+
+}
+
+
+let best=
+performances[0]
+.player[0];
+
+
+results+=`
+
+<div class="card">
+
+<h3>
+Round ${round}
+</h3>
+
+<p>
+Opponent: ${opponent}
+</p>
+
+<h2 class="${
+win
+?
+"win"
+:
+"loss"
+}">
+
+${
+win
+?
+"🟢 WIN"
+:
+"🔴 LOSS"
+}
+
+</h2>
+
+<h3>
+${yourScore} - ${enemyScore}
+</h3>
+
+<p>
+⭐ Best: ${best}
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* ===============================
+FINALS
+================================ */
+
+let finals="";
+
+let premiers=false;
+
+
+if(wins>=10){
+
+let result=
+runFinals(
+rating,
+stats
+);
+
+finals=result.html;
+
+premiers=result.premiers;
+
+}else{
+
+finals=
+
+`
+
+<div class="card center">
+
+<h1>
+❌ FINALS MISSED
+</h1>
+
+<h2>
+${clubName}
+</h2>
+
+<p>
+You needed 10 wins to qualify.
+</p>
+
+<p>
+Final record:
+${wins}-${losses}
+</p>
+
+</div>
+
+`;
+
+}
+
+
+/* ===============================
+AWARDS
+================================ */
+
+let awards=
+generateAwards(stats);
+
+
+/* ===============================
+SAVE SEASON
+================================ */
+
+let users=
+getUsers();
+
+let data=
+users[currentUser];
+
+
+if(!data.career){
+
+data.career={
+seasons:0,
+wins:0,
+losses:0,
+premierships:0
+};
+
+}
+
+
+data.career.seasons++;
+
+data.career.wins+=wins;
+
+data.career.losses+=losses;
+
+
+if(premiers){
+
+data.career.premierships++;
+
+}
+
+
+seasonPlayed=true;
+
+
+data.savedTeams.push({
+
+clubName:clubName,
+
+rating:rating,
+
+players:[...squad],
+
+wins:wins,
+
+losses:losses,
+
+premiers:premiers,
+
+date:new Date().toLocaleDateString(),
+
+seasonResults:results,
+
+finalsResults:finals,
+
+awards:awards
+
+});
+
+
+data.currentTeam=squad;
+
+data.currentDrafted=drafted;
+
+data.currentTeamName="";
+
+data.seasonPlayed=true;
+
+
+saveUsers(users);
+
+
+/* ===============================
+DISPLAY RESULTS
+================================ */
+
+document.getElementById(
+"seasonResults"
+).innerHTML=
+
+`
+
+<div class="card center">
+
+<h1>
+🏉 ${clubName}
+</h1>
+
+<h2>
+SEASON FINISHED
+</h2>
+
+<h2>
+${wins} Wins |
+${losses} Losses
+</h2>
+
+<h3>
+Team Rating:
+${rating} OVR
+</h3>
+
+<h3>
+Ladder Points:
+${points}
+</h3>
+
+</div>
+
+${finals}
+
+${awards}
+
+<hr>
+
+<h2 class="center">
+📅 SEASON RESULTS
+</h2>
+
+${results}
+
+<div class="card center">
+
+<h2>
+💾 TEAM SAVED
+</h2>
+
+<p>
+Your completed team has been saved.
+</p>
+
+<button
+onclick="startNewTeam()"
+class="green">
+
+🏆 PLAY AGAIN / NEW TEAM
+
+</button>
+
+</div>
+
+`;
+
+
+document.getElementById(
+"seasonButton"
+).disabled=true;
+
+
+document.getElementById(
+"spinButton"
+).disabled=true;
+
+
+updateProfile();
+
+}
+
+
+/* ===============================
+FINALS
+================================ */
+
+function runFinals(
+rating,
+stats
+){
+
+let html=
+
+`
+
+<div class="card center">
+
+<h1>
+🔥 FINALS QUALIFIED 🔥
+</h1>
+
+<p>
+${clubName} made the finals!
+</p>
+
+</div>
+
+`;
+
+
+let premiers=false;
+
+
+let rounds=[
+
+"Qualifying Final",
+"Semi Final",
+"Preliminary Final",
+"🏆 GRAND FINAL"
+
+];
+
+
+for(let round of rounds){
+
+
+let chance=
+0.5+
+((rating-90)*0.01);
+
+
+chance=
+Math.max(
+0.25,
+Math.min(
+0.85,
+chance
+)
+);
+
+
+let won=
+Math.random()<chance;
+
+
+let yourScore=
+Math.floor(Math.random()*45)+65;
+
+
+let enemyScore=
+Math.floor(Math.random()*45)+65;
+
+
+if(won){
+
+if(yourScore<=enemyScore){
+
+yourScore=
+enemyScore+1;
+
+}
+
+}else{
+
+if(enemyScore<=yourScore){
+
+enemyScore=
+yourScore+1;
+
+}
+
+}
+
+
+let performances=[];
+
+
+squad.forEach(
+player=>{
+
+let performance=
+player[2]+
+Math.random()*30;
+
+
+if(isForward(player)){
+
+performance+=
+Math.random()*12;
+
+}
+
+
+performances.push({
+
+player:player,
+
+score:performance
+
+});
+
+
+let goalChance=0.08;
+
+
+if(isForward(player)){
+
+goalChance=0.50;
+
+}
+
+
+if(player[0]==="Jesse Berka"){
+
+goalChance=0.03;
+
+}
+
+
+if(player[1]==="FF"){
+
+goalChance=0.60;
+
+}
+
+
+if(Math.random()<goalChance){
+
+let goals=
+Math.floor(
+Math.random()*3
+)+1;
+
+
+stats[
+player[0]
+].goals+=goals;
+
+}
+
+});
+
+
+performances.sort(
+(a,b)=>b.score-a.score
+);
+
+
+if(performances[0]){
+
+stats[
+performances[0].player[0]
+].votes+=3;
+
+}
+
+if(performances[1]){
+
+stats[
+performances[1].player[0]
+].votes+=2;
+
+}
+
+if(performances[2]){
+
+stats[
+performances[2].player[0]
+].votes+=1;
+
+}
+
+
+let opponent=
+[
+"South Croydon",
+"Blackburn",
+"Montrose",
+"Heathmont",
+"Beaconsfield",
+"Lysterfield"
+][
+Math.floor(Math.random()*6)
+];
+
+
+html+=`
+
+<div class="final">
+
+<h2>
+${round}
+</h2>
+
+<h3>
+${clubName}
+vs
+${opponent}
+</h3>
+
+<h2>
+${yourScore} - ${enemyScore}
+</h2>
+
+<h2 class="${
+won
+?
+"win"
+:
+"loss"
+}">
+
+${
+won
+?
+"🟢 VICTORY"
+:
+"🔴 ELIMINATED"
+}
+
+</h2>
+
+</div>
+
+`;
+
+
+if(!won){
+
+return{
+
+html:html,
+
+premiers:false
+
+};
+
+}
+
+
+if(round==="🏆 GRAND FINAL"){
+
+premiers=true;
+
+
+html+=`
+
+<div class="premiers">
+
+🏆🏆🏆
+
+<h1>
+PREMIERS!
+</h1>
+
+<p>
+${clubName} are EFNL PREMIERS!
+</p>
+
+🏆🏆🏆
+
+</div>
+
+`;
+
+}
+
+}
+
+
+return{
+
+html:html,
+
+premiers:premiers
+
+};
+
+}
+
+
+/* ===============================
+COLEMAN / BROWNLOW
+================================ */
+
+function generateAwards(stats){
+
+let players=
+Object.values(stats);
+
+
+if(!players.length){
+
+return "";
+
+}
+
+
+let coleman=
+[...players].sort(
+(a,b)=>b.goals-a.goals
+)[0];
+
+
+let brownlow=
+[...players].sort(
+(a,b)=>b.votes-a.votes
+)[0];
+
+
+let html=
+
+`
+
+<div class="award">
+
+<h1>
+🥇 COLEMAN MEDAL
+</h1>
+
+<p>
+Leading goalkicker
+</p>
+
+<div class="award-winner">
+⭐ ${coleman.player[0]}
+</div>
+
+<h2>
+${coleman.goals} GOALS
+</h2>
+
+<p>
+${coleman.player[1]} |
+${coleman.player[2]} OVR
+</p>
+
+</div>
+
+
+<div class="award">
+
+<h1>
+🏅 BROWNLOW MEDAL
+</h1>
+
+<p>
+Best and fairest
+</p>
+
+<div class="award-winner">
+⭐ ${brownlow.player[0]}
+</div>
+
+<h2>
+${brownlow.votes} VOTES
+</h2>
+
+<p>
+${brownlow.player[1]} |
+${brownlow.player[2]} OVR
+</p>
+
+</div>
+
+`;
+
+return html;
+
+}
+
+
+/* ===============================
+NEW TEAM
+================================ */
+
+function startNewTeam(){
+
+squad=[];
+
+drafted=[];
+
+currentTeam="";
+
+spinning=false;
+
+hasSpun=false;
+
+seasonPlayed=false;
+
+clubName="My EFNL Club";
+
+
+document.getElementById(
+"clubNameDisplay"
+).innerText=
+clubName;
+
+
+document.getElementById(
+"spinner"
+).innerText=
+"🎰 PRESS SPIN";
+
+
+document.getElementById(
+"players"
+).innerHTML="";
+
+
+document.getElementById(
+"seasonResults"
+).innerHTML="";
+
+
+document.getElementById(
+"seasonButton"
+).disabled=false;
+
+
+update();
+
+saveGame();
+
+setSpinState();
+
+showPage("draft");
+
+}
+
+
+/* ===============================
+PROFILE
+================================ */
+
+function updateProfile(){
+
+if(!currentUser){
+
+return;
+
+}
+
+
+let users=
+getUsers();
+
+let data=
+users[currentUser];
+
+
+if(!data){
+
+return;
+
+}
+
+
+if(!data.career){
+
+data.career={
+seasons:0,
+wins:0,
+losses:0,
+premierships:0
+};
+
+}
+
+
+document.getElementById(
+"profileUsername"
+).innerText=
+currentUser;
+
+
+document.getElementById(
+"profileClub"
+).innerText=
+"Club: "+clubName;
+
+
+document.getElementById(
+"profileSeasons"
+).innerText=
+data.career.seasons;
+
+
+document.getElementById(
+"profileWins"
+).innerText=
+data.career.wins;
+
+
+document.getElementById(
+"profileLosses"
+).innerText=
+data.career.losses;
+
+
+document.getElementById(
+"profileFlags"
+).innerText=
+data.career.premierships;
+
+
+document.getElementById(
+"careerSeasons"
+).innerText=
+data.career.seasons;
+
+
+document.getElementById(
+"careerWins"
+).innerText=
+data.career.wins;
+
+
+document.getElementById(
+"careerLosses"
+).innerText=
+data.career.losses;
+
+
+document.getElementById(
+"careerPremierships"
+).innerText=
+data.career.premierships;
+
+
+document.getElementById(
+"welcomeText"
+).innerText=
+"Welcome back, "+currentUser;
+
+
+let games=
+data.career.wins+
+data.career.losses;
+
+
+document.getElementById(
+"profileRecord"
+).innerText=
+games
+?
+`${data.career.wins}-${data.career.losses} career record`
+:
+"No seasons played yet.";
+
+}
+
+
+/* ===============================
+SAVED TEAMS
+================================ */
+
+function showSavedTeams(){
+
+let users=
+getUsers();
+
+let data=
+users[currentUser];
+
+
+let box=
+document.getElementById(
+"savedTeams"
+);
+
+
+if(
+!data ||
+!data.savedTeams ||
+!data.savedTeams.length
+){
+
+box.innerHTML=
+"No saved teams yet.";
+
+return;
+
+}
+
+
+box.innerHTML="";
+
+
+data.savedTeams
+.slice()
+.reverse()
+.forEach(
+team=>{
+
+
+let div=
+document.createElement(
+"div"
+);
+
+
+div.className="card";
+
+
+div.innerHTML=
+
+`
+
+<h2>
+🏟️ ${team.clubName}
+</h2>
+
+<p>
+⭐ ${team.rating} OVR
+</p>
+
+<p>
+📊 ${team.wins}-${team.losses}
+</p>
+
+<p>
+${
+team.premiers
+?
+"🏆 PREMIERS"
+:
+"Season completed"
+}
+</p>
+
+<p class="small">
+${team.date}
+</p>
+
+<button>
+VIEW SEASON
+</button>
+
+`;
+
+
+div.querySelector(
+"button"
+).onclick=
+function(){
+
+viewSavedTeam(team);
+
+};
+
+
+box.appendChild(div);
+
+});
+
+}
+
+
+/* ===============================
+VIEW SAVED TEAM
+================================ */
+
+function viewSavedTeam(team){
+
+let box=
+document.getElementById(
+"savedTeams"
+);
+
+
+let players=
+team.players
+.map(
+p=>
+`⭐ ${p[0]} | ${p[1]} | ${p[2]} OVR`
+)
+.join("<br>");
+
+
+box.innerHTML=
+
+`
+
+<div class="card">
+
+<h1>
+🏟️ ${team.clubName}
+</h1>
+
+<h2>
+⭐ ${team.rating} OVR
+</h2>
+
+<h3>
+Record:
+${team.wins}-${team.losses}
+</h3>
+
+${
+team.premiers
+?
+"<h2>🏆 PREMIERS</h2>"
+:
+""
+}
+
+<hr>
+
+<h2>
+👥 Squad
+</h2>
+
+${players}
+
+<hr>
+
+<h2>
+📅 Season
+</h2>
+
+${team.seasonResults}
+
+<hr>
+
+<h2>
+🔥 Finals
+</h2>
+
+${team.finalsResults}
+
+<hr>
+
+<h2>
+🏅 Awards
+</h2>
+
+${team.awards}
+
+<button onclick="showSavedTeams()">
+← BACK
+</button>
+
+</div>
+
+`;
+
+}
+
+
+/* ===============================
+LOGOUT
+================================ */
+
+function logout(){
+
+saveGame();
+
+currentUser=null;
+
+squad=[];
+
+drafted=[];
+
+currentTeam="";
+
+spinning=false;
+
+hasSpun=false;
+
+seasonPlayed=false;
+
+clubName="My EFNL Club";
+
+
+document.getElementById(
+"app"
+).style.display="none";
+
+
+document.querySelectorAll(
+".page"
+).forEach(
+p=>p.classList.remove("active")
+);
+
+
+document.getElementById(
+"loginPage"
+).classList.add("active");
+
+
+document.getElementById(
+"usernameInput"
+).value="";
+
+
+document.getElementById(
+"passwordInput"
+).value="";
+
+}
+
+
+/* ===============================
+ENTER TO LOGIN
+================================ */
+
+document.getElementById(
+"passwordInput"
+).addEventListener(
+"keydown",
+function(event){
+
+if(event.key==="Enter"){
+
+login();
+
+}
+
+});
+
+
+</script>
+
+</body>
+
+</html>
