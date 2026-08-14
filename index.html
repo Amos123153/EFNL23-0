@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 
@@ -249,9 +248,7 @@ align-items:flex-start;
 <body>
 
 
-<!-- =========================
-     LOGIN
-========================= -->
+<!-- LOGIN -->
 
 <div id="loginPage" class="page active">
 
@@ -298,20 +295,14 @@ CREATE ACCOUNT
 
 </div>
 
-<p
-id="authMessage"
-class="center">
-</p>
+<p id="authMessage" class="center"></p>
 
 </div>
 
 </div>
 
 
-
-<!-- =========================
-     MAIN APP
-========================= -->
+<!-- APP -->
 
 <div id="app" style="display:none;">
 
@@ -349,10 +340,7 @@ class="center">
 </div>
 
 
-
-<!-- =========================
-     HOME
-========================= -->
+<!-- HOME -->
 
 <div id="home" class="page">
 
@@ -449,10 +437,7 @@ Team Rating: 0 OVR
 </div>
 
 
-
-<!-- =========================
-     DRAFT
-========================= -->
+<!-- DRAFT -->
 
 <div id="draft" class="page">
 
@@ -475,18 +460,14 @@ My EFNL Club
 </div>
 
 
-<h2
-id="count"
-class="center">
+<h2 id="count" class="center">
 
 Squad: 0 / 10
 
 </h2>
 
 
-<div
-id="spinner"
-class="center">
+<div id="spinner" class="center">
 
 🎰 PRESS SPIN
 
@@ -522,9 +503,7 @@ No players drafted
 </div>
 
 
-<h2
-id="rating"
-class="center">
+<h2 id="rating" class="center">
 
 Team Rating: 0 OVR
 
@@ -549,10 +528,7 @@ onclick="playSeason()">
 </div>
 
 
-
-<!-- =========================
-     PROFILE
-========================= -->
+<!-- PROFILE -->
 
 <div id="profile" class="page">
 
@@ -577,9 +553,7 @@ Club: -
 
 <div class="stat">
 
-<div
-id="profileSeasons"
-class="stat-number">
+<div id="profileSeasons" class="stat-number">
 0
 </div>
 
@@ -592,9 +566,7 @@ Seasons
 
 <div class="stat">
 
-<div
-id="profileWins"
-class="stat-number">
+<div id="profileWins" class="stat-number">
 0
 </div>
 
@@ -607,9 +579,7 @@ Wins
 
 <div class="stat">
 
-<div
-id="profileLosses"
-class="stat-number">
+<div id="profileLosses" class="stat-number">
 0
 </div>
 
@@ -622,9 +592,7 @@ Losses
 
 <div class="stat">
 
-<div
-id="profileFlags"
-class="stat-number">
+<div id="profileFlags" class="stat-number">
 0
 </div>
 
@@ -652,10 +620,7 @@ No seasons played yet.
 </div>
 
 
-
-<!-- =========================
-     SAVED TEAMS
-========================= -->
+<!-- SAVED TEAMS -->
 
 <div id="saves" class="page">
 
@@ -673,15 +638,15 @@ No saved teams yet.
 </div>
 
 
-
 <script>
 
 
-/* ==================================================
-   PLAYER DATABASE
-================================================== */
+/* ===============================
+PLAYER DATABASE
+================================ */
 
 const clubs={
+
 
 "South Croydon":[
 ["Samuel Carbone","MID",99],
@@ -695,19 +660,23 @@ const clubs={
 ["Hunter Gale","HB",96]
 ],
 
+
 "Blackburn":[
 ["Lenny Woodhouse","MID",99],
 ["Lewis Hollywood","UTIL",98],
-["Ethan Keenaham","WING/MID",93],
-["Josh StClair","FULL FORWARD",90],
+["Ethan Keeningham","WING/MID",93],
+["Josh StClair","FULL FORWARD",93],
 ["Zander Brosolo","MID",92],
 ["Connor Reilley","MID",90],
 ["Eddie Flesser","BACK",92],
 ["Jonothan Tsotinas","MID",88],
 ["Beau Dove","HF/MID",95],
 ["Lachie Symcock","FB",94],
-["Ollie Little","FWD",92]
+["Ollie Little","FWD",92],
+["Finn Gallagher","FWD/MID",93],
+["Jacko Oliver","MID",91]
 ],
+
 
 "Montrose":[
 ["Isaac Connors","MID",98],
@@ -720,12 +689,14 @@ const clubs={
 ["Blake Jackson","FWD",87]
 ],
 
+
 "Heathmont":[
 ["Johnny Bailiss","HB",98],
 ["Cooper Rio","MID",97],
 ["Luke Guilliano","RUCK",96],
 ["Jesse Berka","HF/RUCK",85]
 ],
+
 
 "Beaconsfield":[
 ["Max Moody","MID/RUCK",98],
@@ -735,6 +706,7 @@ const clubs={
 ["Liam Watson","FWD",85],
 ["Ryker Holl","FF",94]
 ],
+
 
 "Lysterfield":[
 ["Phoenix Kidman","MID",95],
@@ -748,9 +720,9 @@ const clubs={
 
 
 
-/* ==================================================
-   GAME VARIABLES
-================================================== */
+/* ===============================
+GAME VARIABLES
+================================ */
 
 let currentUser=null;
 
@@ -769,10 +741,9 @@ let seasonPlayed=false;
 let clubName="My EFNL Club";
 
 
-
-/* ==================================================
-   STORAGE
-================================================== */
+/* ===============================
+STORAGE
+================================ */
 
 function getUsers(){
 
@@ -783,8 +754,6 @@ localStorage.getItem("efnlUsers") || "{}"
 );
 
 }catch(error){
-
-console.error(error);
 
 return {};
 
@@ -803,10 +772,9 @@ JSON.stringify(users)
 }
 
 
-
-/* ==================================================
-   REGISTER
-================================================== */
+/* ===============================
+REGISTER
+================================ */
 
 function register(){
 
@@ -821,22 +789,10 @@ document.getElementById(
 ).value;
 
 
-if(!username){
+if(!username || !password){
 
 showAuthMessage(
-"❌ Please enter a username.",
-"error"
-);
-
-return;
-
-}
-
-
-if(!password){
-
-showAuthMessage(
-"❌ Please enter a password.",
+"❌ Enter a username and password.",
 "error"
 );
 
@@ -851,7 +807,7 @@ let users=getUsers();
 if(users[username]){
 
 showAuthMessage(
-"❌ That username already exists. Sign in instead.",
+"❌ Username already exists.",
 "error"
 );
 
@@ -888,17 +844,9 @@ savedTeams:[]
 
 saveUsers(users);
 
-
 currentUser=username;
 
 loadUser();
-
-
-showAuthMessage(
-"",
-""
-);
-
 
 showApp();
 
@@ -907,10 +855,9 @@ showPage("home");
 }
 
 
-
-/* ==================================================
-   LOGIN
-================================================== */
+/* ===============================
+LOGIN
+================================ */
 
 function login(){
 
@@ -943,7 +890,7 @@ let users=getUsers();
 if(!users[username]){
 
 showAuthMessage(
-"❌ Account not found. Click CREATE ACCOUNT first.",
+"❌ Account not found.",
 "error"
 );
 
@@ -968,11 +915,6 @@ currentUser=username;
 
 loadUser();
 
-showAuthMessage(
-"",
-""
-);
-
 showApp();
 
 showPage("home");
@@ -980,10 +922,9 @@ showPage("home");
 }
 
 
-
-/* ==================================================
-   AUTH MESSAGE
-================================================== */
+/* ===============================
+AUTH MESSAGE
+================================ */
 
 function showAuthMessage(
 message,
@@ -995,7 +936,6 @@ document.getElementById(
 "authMessage"
 );
 
-
 box.innerText=message;
 
 box.className=
@@ -1004,10 +944,9 @@ box.className=
 }
 
 
-
-/* ==================================================
-   SHOW APP
-================================================== */
+/* ===============================
+SHOW APP
+================================ */
 
 function showApp(){
 
@@ -1022,10 +961,9 @@ document.getElementById(
 }
 
 
-
-/* ==================================================
-   LOAD USER
-================================================== */
+/* ===============================
+LOAD USER
+================================ */
 
 function loadUser(){
 
@@ -1033,18 +971,12 @@ let users=getUsers();
 
 let data=users[currentUser];
 
-
 if(!data){
 
 return;
 
 }
 
-
-/*
-This also handles accounts created
-with an older version of the game.
-*/
 
 if(!data.career){
 
@@ -1100,11 +1032,6 @@ seasonPlayed=
 data.seasonPlayed || false;
 
 
-/*
-A loaded unfinished draft can spin.
-The wheel locks only after a manual spin.
-*/
-
 spinning=false;
 
 hasSpun=false;
@@ -1125,10 +1052,9 @@ setSpinState();
 }
 
 
-
-/* ==================================================
-   SAVE GAME
-================================================== */
+/* ===============================
+SAVE
+================================ */
 
 function saveGame(){
 
@@ -1142,7 +1068,6 @@ return;
 let users=getUsers();
 
 let data=users[currentUser];
-
 
 if(!data){
 
@@ -1167,10 +1092,9 @@ saveUsers(users);
 }
 
 
-
-/* ==================================================
-   NAVIGATION
-================================================== */
+/* ===============================
+NAVIGATION
+================================ */
 
 function showPage(page){
 
@@ -1222,10 +1146,9 @@ showSavedTeams();
 }
 
 
-
-/* ==================================================
-   CLUB NAME
-================================================== */
+/* ===============================
+CREATE CLUB
+================================ */
 
 function createClub(){
 
@@ -1254,17 +1177,14 @@ return;
 }
 
 
-name=name.trim();
+clubName=name.trim();
 
 
-if(!name){
+if(!clubName){
 
-return;
+clubName="My EFNL Club";
 
 }
-
-
-clubName=name;
 
 
 document.getElementById(
@@ -1280,10 +1200,9 @@ update();
 }
 
 
-
-/* ==================================================
-   SPIN BUTTON STATE
-================================================== */
+/* ===============================
+SPIN BUTTON
+================================ */
 
 function setSpinState(){
 
@@ -1318,10 +1237,9 @@ button.disabled=false;
 }
 
 
-
-/* ==================================================
-   AVAILABLE TEAMS
-================================================== */
+/* ===============================
+AVAILABLE TEAMS
+================================ */
 
 function availableTeams(){
 
@@ -1351,10 +1269,9 @@ return teams;
 }
 
 
-
-/* ==================================================
-   SPIN TEAM
-================================================== */
+/* ===============================
+SPIN
+================================ */
 
 function spinTeam(){
 
@@ -1453,10 +1370,9 @@ saveGame();
 }
 
 
-
-/* ==================================================
-   SHOW PLAYERS
-================================================== */
+/* ===============================
+SHOW PLAYERS
+================================ */
 
 function showPlayers(){
 
@@ -1536,10 +1452,9 @@ box.appendChild(div);
 }
 
 
-
-/* ==================================================
-   DRAFT PLAYER
-================================================== */
+/* ===============================
+DRAFT
+================================ */
 
 function draft(player){
 
@@ -1611,17 +1526,14 @@ document.getElementById(
 }
 
 
-
-/* ==================================================
-   UPDATE TEAM
-================================================== */
+/* ===============================
+UPDATE
+================================ */
 
 function update(){
 
 let count=
-document.getElementById(
-"count"
-);
+document.getElementById("count");
 
 
 if(count){
@@ -1633,9 +1545,7 @@ count.innerText=
 
 
 let list=
-document.getElementById(
-"teamlist"
-);
+document.getElementById("teamlist");
 
 
 if(list){
@@ -1679,9 +1589,7 @@ Math.round(total/squad.length)
 
 
 let ratingBox=
-document.getElementById(
-"rating"
-);
+document.getElementById("rating");
 
 
 if(ratingBox){
@@ -1693,9 +1601,7 @@ ratingBox.innerText=
 
 
 let homeClub=
-document.getElementById(
-"homeClub"
-);
+document.getElementById("homeClub");
 
 
 if(homeClub){
@@ -1707,9 +1613,7 @@ clubName;
 
 
 let homeRating=
-document.getElementById(
-"homeRating"
-);
+document.getElementById("homeRating");
 
 
 if(homeRating){
@@ -1722,10 +1626,9 @@ homeRating.innerText=
 }
 
 
-
-/* ==================================================
-   FORWARD CHECK
-================================================== */
+/* ===============================
+FORWARD CHECK
+================================ */
 
 function isForward(player){
 
@@ -1743,10 +1646,9 @@ position==="HF"
 }
 
 
-
-/* ==================================================
-   PLAY SEASON
-================================================== */
+/* ===============================
+PLAY SEASON
+================================ */
 
 function playSeason(){
 
@@ -1781,13 +1683,6 @@ squad.reduce(
 );
 
 
-/*
-Premiership odds.
-
-A 95 OVR team is around 48%.
-A 96 OVR team is around 54%.
-*/
-
 let premiershipOdds=
 18+
 ((rating-90)*6);
@@ -1803,7 +1698,7 @@ premiershipOdds
 );
 
 
-let confirmSeason=
+let start=
 confirm(
 
 `🏆 PREMIERSHIP ODDS
@@ -1812,7 +1707,7 @@ ${clubName}
 
 ⭐ ${rating} OVR
 
-Your chance of winning the premiership:
+Chance of winning the premiership:
 
 ${premiershipOdds}%
 
@@ -1821,14 +1716,12 @@ Press OK to play the season.`
 );
 
 
-if(!confirmSeason){
+if(!start){
 
 return;
 
 }
 
-
-/* PLAYER STATS */
 
 let stats={};
 
@@ -1848,8 +1741,6 @@ votes:0
 
 });
 
-
-/* SEASON */
 
 let wins=0;
 
@@ -1973,8 +1864,6 @@ score:performance
 });
 
 
-/* GOALS */
-
 let goalChance=0.08;
 
 
@@ -1986,8 +1875,7 @@ goalChance=0.45;
 
 
 /*
-Jesse Berka is deliberately
-a huge Coleman outsider.
+Jesse has a 3% Coleman goal chance.
 */
 
 if(player[0]==="Jesse Berka"){
@@ -1996,10 +1884,6 @@ goalChance=0.03;
 
 }
 
-
-/*
-Full forwards get a boost.
-*/
 
 if(player[1]==="FF"){
 
@@ -2024,8 +1908,6 @@ player[0]
 
 });
 
-
-/* BROWNLOW */
 
 performances.sort(
 (a,b)=>b.score-a.score
@@ -2071,8 +1953,7 @@ Round ${round}
 </h3>
 
 <p>
-Opponent:
-${opponent}
+Opponent: ${opponent}
 </p>
 
 <h2 class="${
@@ -2098,8 +1979,7 @@ ${yourScore} - ${enemyScore}
 </h3>
 
 <p>
-⭐ Best:
-${best}
+⭐ Best: ${best}
 </p>
 
 </div>
@@ -2109,8 +1989,9 @@ ${best}
 }
 
 
-
-/* FINALS */
+/* ===============================
+FINALS
+================================ */
 
 let finals="";
 
@@ -2119,17 +2000,15 @@ let premiers=false;
 
 if(wins>=10){
 
-let finalResult=
+let result=
 runFinals(
 rating,
 stats
 );
 
-finals=
-finalResult.html;
+finals=result.html;
 
-premiers=
-finalResult.premiers;
+premiers=result.premiers;
 
 }else{
 
@@ -2163,15 +2042,17 @@ ${wins}-${losses}
 }
 
 
-
-/* AWARDS */
+/* ===============================
+AWARDS
+================================ */
 
 let awards=
 generateAwards(stats);
 
 
-
-/* SAVE */
+/* ===============================
+SAVE SEASON
+================================ */
 
 let users=
 getUsers();
@@ -2209,10 +2090,6 @@ data.career.premierships++;
 seasonPlayed=true;
 
 
-/*
-Save a complete copy of this team.
-*/
-
 data.savedTeams.push({
 
 clubName:clubName,
@@ -2238,11 +2115,6 @@ awards:awards
 });
 
 
-/*
-The current team remains visible
-until the user presses NEW TEAM.
-*/
-
 data.currentTeam=squad;
 
 data.currentDrafted=drafted;
@@ -2255,8 +2127,9 @@ data.seasonPlayed=true;
 saveUsers(users);
 
 
-
-/* DISPLAY */
+/* ===============================
+DISPLAY RESULTS
+================================ */
 
 document.getElementById(
 "seasonResults"
@@ -2313,10 +2186,6 @@ ${results}
 Your completed team has been saved.
 </p>
 
-<p>
-You can view it anytime from Saved Teams.
-</p>
-
 <button
 onclick="startNewTeam()"
 class="green">
@@ -2345,10 +2214,9 @@ updateProfile();
 }
 
 
-
-/* ==================================================
-   FINALS
-================================================== */
+/* ===============================
+FINALS
+================================ */
 
 function runFinals(
 rating,
@@ -2437,8 +2305,6 @@ yourScore+1;
 
 }
 
-
-/* FINALS PLAYER PERFORMANCE */
 
 let performances=[];
 
@@ -2647,10 +2513,9 @@ premiers:premiers
 }
 
 
-
-/* ==================================================
-   COLEMAN + BROWNLOW
-================================================== */
+/* ===============================
+COLEMAN / BROWNLOW
+================================ */
 
 function generateAwards(stats){
 
@@ -2732,82 +2597,18 @@ ${brownlow.player[2]} OVR
 
 </div>
 
-
-<div class="card">
-
-<h2>
-📊 Award Leaderboards
-</h2>
-
-<h3>
-🥇 Coleman
-</h3>
-
 `;
-
-
-[...players]
-.sort(
-(a,b)=>b.goals-a.goals
-)
-.forEach(
-(entry,index)=>{
-
-html+=
-`${index+1}. ${entry.player[0]} -
-${entry.goals} goals<br>`;
-
-});
-
-
-html+=`
-
-<h3>
-🏅 Brownlow
-</h3>
-
-`;
-
-
-[...players]
-.sort(
-(a,b)=>b.votes-a.votes
-)
-.forEach(
-(entry,index)=>{
-
-html+=
-`${index+1}. ${entry.player[0]} -
-${entry.votes} votes<br>`;
-
-});
-
-
-html+=`
-
-</div>
-
-`;
-
 
 return html;
 
 }
 
 
-
-/* ==================================================
-   NEW TEAM
-================================================== */
+/* ===============================
+NEW TEAM
+================================ */
 
 function startNewTeam(){
-
-/*
-Save the completed team first.
-*/
-
-saveGame();
-
 
 squad=[];
 
@@ -2851,24 +2652,20 @@ document.getElementById(
 ).disabled=false;
 
 
-document.getElementById(
-"spinButton"
-).disabled=false;
-
-
 update();
 
 saveGame();
+
+setSpinState();
 
 showPage("draft");
 
 }
 
 
-
-/* ==================================================
-   PROFILE
-================================================== */
+/* ===============================
+PROFILE
+================================ */
 
 function updateProfile(){
 
@@ -2988,10 +2785,9 @@ games
 }
 
 
-
-/* ==================================================
-   SAVED TEAMS
-================================================== */
+/* ===============================
+SAVED TEAMS
+================================ */
 
 function showSavedTeams(){
 
@@ -3038,8 +2834,7 @@ document.createElement(
 );
 
 
-div.className=
-"card";
+div.className="card";
 
 
 div.innerHTML=
@@ -3096,10 +2891,9 @@ box.appendChild(div);
 }
 
 
-
-/* ==================================================
-   VIEW SAVED TEAM
-================================================== */
+/* ===============================
+VIEW SAVED TEAM
+================================ */
 
 function viewSavedTeam(team){
 
@@ -3188,15 +2982,13 @@ ${team.awards}
 }
 
 
-
-/* ==================================================
-   LOGOUT
-================================================== */
+/* ===============================
+LOGOUT
+================================ */
 
 function logout(){
 
 saveGame();
-
 
 currentUser=null;
 
@@ -3244,10 +3036,9 @@ document.getElementById(
 }
 
 
-
-/* ==================================================
-   ENTER KEY LOGIN
-================================================== */
+/* ===============================
+ENTER TO LOGIN
+================================ */
 
 document.getElementById(
 "passwordInput"
@@ -3264,34 +3055,8 @@ login();
 });
 
 
-
-/* ==================================================
-   STARTUP
-================================================== */
-
-document.addEventListener(
-"DOMContentLoaded",
-function(){
-
-/*
-Always begin on the login screen.
-The user's saved account is still in
-localStorage.
-*/
-
-document.getElementById(
-"loginPage"
-).classList.add("active");
-
-document.getElementById(
-"app"
-).style.display="none";
-
-});
-
 </script>
 
 </body>
 
 </html>
-```
