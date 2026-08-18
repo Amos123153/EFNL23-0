@@ -211,20 +211,17 @@ font-size:14px;
 background:#174f2d;
 }
 
-.gold{
-background:#5a4300;
-}
-
-.red{
-background:#531b1b;
-}
-
 .error{
 color:#ff5555;
 }
 
 .success{
 color:#35e875;
+}
+
+.cheepa{
+background:#33220a;
+border:2px solid #ffb300;
 }
 
 @media(max-width:700px){
@@ -278,19 +275,12 @@ autocomplete="current-password"
 
 <div class="center">
 
-<button
-onclick="login()"
-class="green">
-
+<button onclick="login()" class="green">
 SIGN IN
-
 </button>
 
-<button
-onclick="register()">
-
+<button onclick="register()">
 CREATE ACCOUNT
-
 </button>
 
 </div>
@@ -461,16 +451,12 @@ My EFNL Club
 
 
 <h2 id="count" class="center">
-
 Squad: 0 / 10
-
 </h2>
 
 
 <div id="spinner" class="center">
-
 🎰 PRESS SPIN
-
 </div>
 
 
@@ -478,7 +464,7 @@ Squad: 0 / 10
 
 <button
 id="spinButton"
-onclick="spinTeam()">
+onclick="spinTeam">
 
 🎰 SPIN TEAM
 
@@ -504,9 +490,7 @@ No players drafted
 
 
 <h2 id="rating" class="center">
-
 Team Rating: 0 OVR
-
 </h2>
 
 
@@ -641,14 +625,15 @@ No saved teams yet.
 <script>
 
 
-/* ===============================
+/* ==========================================
 PLAYER DATABASE
-================================ */
+========================================== */
 
 const clubs={
 
 
 "South Croydon":[
+
 ["Samuel Carbone","MID",99],
 ["Noah Martin","MID",98],
 ["Koby Stevens","MID/FWD",96],
@@ -658,10 +643,13 @@ const clubs={
 ["Kasen Williams","BACK",89],
 ["Dan Latu","HB",92],
 ["Hunter Gale","HB",96]
+
 ],
 
 
+
 "Blackburn":[
+
 ["Lenny Woodhouse","MID",99],
 ["Lewis Hollywood","UTIL",98],
 ["Ethan Keeningham","WING/MID",93],
@@ -675,10 +663,13 @@ const clubs={
 ["Ollie Little","FWD",92],
 ["Finn Gallagher","FWD/MID",93],
 ["Jacko Oliver","MID",91]
+
 ],
 
 
+
 "Montrose":[
+
 ["Isaac Connors","MID",98],
 ["Arlo Trigwell","CHB",97],
 ["Darcy McKensie","RUCK",96],
@@ -687,42 +678,65 @@ const clubs={
 ["Jack Lorkin","WING/MID",93],
 ["James Atkinson","HF",87],
 ["Blake Jackson","FWD",87]
+
 ],
 
 
+
 "Heathmont":[
+
 ["Johnny Bailiss","HB",98],
 ["Cooper Rio","MID",97],
 ["Luke Guilliano","RUCK",96],
 ["Jesse Berka","HF/RUCK",85]
+
 ],
 
 
+
 "Beaconsfield":[
+
 ["Max Moody","MID/RUCK",98],
 ["Ryder Terek","WING",89],
 ["Fraser Jones","HB/HF",88],
 ["Jackson Brown","FWD",86],
 ["Liam Watson","FWD",85],
 ["Ryker Holl","FF",94]
+
 ],
 
 
+
 "Lysterfield":[
+
 ["Phoenix Kidman","MID",95],
 ["Jude Peace","UTIL",94],
 ["Kyan Stone","FWD",87],
 ["Kobe Masterson","FWD",93],
 ["Zayne Weinert","HB",91]
+
+],
+
+
+
+/* ==========================================
+CHEEPA
+5% CHANCE
+200 OVR JACKSON OLIVER
+========================================== */
+
+"Cheepa":[
+
+["Jackson Oliver","MID",200]
+
 ]
 
 };
 
 
-
-/* ===============================
-GAME VARIABLES
-================================ */
+/* ==========================================
+VARIABLES
+========================================== */
 
 let currentUser=null;
 
@@ -741,9 +755,9 @@ let seasonPlayed=false;
 let clubName="My EFNL Club";
 
 
-/* ===============================
-STORAGE
-================================ */
+/* ==========================================
+USERS
+========================================== */
 
 function getUsers(){
 
@@ -772,9 +786,9 @@ JSON.stringify(users)
 }
 
 
-/* ===============================
+/* ==========================================
 REGISTER
-================================ */
+========================================== */
 
 function register(){
 
@@ -831,10 +845,12 @@ currentTeamName:"",
 seasonPlayed:false,
 
 career:{
+
 seasons:0,
 wins:0,
 losses:0,
 premierships:0
+
 },
 
 savedTeams:[]
@@ -855,9 +871,9 @@ showPage("home");
 }
 
 
-/* ===============================
+/* ==========================================
 LOGIN
-================================ */
+========================================== */
 
 function login(){
 
@@ -875,7 +891,7 @@ document.getElementById(
 if(!username || !password){
 
 showAuthMessage(
-"❌ Enter your username and password.",
+"❌ Enter a username and password.",
 "error"
 );
 
@@ -922,9 +938,9 @@ showPage("home");
 }
 
 
-/* ===============================
+/* ==========================================
 AUTH MESSAGE
-================================ */
+========================================== */
 
 function showAuthMessage(
 message,
@@ -944,9 +960,9 @@ box.className=
 }
 
 
-/* ===============================
+/* ==========================================
 SHOW APP
-================================ */
+========================================== */
 
 function showApp(){
 
@@ -961,9 +977,9 @@ document.getElementById(
 }
 
 
-/* ===============================
+/* ==========================================
 LOAD USER
-================================ */
+========================================== */
 
 function loadUser(){
 
@@ -981,10 +997,12 @@ return;
 if(!data.career){
 
 data.career={
+
 seasons:0,
 wins:0,
 losses:0,
 premierships:0
+
 };
 
 }
@@ -997,39 +1015,15 @@ data.savedTeams=[];
 }
 
 
-if(!data.currentTeam){
+squad=data.currentTeam || [];
 
-data.currentTeam=[];
+drafted=data.currentDrafted || [];
 
-}
+currentTeam=data.currentTeamName || "";
 
+clubName=data.clubName || "My EFNL Club";
 
-if(!data.currentDrafted){
-
-data.currentDrafted=[];
-
-}
-
-
-clubName=
-data.clubName ||
-"My EFNL Club";
-
-
-squad=
-data.currentTeam || [];
-
-
-drafted=
-data.currentDrafted || [];
-
-
-currentTeam=
-data.currentTeamName || "";
-
-
-seasonPlayed=
-data.seasonPlayed || false;
+seasonPlayed=data.seasonPlayed || false;
 
 
 spinning=false;
@@ -1039,8 +1033,7 @@ hasSpun=false;
 
 document.getElementById(
 "clubNameDisplay"
-).innerText=
-clubName;
+).innerText=clubName;
 
 
 update();
@@ -1052,9 +1045,9 @@ setSpinState();
 }
 
 
-/* ===============================
+/* ==========================================
 SAVE
-================================ */
+========================================== */
 
 function saveGame(){
 
@@ -1092,9 +1085,9 @@ saveUsers(users);
 }
 
 
-/* ===============================
+/* ==========================================
 NAVIGATION
-================================ */
+========================================== */
 
 function showPage(page){
 
@@ -1107,8 +1100,7 @@ return;
 
 document.querySelectorAll(
 ".page"
-).forEach(
-p=>{
+).forEach(p=>{
 
 if(p.id!=="loginPage"){
 
@@ -1146,9 +1138,9 @@ showSavedTeams();
 }
 
 
-/* ===============================
+/* ==========================================
 CREATE CLUB
-================================ */
+========================================== */
 
 function createClub(){
 
@@ -1189,8 +1181,7 @@ clubName="My EFNL Club";
 
 document.getElementById(
 "clubNameDisplay"
-).innerText=
-clubName;
+).innerText=clubName;
 
 
 saveGame();
@@ -1200,9 +1191,9 @@ update();
 }
 
 
-/* ===============================
-SPIN BUTTON
-================================ */
+/* ==========================================
+SPIN STATE
+========================================== */
 
 function setSpinState(){
 
@@ -1237,9 +1228,9 @@ button.disabled=false;
 }
 
 
-/* ===============================
+/* ==========================================
 AVAILABLE TEAMS
-================================ */
+========================================== */
 
 function availableTeams(){
 
@@ -1269,9 +1260,9 @@ return teams;
 }
 
 
-/* ===============================
-SPIN
-================================ */
+/* ==========================================
+SPIN TEAM
+========================================== */
 
 function spinTeam(){
 
@@ -1294,7 +1285,7 @@ availableTeams();
 if(!teams.length){
 
 alert(
-"No more players are available."
+"No more players are available!"
 );
 
 return;
@@ -1319,8 +1310,8 @@ let count=0;
 
 
 let animation=
-setInterval(
-function(){
+setInterval(()=>{
+
 
 let randomTeam=
 teams[
@@ -1330,8 +1321,7 @@ Math.random()*teams.length
 ];
 
 
-box.innerText=
-randomTeam;
+box.innerText=randomTeam;
 
 
 count++;
@@ -1342,20 +1332,72 @@ if(count>=30){
 clearInterval(animation);
 
 
+/*
+==========================================
+CHEEPA SPECIAL CHANCE
+==========================================
+
+Cheepa has exactly a 5% chance
+of being selected.
+
+The other 95% goes to the normal teams.
+*/
+
+let cheepaAvailable=
+teams.includes("Cheepa");
+
+
+if(
+cheepaAvailable &&
+Math.random()<0.05
+){
+
+currentTeam="Cheepa";
+
+}else{
+
+let normalTeams=
+teams.filter(
+team=>team!=="Cheepa"
+);
+
+
+if(normalTeams.length>0){
+
 currentTeam=
-teams[
+normalTeams[
 Math.floor(
-Math.random()*teams.length
+Math.random()*
+normalTeams.length
 )
 ];
+
+}else{
+
+currentTeam="Cheepa";
+
+}
+
+}
 
 
 box.innerText=
 "🎯 "+currentTeam;
 
 
-spinning=false;
+/*
+SPECIAL CHEEPA DISPLAY
+*/
 
+if(currentTeam==="Cheepa"){
+
+box.innerText=
+"🧀 CHEEPA 🧀";
+
+}
+
+
+spinning=false;
 
 showPlayers();
 
@@ -1363,16 +1405,14 @@ saveGame();
 
 }
 
-},
-100
-);
+},100);
 
 }
 
 
-/* ===============================
+/* ==========================================
 SHOW PLAYERS
-================================ */
+========================================== */
 
 function showPlayers(){
 
@@ -1384,6 +1424,31 @@ document.getElementById(
 
 box.innerHTML=
 "<h2 class='center'>Pick ONE Player</h2>";
+
+
+if(currentTeam==="Cheepa"){
+
+box.innerHTML+=`
+
+<div class="card cheepa center">
+
+<h1>
+🧀 CHEEPA
+</h1>
+
+<h2>
+5% SPECIAL TEAM
+</h2>
+
+<p>
+You hit the rare team!
+</p>
+
+</div>
+
+`;
+
+}
 
 
 clubs[currentTeam].forEach(
@@ -1415,17 +1480,23 @@ div.innerHTML=
 <div class="player-info">
 
 <div class="player-name">
-${player[0]}
+
+⭐ ${player[0]}
+
 </div>
 
 <div>
+
 ${player[1]}
+
 </div>
 
 </div>
 
 <div class="player-rating">
-${player[2]}
+
+${player[2]} OVR
+
 </div>
 
 <button>
@@ -1452,9 +1523,9 @@ box.appendChild(div);
 }
 
 
-/* ===============================
+/* ==========================================
 DRAFT
-================================ */
+========================================== */
 
 function draft(player){
 
@@ -1495,8 +1566,13 @@ document.getElementById(
 <div class="card center">
 
 <h2>
-✅ ${player[0]} drafted
+✅ ${player[0]} drafted!
 </h2>
+
+<p>
+${player[1]} |
+${player[2]} OVR
+</p>
 
 <p>
 Spin again for your next pick.
@@ -1526,9 +1602,9 @@ document.getElementById(
 }
 
 
-/* ===============================
+/* ==========================================
 UPDATE
-================================ */
+========================================== */
 
 function update(){
 
@@ -1583,52 +1659,36 @@ squad.reduce(
 let rating=
 squad.length
 ?
-Math.round(total/squad.length)
+Math.round(
+total/squad.length
+)
 :
 0;
 
 
-let ratingBox=
-document.getElementById("rating");
-
-
-if(ratingBox){
-
-ratingBox.innerText=
+document.getElementById(
+"rating"
+).innerText=
 `Team Rating: ${rating} OVR`;
 
-}
 
-
-let homeClub=
-document.getElementById("homeClub");
-
-
-if(homeClub){
-
-homeClub.innerText=
+document.getElementById(
+"homeClub"
+).innerText=
 clubName;
 
-}
 
-
-let homeRating=
-document.getElementById("homeRating");
-
-
-if(homeRating){
-
-homeRating.innerText=
+document.getElementById(
+"homeRating"
+).innerText=
 `Team Rating: ${rating} OVR`;
 
 }
 
-}
 
-
-/* ===============================
+/* ==========================================
 FORWARD CHECK
-================================ */
+========================================== */
 
 function isForward(player){
 
@@ -1637,18 +1697,20 @@ player[1].toUpperCase();
 
 
 return(
+
 position.includes("FWD") ||
 position.includes("FORWARD") ||
 position==="FF" ||
 position==="HF"
+
 );
 
 }
 
 
-/* ===============================
+/* ==========================================
 PLAY SEASON
-================================ */
+========================================== */
 
 function playSeason(){
 
@@ -1707,7 +1769,7 @@ ${clubName}
 
 ⭐ ${rating} OVR
 
-Chance of winning the premiership:
+Chance of winning:
 
 ${premiershipOdds}%
 
@@ -1752,12 +1814,14 @@ let results="";
 
 
 let opponents=[
+
 "South Croydon",
 "Blackburn",
 "Montrose",
 "Heathmont",
 "Beaconsfield",
 "Lysterfield"
+
 ];
 
 
@@ -1796,11 +1860,15 @@ Math.random()<winChance;
 
 
 let yourScore=
-Math.floor(Math.random()*50)+60;
+Math.floor(
+Math.random()*50
+)+60;
 
 
 let enemyScore=
-Math.floor(Math.random()*50)+60;
+Math.floor(
+Math.random()*50
+)+60;
 
 
 if(win){
@@ -1814,7 +1882,9 @@ if(yourScore<=enemyScore){
 
 yourScore=
 enemyScore+
-Math.floor(Math.random()*10)+1;
+Math.floor(
+Math.random()*10
+)+1;
 
 }
 
@@ -1827,7 +1897,9 @@ if(enemyScore<=yourScore){
 
 enemyScore=
 yourScore+
-Math.floor(Math.random()*10)+1;
+Math.floor(
+Math.random()*10
+)+1;
 
 }
 
@@ -1841,6 +1913,7 @@ let performances=[];
 
 squad.forEach(
 player=>{
+
 
 let performance=
 player[2]+
@@ -1858,7 +1931,6 @@ Math.random()*12;
 performances.push({
 
 player:player,
-
 score:performance
 
 });
@@ -1875,10 +1947,13 @@ goalChance=0.45;
 
 
 /*
-Jesse has a 3% Coleman goal chance.
+JESSE BERKA:
+3% CHANCE
 */
 
-if(player[0]==="Jesse Berka"){
+if(
+player[0]==="Jesse Berka"
+){
 
 goalChance=0.03;
 
@@ -1892,7 +1967,9 @@ goalChance=0.55;
 }
 
 
-if(Math.random()<goalChance){
+if(
+Math.random()<goalChance
+){
 
 let goals=
 Math.floor(
@@ -1989,9 +2066,9 @@ ${yourScore} - ${enemyScore}
 }
 
 
-/* ===============================
+/* ==========================================
 FINALS
-================================ */
+========================================== */
 
 let finals="";
 
@@ -2042,17 +2119,17 @@ ${wins}-${losses}
 }
 
 
-/* ===============================
+/* ==========================================
 AWARDS
-================================ */
+========================================== */
 
 let awards=
 generateAwards(stats);
 
 
-/* ===============================
+/* ==========================================
 SAVE SEASON
-================================ */
+========================================== */
 
 let users=
 getUsers();
@@ -2064,10 +2141,12 @@ users[currentUser];
 if(!data.career){
 
 data.career={
+
 seasons:0,
 wins:0,
 losses:0,
 premierships:0
+
 };
 
 }
@@ -2104,7 +2183,9 @@ losses:losses,
 
 premiers:premiers,
 
-date:new Date().toLocaleDateString(),
+date:
+new Date()
+.toLocaleDateString(),
 
 seasonResults:results,
 
@@ -2127,9 +2208,9 @@ data.seasonPlayed=true;
 saveUsers(users);
 
 
-/* ===============================
+/* ==========================================
 DISPLAY RESULTS
-================================ */
+========================================== */
 
 document.getElementById(
 "seasonResults"
@@ -2214,9 +2295,9 @@ updateProfile();
 }
 
 
-/* ===============================
+/* ==========================================
 FINALS
-================================ */
+========================================== */
 
 function runFinals(
 rating,
@@ -2255,7 +2336,9 @@ let rounds=[
 ];
 
 
-for(let round of rounds){
+for(
+let round of rounds
+){
 
 
 let chance=
@@ -2278,11 +2361,15 @@ Math.random()<chance;
 
 
 let yourScore=
-Math.floor(Math.random()*45)+65;
+Math.floor(
+Math.random()*45
+)+65;
 
 
 let enemyScore=
-Math.floor(Math.random()*45)+65;
+Math.floor(
+Math.random()*45
+)+65;
 
 
 if(won){
@@ -2311,6 +2398,7 @@ let performances=[];
 
 squad.forEach(
 player=>{
+
 
 let performance=
 player[2]+
@@ -2344,7 +2432,9 @@ goalChance=0.50;
 }
 
 
-if(player[0]==="Jesse Berka"){
+if(
+player[0]==="Jesse Berka"
+){
 
 goalChance=0.03;
 
@@ -2358,7 +2448,9 @@ goalChance=0.60;
 }
 
 
-if(Math.random()<goalChance){
+if(
+Math.random()<goalChance
+){
 
 let goals=
 Math.floor(
@@ -2383,7 +2475,8 @@ performances.sort(
 if(performances[0]){
 
 stats[
-performances[0].player[0]
+performances[0]
+.player[0]
 ].votes+=3;
 
 }
@@ -2391,7 +2484,8 @@ performances[0].player[0]
 if(performances[1]){
 
 stats[
-performances[1].player[0]
+performances[1]
+.player[0]
 ].votes+=2;
 
 }
@@ -2399,22 +2493,26 @@ performances[1].player[0]
 if(performances[2]){
 
 stats[
-performances[2].player[0]
+performances[2]
+.player[0]
 ].votes+=1;
 
 }
 
 
-let opponent=
-[
+let opponent=[
+
 "South Croydon",
 "Blackburn",
 "Montrose",
 "Heathmont",
 "Beaconsfield",
 "Lysterfield"
+
 ][
-Math.floor(Math.random()*6)
+Math.floor(
+Math.random()*6
+)
 ];
 
 
@@ -2472,7 +2570,9 @@ premiers:false
 }
 
 
-if(round==="🏆 GRAND FINAL"){
+if(
+round==="🏆 GRAND FINAL"
+){
 
 premiers=true;
 
@@ -2488,7 +2588,8 @@ PREMIERS!
 </h1>
 
 <p>
-${clubName} are EFNL PREMIERS!
+${clubName}
+are EFNL PREMIERS!
 </p>
 
 🏆🏆🏆
@@ -2513,9 +2614,9 @@ premiers:premiers
 }
 
 
-/* ===============================
+/* ==========================================
 COLEMAN / BROWNLOW
-================================ */
+========================================== */
 
 function generateAwards(stats){
 
@@ -2542,9 +2643,7 @@ let brownlow=
 )[0];
 
 
-let html=
-
-`
+return`
 
 <div class="award">
 
@@ -2599,14 +2698,12 @@ ${brownlow.player[2]} OVR
 
 `;
 
-return html;
-
 }
 
 
-/* ===============================
+/* ==========================================
 NEW TEAM
-================================ */
+========================================== */
 
 function startNewTeam(){
 
@@ -2663,9 +2760,9 @@ showPage("draft");
 }
 
 
-/* ===============================
+/* ==========================================
 PROFILE
-================================ */
+========================================== */
 
 function updateProfile(){
 
@@ -2693,10 +2790,12 @@ return;
 if(!data.career){
 
 data.career={
+
 seasons:0,
 wins:0,
 losses:0,
 premierships:0
+
 };
 
 }
@@ -2776,6 +2875,7 @@ data.career.losses;
 document.getElementById(
 "profileRecord"
 ).innerText=
+
 games
 ?
 `${data.career.wins}-${data.career.losses} career record`
@@ -2785,9 +2885,9 @@ games
 }
 
 
-/* ===============================
+/* ==========================================
 SAVED TEAMS
-================================ */
+========================================== */
 
 function showSavedTeams(){
 
@@ -2854,6 +2954,7 @@ div.innerHTML=
 </p>
 
 <p>
+
 ${
 team.premiers
 ?
@@ -2861,6 +2962,7 @@ team.premiers
 :
 "Season completed"
 }
+
 </p>
 
 <p class="small">
@@ -2891,9 +2993,9 @@ box.appendChild(div);
 }
 
 
-/* ===============================
+/* ==========================================
 VIEW SAVED TEAM
-================================ */
+========================================== */
 
 function viewSavedTeam(team){
 
@@ -2982,9 +3084,9 @@ ${team.awards}
 }
 
 
-/* ===============================
+/* ==========================================
 LOGOUT
-================================ */
+========================================== */
 
 function logout(){
 
@@ -3036,9 +3138,9 @@ document.getElementById(
 }
 
 
-/* ===============================
+/* ==========================================
 ENTER TO LOGIN
-================================ */
+========================================== */
 
 document.getElementById(
 "passwordInput"
@@ -3054,6 +3156,12 @@ login();
 
 });
 
+
+/* ==========================================
+STARTUP
+========================================== */
+
+setSpinState();
 
 </script>
 
