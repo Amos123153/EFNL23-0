@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,613 +9,664 @@
 <style>
 
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 body{
-margin:0;
-background:#101010;
-color:white;
-font-family:Arial,Helvetica,sans-serif;
+    margin:0;
+    background:#101010;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
 }
 
 button{
-padding:13px 18px;
-margin:6px;
-font-size:16px;
-font-weight:bold;
-border:0;
-border-radius:10px;
-cursor:pointer;
-background:#333;
-color:white;
+    padding:13px 20px;
+    margin:6px;
+    border:none;
+    border-radius:10px;
+    background:#333;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 button:hover{
-background:#444;
+    background:#444;
 }
 
 button:disabled{
-background:#111;
-color:#555;
-cursor:not-allowed;
+    background:#111;
+    color:#555;
+    cursor:not-allowed;
 }
 
 .header{
-background:#181818;
-padding:18px;
-text-align:center;
-border-bottom:2px solid #333;
+    background:#181818;
+    padding:18px;
+    text-align:center;
+    border-bottom:2px solid #333;
 }
 
 .header h1{
-margin:0 0 12px;
+    margin:0 0 12px;
 }
 
 .nav{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
 }
 
 .page{
-display:none;
-max-width:1000px;
-margin:auto;
-padding:25px;
+    display:none;
+    max-width:1000px;
+    margin:auto;
+    padding:25px;
 }
 
 .page.active{
-display:block;
+    display:block;
 }
 
 .card{
-background:#1d1d1d;
-border-radius:15px;
-padding:20px;
-margin:15px 0;
-border:1px solid #333;
+    background:#1d1d1d;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:20px;
+    margin:15px 0;
 }
 
 .center{
-text-align:center;
+    text-align:center;
 }
 
 #spinner{
-background:#222;
-padding:35px;
-margin:20px auto;
-border-radius:20px;
-font-size:38px;
-font-weight:bold;
-max-width:700px;
+    background:#222;
+    border-radius:20px;
+    padding:35px;
+    margin:20px auto;
+    max-width:700px;
+    font-size:38px;
+    font-weight:bold;
 }
 
 .player{
-background:#292929;
-padding:15px;
-margin:10px auto;
-border-radius:12px;
-max-width:650px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-gap:15px;
+    background:#292929;
+    border-radius:12px;
+    padding:15px;
+    margin:10px auto;
+    max-width:650px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
 }
 
 .player-info{
-text-align:left;
+    text-align:left;
 }
 
 .player-name{
-font-size:19px;
-font-weight:bold;
+    font-size:20px;
+    font-weight:bold;
 }
 
 .player-rating{
-font-size:25px;
-font-weight:bold;
+    font-size:25px;
+    font-weight:bold;
 }
 
 .stat-grid{
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:12px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
 }
 
 .stat{
-background:#252525;
-padding:18px;
-border-radius:12px;
-text-align:center;
+    background:#252525;
+    border-radius:12px;
+    padding:18px;
+    text-align:center;
 }
 
 .stat-number{
-font-size:28px;
-font-weight:bold;
+    font-size:28px;
+    font-weight:bold;
 }
 
 .stat-label{
-color:#aaa;
-margin-top:5px;
+    color:#aaa;
+    margin-top:5px;
 }
 
 input{
-width:100%;
-padding:14px;
-margin:8px 0;
-border-radius:9px;
-border:1px solid #555;
-background:#111;
-color:white;
-font-size:16px;
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+
+    background:#111;
+    color:white;
+
+    border:1px solid #555;
+    border-radius:9px;
+
+    font-size:16px;
 }
 
 .auth-box{
-max-width:450px;
-margin:50px auto;
+    max-width:450px;
+    margin:50px auto;
 }
 
 .win{
-color:#35e875;
+    color:#35e875;
 }
 
 .loss{
-color:#ff5555;
+    color:#ff5555;
 }
 
 .final{
-background:#202020;
-border:1px solid #555;
-border-radius:15px;
-padding:20px;
-margin:15px 0;
+    background:#202020;
+    border:1px solid #555;
+    border-radius:15px;
+    padding:20px;
+    margin:15px 0;
 }
 
 .award{
-background:#252525;
-border:2px solid #777;
-border-radius:18px;
-padding:25px;
-margin:20px 0;
-text-align:center;
+    background:#252525;
+    border:2px solid #777;
+    border-radius:18px;
+    padding:25px;
+    margin:20px 0;
+    text-align:center;
 }
 
 .award h1{
-font-size:32px;
+    font-size:32px;
 }
 
 .award-winner{
-font-size:28px;
-font-weight:bold;
-margin:15px;
+    font-size:28px;
+    font-weight:bold;
+    margin:15px;
 }
 
 .premiers{
-background:#382900;
-border:2px solid #b98b00;
-padding:30px;
-border-radius:18px;
-text-align:center;
-font-size:22px;
-}
-
-.small{
-color:#aaa;
-font-size:14px;
-}
-
-.green{
-background:#174f2d;
-}
-
-.error{
-color:#ff5555;
-}
-
-.success{
-color:#35e875;
+    background:#382900;
+    border:2px solid #b98b00;
+    border-radius:18px;
+    padding:30px;
+    text-align:center;
+    font-size:22px;
 }
 
 .cheepa{
-background:#33220a;
-border:2px solid #ffb300;
+    background:#33220a;
+    border:2px solid #ffb300;
+}
+
+.green{
+    background:#174f2d;
+}
+
+.error{
+    color:#ff5555;
+}
+
+.success{
+    color:#35e875;
+}
+
+.small{
+    color:#999;
+    font-size:14px;
 }
 
 @media(max-width:700px){
 
-.stat-grid{
-grid-template-columns:repeat(2,1fr);
-}
+    .stat-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
 
-.player{
-flex-direction:column;
-align-items:flex-start;
-}
+    .player{
+        flex-direction:column;
+        align-items:flex-start;
+    }
 
 }
 
 </style>
-
 </head>
-
 
 <body>
 
 
+<!-- ============================= -->
 <!-- LOGIN -->
+<!-- ============================= -->
 
 <div id="loginPage" class="page active">
 
-<div class="auth-box card">
+    <div class="auth-box card">
 
-<h1 class="center">
-🏉 EFNL ULTIMATE DRAFT
-</h1>
+        <h1 class="center">
+            🏉 EFNL ULTIMATE DRAFT
+        </h1>
 
-<h2 class="center">
-👤 Sign In
-</h2>
+        <h2 class="center">
+            👤 Sign In
+        </h2>
 
-<input
-id="usernameInput"
-type="text"
-placeholder="Username"
-autocomplete="username"
+        <input
+            id="usernameInput"
+            type="text"
+            placeholder="Username"
+        >
+
+        <input
+            id="passwordInput"
+            type="password"
+            placeholder="Password"
+        >
+
+        <div class="center">
+
+            <button
+                onclick="login()"
+                class="green">
+                SIGN IN
+            </button>
+
+            <button
+                onclick="register()">
+                CREATE ACCOUNT
+            </button>
+
+        </div>
+
+        <p
+            id="authMessage"
+            class="center">
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ============================= -->
+<!-- MAIN APP -->
+<!-- ============================= -->
+
+<div
+    id="app"
+    style="display:none;"
 >
 
-<input
-id="passwordInput"
-type="password"
-placeholder="Password"
-autocomplete="current-password"
->
 
-<div class="center">
+    <div class="header">
 
-<button onclick="login()" class="green">
-SIGN IN
-</button>
+        <h1>
+            🏉 EFNL ULTIMATE DRAFT
+        </h1>
 
-<button onclick="register()">
-CREATE ACCOUNT
-</button>
+        <div class="nav">
 
-</div>
+            <button onclick="showPage('home')">
+                🏠 Home
+            </button>
 
-<p id="authMessage" class="center"></p>
+            <button onclick="showPage('draft')">
+                🎰 Draft
+            </button>
 
-</div>
+            <button onclick="showPage('profile')">
+                👤 Profile
+            </button>
 
-</div>
+            <button onclick="showPage('saves')">
+                💾 Saved Teams
+            </button>
 
+            <button onclick="logout()">
+                🚪 Logout
+            </button>
 
-<!-- APP -->
+        </div>
 
-<div id="app" style="display:none;">
+    </div>
 
 
-<div class="header">
+    <!-- ============================= -->
+    <!-- HOME -->
+    <!-- ============================= -->
 
-<h1>
-🏉 EFNL ULTIMATE DRAFT
-</h1>
+    <div id="home" class="page">
 
-<div class="nav">
+        <div class="card center">
 
-<button onclick="showPage('home')">
-🏠 Home
-</button>
+            <h2 id="welcomeText">
+                Welcome
+            </h2>
 
-<button onclick="showPage('draft')">
-🎰 Draft
-</button>
+            <p>
+                Build your squad.
+                Play the season.
+                Make finals.
+                Win the premiership.
+            </p>
 
-<button onclick="showPage('profile')">
-👤 Profile
-</button>
+            <button
+                onclick="showPage('draft')">
+                🎰 START DRAFT
+            </button>
 
-<button onclick="showPage('saves')">
-💾 Saved Teams
-</button>
+        </div>
 
-<button onclick="logout()">
-🚪 Logout
-</button>
 
-</div>
+        <div class="stat-grid">
 
-</div>
+            <div class="stat">
 
+                <div
+                    id="careerSeasons"
+                    class="stat-number">
+                    0
+                </div>
 
-<!-- HOME -->
+                <div class="stat-label">
+                    Seasons
+                </div>
 
-<div id="home" class="page">
+            </div>
 
-<div class="card center">
 
-<h2 id="welcomeText">
-Welcome to EFNL
-</h2>
+            <div class="stat">
 
-<p>
-Draft your squad, play the season,
-make finals and win the premiership.
-</p>
+                <div
+                    id="careerWins"
+                    class="stat-number">
+                    0
+                </div>
 
-<button onclick="showPage('draft')">
-🎰 GO TO DRAFT
-</button>
+                <div class="stat-label">
+                    Wins
+                </div>
 
-</div>
+            </div>
 
 
-<div class="stat-grid">
+            <div class="stat">
 
-<div class="stat">
+                <div
+                    id="careerLosses"
+                    class="stat-number">
+                    0
+                </div>
 
-<div id="careerSeasons" class="stat-number">
-0
-</div>
+                <div class="stat-label">
+                    Losses
+                </div>
 
-<div class="stat-label">
-Seasons
-</div>
+            </div>
 
-</div>
 
+            <div class="stat">
 
-<div class="stat">
+                <div
+                    id="careerPremierships"
+                    class="stat-number">
+                    0
+                </div>
 
-<div id="careerWins" class="stat-number">
-0
-</div>
+                <div class="stat-label">
+                    Premierships
+                </div>
 
-<div class="stat-label">
-Wins
-</div>
+            </div>
 
-</div>
+        </div>
 
 
-<div class="stat">
+        <div class="card">
 
-<div id="careerLosses" class="stat-number">
-0
-</div>
+            <h2>
+                🏟️ Current Club
+            </h2>
 
-<div class="stat-label">
-Losses
-</div>
+            <h2 id="homeClub">
+                My EFNL Club
+            </h2>
 
-</div>
+            <p id="homeRating">
+                Team Rating: 0 OVR
+            </p>
 
+        </div>
 
-<div class="stat">
+    </div>
 
-<div id="careerPremierships" class="stat-number">
-0
-</div>
 
-<div class="stat-label">
-Premierships
-</div>
+    <!-- ============================= -->
+    <!-- DRAFT -->
+    <!-- ============================= -->
 
-</div>
+    <div id="draft" class="page">
 
-</div>
+        <h2 class="center">
 
+            🏟️
+            <span id="clubNameDisplay">
+                My EFNL Club
+            </span>
 
-<div class="card">
+        </h2>
 
-<h2>
-🏟️ Current Club
-</h2>
 
-<h2 id="homeClub">
-My EFNL Club
-</h2>
+        <div class="center">
 
-<p id="homeRating">
-Team Rating: 0 OVR
-</p>
+            <button onclick="createClub()">
+                🏟️ CREATE / RENAME CLUB
+            </button>
 
-</div>
+        </div>
 
-</div>
 
+        <h2
+            id="count"
+            class="center">
+            Squad: 0 / 10
+        </h2>
 
-<!-- DRAFT -->
 
-<div id="draft" class="page">
+        <div
+            id="spinner"
+            class="center">
 
-<h2 class="center">
+            🎰 PRESS SPIN
 
-🏟️
-<span id="clubNameDisplay">
-My EFNL Club
-</span>
+        </div>
 
-</h2>
 
+        <div class="center">
 
-<div class="center">
+            <button
+                id="spinButton"
+                onclick="spinTeam()">
 
-<button onclick="createClub()">
-🏟️ CREATE / RENAME CLUB
-</button>
+                🎰 SPIN TEAM
 
-</div>
+            </button>
 
+        </div>
 
-<h2 id="count" class="center">
-Squad: 0 / 10
-</h2>
 
+        <div id="players"></div>
 
-<div id="spinner" class="center">
-🎰 PRESS SPIN
-</div>
 
+        <div class="card">
 
-<div class="center">
+            <h2>
+                Your Team
+            </h2>
 
-<button
-id="spinButton"
-onclick="spinTeam">
+            <div id="teamlist">
+                No players drafted
+            </div>
 
-🎰 SPIN TEAM
+        </div>
 
-</button>
 
-</div>
+        <h2
+            id="rating"
+            class="center">
 
+            Team Rating: 0 OVR
 
-<div id="players"></div>
+        </h2>
 
 
-<div class="card">
+        <div class="center">
 
-<h2>
-Your Team
-</h2>
+            <button
+                id="seasonButton"
+                onclick="playSeason()">
 
-<div id="teamlist">
-No players drafted
-</div>
+                🏆 PLAY SEASON
 
-</div>
+            </button>
 
+        </div>
 
-<h2 id="rating" class="center">
-Team Rating: 0 OVR
-</h2>
 
+        <div id="seasonResults"></div>
 
-<div class="center">
+    </div>
 
-<button
-id="seasonButton"
-onclick="playSeason()">
 
-🏆 PLAY SEASON
+    <!-- ============================= -->
+    <!-- PROFILE -->
+    <!-- ============================= -->
 
-</button>
+    <div id="profile" class="page">
 
-</div>
+        <div class="card">
 
+            <h2>
+                👤 Profile
+            </h2>
 
-<div id="seasonResults"></div>
+            <h1 id="profileUsername">
+                -
+            </h1>
 
-</div>
+            <p id="profileClub">
+                Club: -
+            </p>
 
+        </div>
 
-<!-- PROFILE -->
 
-<div id="profile" class="page">
+        <div class="stat-grid">
 
-<div class="card">
+            <div class="stat">
 
-<h2>
-👤 Profile
-</h2>
+                <div
+                    id="profileSeasons"
+                    class="stat-number">
+                    0
+                </div>
 
-<h1 id="profileUsername">
--
-</h1>
+                <div class="stat-label">
+                    Seasons
+                </div>
 
-<p id="profileClub">
-Club: -
-</p>
+            </div>
 
-</div>
 
+            <div class="stat">
 
-<div class="stat-grid">
+                <div
+                    id="profileWins"
+                    class="stat-number">
+                    0
+                </div>
 
-<div class="stat">
+                <div class="stat-label">
+                    Wins
+                </div>
 
-<div id="profileSeasons" class="stat-number">
-0
-</div>
+            </div>
 
-<div class="stat-label">
-Seasons
-</div>
 
-</div>
+            <div class="stat">
 
+                <div
+                    id="profileLosses"
+                    class="stat-number">
+                    0
+                </div>
 
-<div class="stat">
+                <div class="stat-label">
+                    Losses
+                </div>
 
-<div id="profileWins" class="stat-number">
-0
-</div>
+            </div>
 
-<div class="stat-label">
-Wins
-</div>
 
-</div>
+            <div class="stat">
 
+                <div
+                    id="profileFlags"
+                    class="stat-number">
+                    0
+                </div>
 
-<div class="stat">
+                <div class="stat-label">
+                    Premierships
+                </div>
 
-<div id="profileLosses" class="stat-number">
-0
-</div>
+            </div>
 
-<div class="stat-label">
-Losses
-</div>
+        </div>
 
-</div>
 
+        <div class="card">
 
-<div class="stat">
+            <h2>
+                📊 Career Record
+            </h2>
 
-<div id="profileFlags" class="stat-number">
-0
-</div>
+            <p id="profileRecord">
+                No seasons played yet.
+            </p>
 
-<div class="stat-label">
-Premierships
-</div>
+        </div>
 
-</div>
+    </div>
 
-</div>
 
+    <!-- ============================= -->
+    <!-- SAVED TEAMS -->
+    <!-- ============================= -->
 
-<div class="card">
+    <div id="saves" class="page">
 
-<h2>
-📊 Career Record
-</h2>
+        <h2>
+            💾 SAVED TEAMS
+        </h2>
 
-<p id="profileRecord">
-No seasons played yet.
-</p>
+        <div id="savedTeams">
 
-</div>
+            No saved teams yet.
 
-</div>
+        </div>
 
-
-<!-- SAVED TEAMS -->
-
-<div id="saves" class="page">
-
-<h2>
-💾 SAVED TEAMS
-</h2>
-
-<div id="savedTeams">
-No saved teams yet.
-</div>
-
-</div>
-
+    </div>
 
 </div>
 
@@ -629,157 +678,193 @@ No saved teams yet.
 PLAYER DATABASE
 ========================================== */
 
-const clubs={
+
+const clubs = {
 
 
-"South Croydon":[
+    "South Croydon":[
 
-["Samuel Carbone","MID",99],
-["Noah Martin","MID",98],
-["Koby Stevens","MID/FWD",96],
-["Amos Flavel","RUCK",95],
-["Rowe Darby","HF",92],
-["Raphael Tupola","BACK",91],
-["Kasen Williams","BACK",89],
-["Dan Latu","HB",92],
-["Hunter Gale","HB",96]
+        ["Samuel Carbone","MID",99],
 
-],
+        ["Noah Martin","MID",98],
 
+        ["Koby Stevens","MID/FWD",96],
 
+        ["Amos Flavel","RUCK",95],
 
-"Blackburn":[
+        ["Rowe Darby","HF",92],
 
-["Lenny Woodhouse","MID",99],
-["Lewis Hollywood","UTIL",98],
-["Ethan Keeningham","WING/MID",93],
-["Josh StClair","FULL FORWARD",93],
-["Zander Brosolo","MID",92],
-["Connor Reilley","MID",90],
-["Eddie Flesser","BACK",92],
-["Jonothan Tsotinas","MID",88],
-["Beau Dove","HF/MID",95],
-["Lachie Symcock","FB",94],
-["Ollie Little","FWD",92],
-["Finn Gallagher","FWD/MID",93],
-],
+        ["Raphael Tupola","BACK",91],
+
+        ["Kasen Williams","BACK",89],
+
+        ["Dan Latu","HB",92],
+
+        ["Hunter Gale","HB",96]
+
+    ],
 
 
+    "Blackburn":[
 
-"Montrose":[
+        ["Lenny Woodhouse","MID",99],
 
-["Isaac Connors","MID",98],
-["Arlo Trigwell","CHB",97],
-["Darcy McKensie","RUCK",96],
-["Noah McCartney","UTIL",95],
-["Oliver Dowell","FWD",94],
-["Jack Lorkin","WING/MID",93],
-["James Atkinson","HF",87],
-["Blake Jackson","FWD",87]
+        ["Lewis Hollywood","UTIL",98],
 
-],
+        ["Ethan Keeningham","WING/MID",93],
 
+        ["Josh StClair","FULL FORWARD",93],
 
+        ["Zander Brosolo","MID",92],
 
-"Heathmont":[
+        ["Connor Reilley","MID",90],
 
-["Johnny Bailiss","HB",98],
-["Cooper Rio","MID",97],
-["Luke Guilliano","RUCK",96],
-["Jesse Berka","HF/RUCK",85]
+        ["Eddie Flesser","BACK",92],
 
-],
+        ["Jonothan Tsotinas","MID",88],
 
+        ["Beau Dove","HF/MID",95],
 
+        ["Lachie Symcock","FB",94],
 
-"Beaconsfield":[
+        ["Ollie Little","FWD",92],
 
-["Max Moody","MID/RUCK",98],
-["Ryder Terek","WING",89],
-["Fraser Jones","HB/HF",88],
-["Jackson Brown","FWD",86],
-["Liam Watson","FWD",85],
-["Ryker Holl","FF",94]
+        ["Finn Gallagher","MID/FWD",93]
 
-],
+    ],
 
 
+    "Montrose":[
 
-"Lysterfield":[
+        ["Isaac Connors","MID",98],
 
-["Phoenix Kidman","MID",95],
-["Jude Peace","UTIL",94],
-["Kyan Stone","FWD",87],
-["Kobe Masterson","FWD",93],
-["Zayne Weinert","HB",91]
+        ["Arlo Trigwell","CHB",97],
 
-],
+        ["Darcy McKensie","RUCK",96],
+
+        ["Noah McCartney","UTIL",95],
+
+        ["Oliver Dowell","FWD",94],
+
+        ["Jack Lorkin","WING/MID",93],
+
+        ["James Atkinson","HF",87],
+
+        ["Blake Jackson","FWD",87]
+
+    ],
 
 
+    "Heathmont":[
 
-/* ==========================================
-CHEEPA
-5% CHANCE
-200 OVR JACKSON OLIVER
-========================================== */
+        ["Johnny Bailiss","HB",98],
 
-"Cheepa":[
+        ["Cooper Rio","MID",97],
 
-["Jackson Oliver","MID",200]
+        ["Luke Guilliano","RUCK",96],
 
-]
+        ["Jesse Berka","HF/RUCK",85]
+
+    ],
+
+
+    "Beaconsfield":[
+
+        ["Max Moody","MID/RUCK",98],
+
+        ["Ryder Terek","WING",89],
+
+        ["Fraser Jones","HB/HF",88],
+
+        ["Jackson Brown","FWD",86],
+
+        ["Liam Watson","FWD",85],
+
+        ["Ryker Holl","FF",94]
+
+    ],
+
+
+    "Lysterfield":[
+
+        ["Phoenix Kidman","MID",95],
+
+        ["Jude Peace","UTIL",94],
+
+        ["Kyan Stone","FWD",87],
+
+        ["Kobe Masterson","FWD",93],
+
+        ["Zayne Weinert","HB",91]
+
+    ],
+
+
+    /* ======================================
+    CHEEPA
+    ====================================== */
+
+    "Cheepa":[
+
+        ["Jackson Oliver","MID",200]
+
+    ]
 
 };
 
 
 /* ==========================================
-VARIABLES
+GAME VARIABLES
 ========================================== */
 
-let currentUser=null;
 
-let squad=[];
+let currentUser = null;
 
-let drafted=[];
+let squad = [];
 
-let currentTeam="";
+let drafted = [];
 
-let spinning=false;
+let currentTeam = "";
 
-let hasSpun=false;
+let spinning = false;
 
-let seasonPlayed=false;
+let hasSpun = false;
 
-let clubName="My EFNL Club";
+let seasonPlayed = false;
+
+let clubName = "My EFNL Club";
 
 
 /* ==========================================
-USERS
+USER DATABASE
 ========================================== */
+
 
 function getUsers(){
 
-try{
+    try{
 
-return JSON.parse(
-localStorage.getItem("efnlUsers") || "{}"
-);
+        return JSON.parse(
+            localStorage.getItem(
+                "efnlUsers"
+            ) || "{}"
+        );
 
-}catch(error){
+    }catch(error){
 
-return {};
+        return {};
 
-}
+    }
 
 }
 
 
 function saveUsers(users){
 
-localStorage.setItem(
-"efnlUsers",
-JSON.stringify(users)
-);
+    localStorage.setItem(
+        "efnlUsers",
+        JSON.stringify(users)
+    );
 
 }
 
@@ -788,83 +873,95 @@ JSON.stringify(users)
 REGISTER
 ========================================== */
 
+
 function register(){
 
-let username=
-document.getElementById(
-"usernameInput"
-).value.trim();
-
-let password=
-document.getElementById(
-"passwordInput"
-).value;
+    const username =
+        document
+        .getElementById(
+            "usernameInput"
+        )
+        .value
+        .trim();
 
 
-if(!username || !password){
-
-showAuthMessage(
-"❌ Enter a username and password.",
-"error"
-);
-
-return;
-
-}
+    const password =
+        document
+        .getElementById(
+            "passwordInput"
+        )
+        .value;
 
 
-let users=getUsers();
+    if(!username || !password){
+
+        showAuthMessage(
+            "❌ Enter a username and password.",
+            "error"
+        );
+
+        return;
+
+    }
 
 
-if(users[username]){
-
-showAuthMessage(
-"❌ Username already exists.",
-"error"
-);
-
-return;
-
-}
+    const users = getUsers();
 
 
-users[username]={
+    if(users[username]){
 
-password:password,
+        showAuthMessage(
+            "❌ Username already exists.",
+            "error"
+        );
 
-clubName:"My EFNL Club",
+        return;
 
-currentTeam:[],
-
-currentDrafted:[],
-
-currentTeamName:"",
-
-seasonPlayed:false,
-
-career:{
-
-seasons:0,
-wins:0,
-losses:0,
-premierships:0
-
-},
-
-savedTeams:[]
-
-};
+    }
 
 
-saveUsers(users);
+    users[username] = {
 
-currentUser=username;
+        password:password,
 
-loadUser();
+        clubName:"My EFNL Club",
 
-showApp();
+        currentTeam:[],
 
-showPage("home");
+        currentDrafted:[],
+
+        currentTeamName:"",
+
+        seasonPlayed:false,
+
+        career:{
+
+            seasons:0,
+
+            wins:0,
+
+            losses:0,
+
+            premierships:0
+
+        },
+
+        savedTeams:[]
+
+    };
+
+
+    saveUsers(users);
+
+
+    currentUser = username;
+
+
+    loadUser();
+
+    showApp();
+
+    showPage("home");
 
 }
 
@@ -873,65 +970,63 @@ showPage("home");
 LOGIN
 ========================================== */
 
+
 function login(){
 
-let username=
-document.getElementById(
-"usernameInput"
-).value.trim();
-
-let password=
-document.getElementById(
-"passwordInput"
-).value;
+    const username =
+        document
+        .getElementById(
+            "usernameInput"
+        )
+        .value
+        .trim();
 
 
-if(!username || !password){
-
-showAuthMessage(
-"❌ Enter a username and password.",
-"error"
-);
-
-return;
-
-}
+    const password =
+        document
+        .getElementById(
+            "passwordInput"
+        )
+        .value;
 
 
-let users=getUsers();
+    const users = getUsers();
 
 
-if(!users[username]){
+    if(!users[username]){
 
-showAuthMessage(
-"❌ Account not found.",
-"error"
-);
+        showAuthMessage(
+            "❌ Account not found.",
+            "error"
+        );
 
-return;
+        return;
 
-}
-
-
-if(users[username].password!==password){
-
-showAuthMessage(
-"❌ Incorrect password.",
-"error"
-);
-
-return;
-
-}
+    }
 
 
-currentUser=username;
+    if(
+        users[username].password !== password
+    ){
 
-loadUser();
+        showAuthMessage(
+            "❌ Incorrect password.",
+            "error"
+        );
 
-showApp();
+        return;
 
-showPage("home");
+    }
+
+
+    currentUser = username;
+
+
+    loadUser();
+
+    showApp();
+
+    showPage("home");
 
 }
 
@@ -940,20 +1035,22 @@ showPage("home");
 AUTH MESSAGE
 ========================================== */
 
+
 function showAuthMessage(
-message,
-type
+    message,
+    type
 ){
 
-let box=
-document.getElementById(
-"authMessage"
-);
+    const box =
+        document.getElementById(
+            "authMessage"
+        );
 
-box.innerText=message;
 
-box.className=
-"center "+(type || "");
+    box.innerText = message;
+
+    box.className =
+        "center " + type;
 
 }
 
@@ -962,15 +1059,23 @@ box.className=
 SHOW APP
 ========================================== */
 
+
 function showApp(){
 
-document.getElementById(
-"loginPage"
-).classList.remove("active");
+    document
+    .getElementById(
+        "loginPage"
+    )
+    .classList
+    .remove("active");
 
-document.getElementById(
-"app"
-).style.display="block";
+
+    document
+    .getElementById(
+        "app"
+    )
+    .style
+    .display = "block";
 
 }
 
@@ -979,106 +1084,96 @@ document.getElementById(
 LOAD USER
 ========================================== */
 
+
 function loadUser(){
 
-let users=getUsers();
+    const users = getUsers();
 
-let data=users[currentUser];
-
-if(!data){
-
-return;
-
-}
+    const data = users[currentUser];
 
 
-if(!data.career){
-
-data.career={
-
-seasons:0,
-wins:0,
-losses:0,
-premierships:0
-
-};
-
-}
+    if(!data){
+        return;
+    }
 
 
-if(!data.savedTeams){
-
-data.savedTeams=[];
-
-}
+    squad =
+        data.currentTeam || [];
 
 
-squad=data.currentTeam || [];
-
-drafted=data.currentDrafted || [];
-
-currentTeam=data.currentTeamName || "";
-
-clubName=data.clubName || "My EFNL Club";
-
-seasonPlayed=data.seasonPlayed || false;
+    drafted =
+        data.currentDrafted || [];
 
 
-spinning=false;
-
-hasSpun=false;
-
-
-document.getElementById(
-"clubNameDisplay"
-).innerText=clubName;
+    currentTeam =
+        data.currentTeamName || "";
 
 
-update();
+    clubName =
+        data.clubName ||
+        "My EFNL Club";
 
-updateProfile();
 
-setSpinState();
+    seasonPlayed =
+        data.seasonPlayed ||
+        false;
+
+
+    spinning = false;
+
+    hasSpun = false;
+
+
+    document
+    .getElementById(
+        "clubNameDisplay"
+    )
+    .innerText = clubName;
+
+
+    update();
+
+    updateProfile();
+
+    setSpinState();
 
 }
 
 
 /* ==========================================
-SAVE
+SAVE GAME
 ========================================== */
+
 
 function saveGame(){
 
-if(!currentUser){
-
-return;
-
-}
+    if(!currentUser){
+        return;
+    }
 
 
-let users=getUsers();
+    const users = getUsers();
 
-let data=users[currentUser];
-
-if(!data){
-
-return;
-
-}
+    const data = users[currentUser];
 
 
-data.clubName=clubName;
-
-data.currentTeam=squad;
-
-data.currentDrafted=drafted;
-
-data.currentTeamName=currentTeam;
-
-data.seasonPlayed=seasonPlayed;
+    if(!data){
+        return;
+    }
 
 
-saveUsers(users);
+    data.clubName = clubName;
+
+    data.currentTeam = squad;
+
+    data.currentDrafted = drafted;
+
+    data.currentTeamName = currentTeam;
+
+    data.seasonPlayed = seasonPlayed;
+
+
+    saveUsers(users);
 
 }
 
@@ -1087,51 +1182,49 @@ saveUsers(users);
 NAVIGATION
 ========================================== */
 
+
 function showPage(page){
 
-if(!currentUser){
+    document
+    .querySelectorAll(".page")
+    .forEach(p=>{
 
-return;
+        if(p.id !== "loginPage"){
 
-}
+            p.classList.remove(
+                "active"
+            );
 
+        }
 
-document.querySelectorAll(
-".page"
-).forEach(p=>{
-
-if(p.id!=="loginPage"){
-
-p.classList.remove("active");
-
-}
-
-});
+    });
 
 
-let target=
-document.getElementById(page);
+    const target =
+        document.getElementById(page);
 
 
-if(target){
+    if(target){
 
-target.classList.add("active");
+        target.classList.add(
+            "active"
+        );
 
-}
-
-
-if(page==="profile"){
-
-updateProfile();
-
-}
+    }
 
 
-if(page==="saves"){
+    if(page === "profile"){
 
-showSavedTeams();
+        updateProfile();
 
-}
+    }
+
+
+    if(page === "saves"){
+
+        showSavedTeams();
+
+    }
 
 }
 
@@ -1140,120 +1233,106 @@ showSavedTeams();
 CREATE CLUB
 ========================================== */
 
+
 function createClub(){
 
-if(seasonPlayed){
+    if(seasonPlayed){
 
-alert(
-"This team has already played its season. Start a new team first."
-);
+        alert(
+            "This team has already played its season. Start a new team."
+        );
 
-return;
+        return;
 
-}
-
-
-let name=
-prompt(
-"Enter your club name:",
-clubName
-);
+    }
 
 
-if(!name){
-
-return;
-
-}
-
-
-clubName=name.trim();
+    const name =
+        prompt(
+            "Enter your club name:",
+            clubName
+        );
 
 
-if(!clubName){
-
-clubName="My EFNL Club";
-
-}
+    if(!name){
+        return;
+    }
 
 
-document.getElementById(
-"clubNameDisplay"
-).innerText=clubName;
+    clubName =
+        name.trim() ||
+        "My EFNL Club";
 
 
-saveGame();
+    document
+    .getElementById(
+        "clubNameDisplay"
+    )
+    .innerText = clubName;
 
-update();
+
+    update();
+
+    saveGame();
 
 }
 
 
 /* ==========================================
-SPIN STATE
+SPIN BUTTON STATE
 ========================================== */
+
 
 function setSpinState(){
 
-let button=
-document.getElementById(
-"spinButton"
-);
+    const button =
+        document.getElementById(
+            "spinButton"
+        );
 
 
-if(!button){
-
-return;
-
-}
+    if(!button){
+        return;
+    }
 
 
-if(
-spinning ||
-hasSpun ||
-seasonPlayed ||
-squad.length>=10
-){
+    if(
+        spinning ||
+        hasSpun ||
+        seasonPlayed ||
+        squad.length >= 10
+    ){
 
-button.disabled=true;
+        button.disabled = true;
 
-}else{
+    }else{
 
-button.disabled=false;
+        button.disabled = false;
 
-}
+    }
 
 }
 
 
 /* ==========================================
-AVAILABLE TEAMS
+GET AVAILABLE TEAMS
 ========================================== */
 
-function availableTeams(){
 
-let teams=[];
+function getAvailableTeams(){
 
+    return Object.keys(
+        clubs
+    ).filter(team=>{
 
-for(let team in clubs){
+        return clubs[team].some(
+            player =>
+                !drafted.includes(
+                    player[0]
+                )
+        );
 
-let available=
-clubs[team].filter(
-player=>
-!drafted.includes(player[0])
-);
-
-
-if(available.length>0){
-
-teams.push(team);
-
-}
-
-}
-
-
-return teams;
+    });
 
 }
 
@@ -1262,148 +1341,183 @@ return teams;
 SPIN TEAM
 ========================================== */
 
+
 function spinTeam(){
 
-if(
-spinning ||
-hasSpun ||
-seasonPlayed ||
-squad.length>=10
-){
+    /*
+    Prevent double spins.
+    */
 
-return;
+    if(
+        spinning ||
+        hasSpun ||
+        seasonPlayed ||
+        squad.length >= 10
+    ){
 
-}
+        return;
 
-
-let teams=
-availableTeams();
-
-
-if(!teams.length){
-
-alert(
-"No more players are available!"
-);
-
-return;
-
-}
+    }
 
 
-spinning=true;
-
-hasSpun=true;
-
-setSpinState();
+    const teams =
+        getAvailableTeams();
 
 
-let box=
-document.getElementById(
-"spinner"
-);
+    if(teams.length === 0){
+
+        alert(
+            "There are no teams left!"
+        );
+
+        return;
+
+    }
 
 
-let count=0;
+    spinning = true;
+
+    hasSpun = true;
 
 
-let animation=
-setInterval(()=>{
+    const button =
+        document.getElementById(
+            "spinButton"
+        );
 
 
-let randomTeam=
-teams[
-Math.floor(
-Math.random()*teams.length
-)
-];
+    const spinner =
+        document.getElementById(
+            "spinner"
+        );
 
 
-box.innerText=randomTeam;
+    button.disabled = true;
 
 
-count++;
+    let spins = 0;
 
 
-if(count>=30){
+    /*
+    Wheel animation.
+    */
 
-clearInterval(animation);
+    const interval =
+        setInterval(()=>{
 
-
-/*
-==========================================
-CHEEPA SPECIAL CHANCE
-==========================================
-
-Cheepa has exactly a 5% chance
-of being selected.
-
-The other 95% goes to the normal teams.
-*/
-
-let cheepaAvailable=
-teams.includes("Cheepa");
+            const randomTeam =
+                teams[
+                    Math.floor(
+                        Math.random()
+                        *
+                        teams.length
+                    )
+                ];
 
 
-if(
-cheepaAvailable &&
-Math.random()<0.05
-){
-
-currentTeam="Cheepa";
-
-}else{
-
-let normalTeams=
-teams.filter(
-team=>team!=="Cheepa"
-);
+            spinner.innerText =
+                "🎰 " +
+                randomTeam;
 
 
-if(normalTeams.length>0){
-
-currentTeam=
-normalTeams[
-Math.floor(
-Math.random()*
-normalTeams.length
-)
-];
-
-}else{
-
-currentTeam="Cheepa";
-
-}
-
-}
+            spins++;
 
 
-box.innerText=
-"🎯 "+currentTeam;
+            if(spins >= 20){
+
+                clearInterval(
+                    interval
+                );
 
 
-/*
-SPECIAL CHEEPA DISPLAY
-*/
-
-if(currentTeam==="Cheepa"){
-
-box.innerText=
-"🧀 CHEEPA 🧀";
-
-}
+                let selectedTeam;
 
 
-spinning=false;
+                /*
+                CHEEPA = 5%
+                */
 
-showPlayers();
+                if(
+                    teams.includes(
+                        "Cheepa"
+                    ) &&
+                    Math.random() < 0.05
+                ){
 
-saveGame();
+                    selectedTeam =
+                        "Cheepa";
 
-}
+                }else{
 
-},100);
+                    const normalTeams =
+                        teams.filter(
+                            team =>
+                                team !==
+                                "Cheepa"
+                        );
+
+
+                    if(
+                        normalTeams.length
+                    ){
+
+                        selectedTeam =
+                            normalTeams[
+                                Math.floor(
+                                    Math.random()
+                                    *
+                                    normalTeams.length
+                                )
+                            ];
+
+                    }else{
+
+                        selectedTeam =
+                            "Cheepa";
+
+                    }
+
+                }
+
+
+                currentTeam =
+                    selectedTeam;
+
+
+                if(
+                    currentTeam ===
+                    "Cheepa"
+                ){
+
+                    spinner.innerText =
+                        "🧀 CHEEPA 🧀";
+
+                }else{
+
+                    spinner.innerText =
+                        "🎯 " +
+                        currentTeam;
+
+                }
+
+
+                spinning = false;
+
+
+                /*
+                IMPORTANT:
+                Player selection opens
+                only AFTER the wheel stops.
+                */
+
+                showPlayers();
+
+
+                saveGame();
+
+            }
+
+        },100);
 
 }
 
@@ -1412,274 +1526,297 @@ saveGame();
 SHOW PLAYERS
 ========================================== */
 
+
 function showPlayers(){
 
-let box=
-document.getElementById(
-"players"
-);
+    const box =
+        document.getElementById(
+            "players"
+        );
 
 
-box.innerHTML=
-"<h2 class='center'>Pick ONE Player</h2>";
+    box.innerHTML =
+        "<h2 class='center'>Pick ONE Player</h2>";
 
 
-if(currentTeam==="Cheepa"){
+    if(
+        currentTeam ===
+        "Cheepa"
+    ){
 
-box.innerHTML+=`
+        box.innerHTML += `
 
-<div class="card cheepa center">
+            <div class="card cheepa center">
 
-<h1>
-🧀 CHEEPA
-</h1>
+                <h1>
+                    🧀 CHEEPA 🧀
+                </h1>
 
-<h2>
-5% SPECIAL TEAM
-</h2>
+                <h2>
+                    RARE 5% TEAM
+                </h2>
 
-<p>
-You hit the rare team!
-</p>
+                <p>
+                    You hit the rare team!
+                </p>
 
-</div>
+            </div>
 
-`;
+        `;
 
-}
-
-
-clubs[currentTeam].forEach(
-player=>{
-
-
-if(
-drafted.includes(player[0])
-){
-
-return;
-
-}
+    }
 
 
-let div=
-document.createElement(
-"div"
-);
+    const players =
+        clubs[currentTeam];
 
 
-div.className="player";
+    players.forEach(player=>{
+
+        if(
+            drafted.includes(
+                player[0]
+            )
+        ){
+
+            return;
+
+        }
 
 
-div.innerHTML=
-
-`
-
-<div class="player-info">
-
-<div class="player-name">
-
-⭐ ${player[0]}
-
-</div>
-
-<div>
-
-${player[1]}
-
-</div>
-
-</div>
-
-<div class="player-rating">
-
-${player[2]} OVR
-
-</div>
-
-<button>
-DRAFT
-</button>
-
-`;
+        const div =
+            document.createElement(
+                "div"
+            );
 
 
-div.querySelector(
-"button"
-).onclick=
-function(){
-
-draft(player);
-
-};
+        div.className =
+            "player";
 
 
-box.appendChild(div);
+        div.innerHTML = `
 
-});
+            <div class="player-info">
+
+                <div class="player-name">
+                    ⭐ ${player[0]}
+                </div>
+
+                <div>
+                    ${player[1]}
+                </div>
+
+            </div>
+
+            <div class="player-rating">
+                ${player[2]} OVR
+            </div>
+
+            <button>
+                DRAFT
+            </button>
+
+        `;
+
+
+        div
+        .querySelector(
+            "button"
+        )
+        .onclick = function(){
+
+            draftPlayer(
+                player
+            );
+
+        };
+
+
+        box.appendChild(div);
+
+    });
 
 }
 
 
 /* ==========================================
-DRAFT
+DRAFT PLAYER
 ========================================== */
 
-function draft(player){
 
-if(
-!hasSpun ||
-squad.length>=10
-){
+function draftPlayer(player){
 
-return;
+    if(
+        !hasSpun ||
+        spinning ||
+        squad.length >= 10
+    ){
 
-}
+        return;
 
-
-squad.push(player);
-
-drafted.push(player[0]);
+    }
 
 
-currentTeam="";
+    squad.push(player);
 
-hasSpun=false;
-
-spinning=false;
-
-
-document.getElementById(
-"spinner"
-).innerText=
-"🎰 PRESS SPIN";
+    drafted.push(
+        player[0]
+    );
 
 
-document.getElementById(
-"players"
-).innerHTML=
+    /*
+    Reset spin state.
+    */
 
-`
+    hasSpun = false;
 
-<div class="card center">
+    spinning = false;
 
-<h2>
-✅ ${player[0]} drafted!
-</h2>
-
-<p>
-${player[1]} |
-${player[2]} OVR
-</p>
-
-<p>
-Spin again for your next pick.
-</p>
-
-</div>
-
-`;
+    currentTeam = "";
 
 
-update();
+    document
+    .getElementById(
+        "spinner"
+    )
+    .innerText =
+        "🎰 PRESS SPIN";
 
-saveGame();
 
-setSpinState();
+    document
+    .getElementById(
+        "players"
+    )
+    .innerHTML = `
+
+        <div class="card center">
+
+            <h2>
+                ✅ ${player[0]} drafted!
+            </h2>
+
+            <p>
+                ${player[1]}
+                |
+                ${player[2]} OVR
+            </p>
+
+            <p>
+                Spin again for your next pick.
+            </p>
+
+        </div>
+
+    `;
 
 
-if(squad.length>=10){
+    update();
 
-document.getElementById(
-"spinner"
-).innerText=
-"🏆 SQUAD COMPLETE";
+    saveGame();
 
-}
+    setSpinState();
+
+
+    if(
+        squad.length >= 10
+    ){
+
+        document
+        .getElementById(
+            "spinner"
+        )
+        .innerText =
+            "🏆 SQUAD COMPLETE";
+
+    }
 
 }
 
 
 /* ==========================================
-UPDATE
+UPDATE SCREEN
 ========================================== */
+
 
 function update(){
 
-let count=
-document.getElementById("count");
+    document
+    .getElementById(
+        "count"
+    )
+    .innerText =
+        `Squad: ${squad.length} / 10`;
 
 
-if(count){
-
-count.innerText=
-`Squad: ${squad.length} / 10`;
-
-}
+    const list =
+        document.getElementById(
+            "teamlist"
+        );
 
 
-let list=
-document.getElementById("teamlist");
+    if(
+        squad.length === 0
+    ){
+
+        list.innerText =
+            "No players drafted";
+
+    }else{
+
+        list.innerHTML = "";
 
 
-if(list){
+        squad.forEach(player=>{
 
-if(!squad.length){
+            list.innerHTML +=
+                `⭐ ${player[0]} | ${player[1]} | ${player[2]} OVR<br>`;
 
-list.innerText=
-"No players drafted";
+        });
 
-}else{
-
-list.innerHTML="";
+    }
 
 
-squad.forEach(
-player=>{
-
-list.innerHTML+=
-`⭐ ${player[0]} | ${player[1]} | ${player[2]} OVR<br>`;
-
-});
-
-}
-
-}
+    const total =
+        squad.reduce(
+            (sum,p)=>
+                sum + p[2],
+            0
+        );
 
 
-let total=
-squad.reduce(
-(sum,p)=>sum+p[2],
-0
-);
+    const rating =
+        squad.length
+        ?
+        Math.round(
+            total /
+            squad.length
+        )
+        :
+        0;
 
 
-let rating=
-squad.length
-?
-Math.round(
-total/squad.length
-)
-:
-0;
+    document
+    .getElementById(
+        "rating"
+    )
+    .innerText =
+        `Team Rating: ${rating} OVR`;
 
 
-document.getElementById(
-"rating"
-).innerText=
-`Team Rating: ${rating} OVR`;
+    document
+    .getElementById(
+        "homeClub"
+    )
+    .innerText =
+        clubName;
 
 
-document.getElementById(
-"homeClub"
-).innerText=
-clubName;
-
-
-document.getElementById(
-"homeRating"
-).innerText=
-`Team Rating: ${rating} OVR`;
+    document
+    .getElementById(
+        "homeRating"
+    )
+    .innerText =
+        `Team Rating: ${rating} OVR`;
 
 }
 
@@ -1688,20 +1825,19 @@ document.getElementById(
 FORWARD CHECK
 ========================================== */
 
+
 function isForward(player){
 
-let position=
-player[1].toUpperCase();
+    const position =
+        player[1].toUpperCase();
 
 
-return(
-
-position.includes("FWD") ||
-position.includes("FORWARD") ||
-position==="FF" ||
-position==="HF"
-
-);
+    return(
+        position.includes("FWD") ||
+        position.includes("FORWARD") ||
+        position === "FF" ||
+        position === "HF"
+    );
 
 }
 
@@ -1710,56 +1846,69 @@ position==="HF"
 PLAY SEASON
 ========================================== */
 
+
 function playSeason(){
 
-if(squad.length<10){
+    if(
+        squad.length < 10
+    ){
 
-alert(
-"You need to draft 10 players first!"
-);
+        alert(
+            "You need to draft 10 players first!"
+        );
 
-return;
+        return;
 
-}
-
-
-if(seasonPlayed){
-
-alert(
-"This team has already played a season. Start a new team."
-);
-
-return;
-
-}
+    }
 
 
-let rating=
-Math.round(
-squad.reduce(
-(sum,p)=>sum+p[2],
-0
-)/squad.length
-);
+    if(seasonPlayed){
+
+        alert(
+            "This team has already played its season."
+        );
+
+        return;
+
+    }
 
 
-let premiershipOdds=
-18+
-((rating-90)*6);
+    const rating =
+        Math.round(
+            squad.reduce(
+                (sum,p)=>
+                    sum + p[2],
+                0
+            )
+            /
+            squad.length
+        );
 
 
-premiershipOdds=
-Math.max(
-5,
-Math.min(
-80,
-premiershipOdds
-)
-);
+    /*
+    Premiership percentage.
+    */
+
+    let premiershipOdds =
+        18 +
+        (
+            (rating - 90)
+            * 6
+        );
 
 
-let start=
-confirm(
+    premiershipOdds =
+        Math.max(
+            5,
+            Math.min(
+                80,
+                premiershipOdds
+            )
+        );
+
+
+    const start =
+        confirm(
 
 `🏆 PREMIERSHIP ODDS
 
@@ -1767,299 +1916,583 @@ ${clubName}
 
 ⭐ ${rating} OVR
 
-Chance of winning:
+Chance of winning the premiership:
 
 ${premiershipOdds}%
 
 Press OK to play the season.`
 
-);
+        );
 
 
-if(!start){
+    if(!start){
+        return;
+    }
 
-return;
 
-}
+    const stats = {};
 
 
-let stats={};
+    squad.forEach(player=>{
 
+        stats[
+            player[0]
+        ] = {
 
-squad.forEach(
-player=>{
+            player:player,
 
-stats[player[0]]={
+            goals:0,
 
-player:player,
+            votes:0
 
-goals:0,
+        };
 
-votes:0
+    });
 
-};
 
-});
+    let wins = 0;
 
+    let losses = 0;
 
-let wins=0;
+    let points = 0;
 
-let losses=0;
+    let results = "";
 
-let points=0;
 
-let results="";
+    const opponents = [
 
+        "South Croydon",
+        "Blackburn",
+        "Montrose",
+        "Heathmont",
+        "Beaconsfield",
+        "Lysterfield"
 
-let opponents=[
+    ];
 
-"South Croydon",
-"Blackburn",
-"Montrose",
-"Heathmont",
-"Beaconsfield",
-"Lysterfield"
 
-];
+    /*
+    18 HOME & AWAY ROUNDS.
+    */
 
+    for(
+        let round = 1;
+        round <= 18;
+        round++
+    ){
 
-for(
-let round=1;
-round<=18;
-round++
-){
+        const opponent =
+            opponents[
+                Math.floor(
+                    Math.random()
+                    *
+                    opponents.length
+                )
+            ];
 
 
-let opponent=
-opponents[
-Math.floor(
-Math.random()*opponents.length
-)
-];
+        let winChance =
+            0.50 +
+            (
+                (rating - 90)
+                * 0.007
+            );
 
 
-let winChance=
-0.5+
-((rating-90)*0.007);
+        winChance =
+            Math.max(
+                0.25,
+                Math.min(
+                    0.85,
+                    winChance
+                )
+            );
 
 
-winChance=
-Math.max(
-0.25,
-Math.min(
-0.85,
-winChance
-)
-);
+        const win =
+            Math.random()
+            <
+            winChance;
 
 
-let win=
-Math.random()<winChance;
+        let yourScore =
+            Math.floor(
+                Math.random()
+                * 50
+            ) + 60;
 
 
-let yourScore=
-Math.floor(
-Math.random()*50
-)+60;
+        let enemyScore =
+            Math.floor(
+                Math.random()
+                * 50
+            ) + 60;
 
 
-let enemyScore=
-Math.floor(
-Math.random()*50
-)+60;
+        if(win){
 
+            wins++;
 
-if(win){
+            points += 4;
 
-wins++;
 
-points+=4;
+            if(
+                yourScore <=
+                enemyScore
+            ){
 
+                yourScore =
+                    enemyScore +
+                    Math.floor(
+                        Math.random()
+                        * 10
+                    ) + 1;
 
-if(yourScore<=enemyScore){
+            }
 
-yourScore=
-enemyScore+
-Math.floor(
-Math.random()*10
-)+1;
+        }else{
 
-}
+            losses++;
 
-}else{
 
-losses++;
+            if(
+                enemyScore <=
+                yourScore
+            ){
 
+                enemyScore =
+                    yourScore +
+                    Math.floor(
+                        Math.random()
+                        * 10
+                    ) + 1;
 
-if(enemyScore<=yourScore){
+            }
 
-enemyScore=
-yourScore+
-Math.floor(
-Math.random()*10
-)+1;
+        }
 
-}
 
-}
+        const performances = [];
 
 
-/* PLAYER PERFORMANCE */
+        squad.forEach(player=>{
 
-let performances=[];
+            let performance =
+                player[2] +
+                Math.random()
+                * 30;
 
 
-squad.forEach(
-player=>{
+            if(
+                isForward(player)
+            ){
 
+                performance +=
+                    Math.random()
+                    * 12;
 
-let performance=
-player[2]+
-Math.random()*30;
+            }
 
 
-if(isForward(player)){
+            performances.push({
 
-performance+=
-Math.random()*12;
+                player:player,
 
-}
+                score:performance
 
+            });
 
-performances.push({
 
-player:player,
-score:performance
+            let goalChance =
+                0.08;
 
-});
 
+            if(
+                isForward(player)
+            ){
 
-let goalChance=0.08;
+                goalChance =
+                    0.45;
 
+            }
 
-if(isForward(player)){
 
-goalChance=0.45;
+            /*
+            Jesse = 3%
+            */
 
-}
+            if(
+                player[0] ===
+                "Jesse Berka"
+            ){
 
+                goalChance =
+                    0.03;
 
-/*
-JESSE BERKA:
-3% CHANCE
-*/
+            }
 
-if(
-player[0]==="Jesse Berka"
-){
 
-goalChance=0.03;
+            if(
+                player[1] ===
+                "FF"
+            ){
 
-}
+                goalChance =
+                    0.55;
 
+            }
 
-if(player[1]==="FF"){
 
-goalChance=0.55;
+            if(
+                Math.random()
+                <
+                goalChance
+            ){
 
-}
+                stats[
+                    player[0]
+                ].goals +=
+                    Math.floor(
+                        Math.random()
+                        * 4
+                    ) + 1;
 
+            }
 
-if(
-Math.random()<goalChance
-){
+        });
 
-let goals=
-Math.floor(
-Math.random()*4
-)+1;
 
+        performances.sort(
+            (a,b)=>
+                b.score -
+                a.score
+        );
 
-stats[
-player[0]
-].goals+=goals;
 
-}
+        if(
+            performances[0]
+        ){
 
-});
+            stats[
+                performances[0]
+                .player[0]
+            ].votes += 3;
 
+        }
 
-performances.sort(
-(a,b)=>b.score-a.score
-);
 
+        if(
+            performances[1]
+        ){
 
-if(performances[0]){
+            stats[
+                performances[1]
+                .player[0]
+            ].votes += 2;
 
-stats[
-performances[0].player[0]
-].votes+=3;
+        }
 
-}
 
-if(performances[1]){
+        if(
+            performances[2]
+        ){
 
-stats[
-performances[1].player[0]
-].votes+=2;
+            stats[
+                performances[2]
+                .player[0]
+            ].votes += 1;
 
-}
+        }
 
-if(performances[2]){
 
-stats[
-performances[2].player[0]
-].votes+=1;
+        const best =
+            performances[0]
+            .player[0];
 
-}
 
+        results += `
 
-let best=
-performances[0]
-.player[0];
+            <div class="card">
 
+                <h3>
+                    Round ${round}
+                </h3>
 
-results+=`
+                <p>
+                    Opponent:
+                    ${opponent}
+                </p>
 
-<div class="card">
+                <h2 class="${
+                    win
+                    ?
+                    "win"
+                    :
+                    "loss"
+                }">
 
-<h3>
-Round ${round}
-</h3>
+                    ${
+                        win
+                        ?
+                        "🟢 WIN"
+                        :
+                        "🔴 LOSS"
+                    }
 
-<p>
-Opponent: ${opponent}
-</p>
+                </h2>
 
-<h2 class="${
-win
-?
-"win"
-:
-"loss"
-}">
+                <h3>
+                    ${yourScore}
+                    -
+                    ${enemyScore}
+                </h3>
 
-${
-win
-?
-"🟢 WIN"
-:
-"🔴 LOSS"
-}
+                <p>
+                    ⭐ Best:
+                    ${best}
+                </p>
 
-</h2>
+            </div>
 
-<h3>
-${yourScore} - ${enemyScore}
-</h3>
+        `;
 
-<p>
-⭐ Best: ${best}
-</p>
+    }
 
-</div>
 
-`;
+    /*
+    FINALS
+    */
+
+    let finals = "";
+
+    let premiers = false;
+
+
+    if(
+        wins >= 10
+    ){
+
+        const finalResult =
+            runFinals(
+                rating,
+                stats
+            );
+
+
+        finals =
+            finalResult.html;
+
+
+        premiers =
+            finalResult.premiers;
+
+    }else{
+
+        finals = `
+
+            <div class="card center">
+
+                <h1>
+                    ❌ FINALS MISSED
+                </h1>
+
+                <h2>
+                    ${clubName}
+                </h2>
+
+                <p>
+                    Final record:
+                    ${wins}-${losses}
+                </p>
+
+                <p>
+                    You needed at least
+                    10 wins to qualify.
+                </p>
+
+            </div>
+
+        `;
+
+    }
+
+
+    /*
+    AWARDS
+    */
+
+    const awards =
+        generateAwards(
+            stats
+        );
+
+
+    /*
+    SAVE EVERYTHING.
+    */
+
+    const users =
+        getUsers();
+
+
+    const data =
+        users[currentUser];
+
+
+    data.career.seasons++;
+
+    data.career.wins += wins;
+
+    data.career.losses += losses;
+
+
+    if(premiers){
+
+        data.career.premierships++;
+
+    }
+
+
+    seasonPlayed = true;
+
+
+    data.savedTeams.push({
+
+        clubName:clubName,
+
+        rating:rating,
+
+        players:[
+            ...squad
+        ],
+
+        wins:wins,
+
+        losses:losses,
+
+        premiers:premiers,
+
+        date:
+            new Date()
+            .toLocaleDateString(),
+
+        seasonResults:
+            results,
+
+        finalsResults:
+            finals,
+
+        awards:
+            awards
+
+    });
+
+
+    data.currentTeam =
+        squad;
+
+    data.currentDrafted =
+        drafted;
+
+    data.currentTeamName =
+        clubName;
+
+    data.seasonPlayed =
+        true;
+
+
+    saveUsers(users);
+
+
+    /*
+    DISPLAY SEASON.
+    */
+
+    document
+    .getElementById(
+        "seasonResults"
+    )
+    .innerHTML = `
+
+        <div class="card center">
+
+            <h1>
+                🏉 ${clubName}
+            </h1>
+
+            <h2>
+                SEASON FINISHED
+            </h2>
+
+            <h2>
+                ${wins} Wins
+                |
+                ${losses} Losses
+            </h2>
+
+            <h3>
+                Team Rating:
+                ${rating} OVR
+            </h3>
+
+            <h3>
+                Ladder Points:
+                ${points}
+            </h3>
+
+        </div>
+
+        ${finals}
+
+        ${awards}
+
+        <hr>
+
+        <h2 class="center">
+            📅 SEASON RESULTS
+        </h2>
+
+        ${results}
+
+        <div class="card center">
+
+            <h2>
+                💾 TEAM SAVED
+            </h2>
+
+            <p>
+                This team has been saved to
+                your profile.
+            </p>
+
+            <button
+                onclick="startNewTeam()"
+                class="green">
+
+                🏆 PLAY AGAIN / NEW TEAM
+
+            </button>
+
+        </div>
+
+    `;
+
+
+    document
+    .getElementById(
+        "seasonButton"
+    )
+    .disabled = true;
+
+
+    document
+    .getElementById(
+        "spinButton"
+    )
+    .disabled = true;
+
+
+    updateProfile();
 
 }
 
@@ -2068,817 +2501,506 @@ ${yourScore} - ${enemyScore}
 FINALS
 ========================================== */
 
-let finals="";
-
-let premiers=false;
-
-
-if(wins>=10){
-
-let result=
-runFinals(
-rating,
-stats
-);
-
-finals=result.html;
-
-premiers=result.premiers;
-
-}else{
-
-finals=
-
-`
-
-<div class="card center">
-
-<h1>
-❌ FINALS MISSED
-</h1>
-
-<h2>
-${clubName}
-</h2>
-
-<p>
-You needed 10 wins to qualify.
-</p>
-
-<p>
-Final record:
-${wins}-${losses}
-</p>
-
-</div>
-
-`;
-
-}
-
-
-/* ==========================================
-AWARDS
-========================================== */
-
-let awards=
-generateAwards(stats);
-
-
-/* ==========================================
-SAVE SEASON
-========================================== */
-
-let users=
-getUsers();
-
-let data=
-users[currentUser];
-
-
-if(!data.career){
-
-data.career={
-
-seasons:0,
-wins:0,
-losses:0,
-premierships:0
-
-};
-
-}
-
-
-data.career.seasons++;
-
-data.career.wins+=wins;
-
-data.career.losses+=losses;
-
-
-if(premiers){
-
-data.career.premierships++;
-
-}
-
-
-seasonPlayed=true;
-
-
-data.savedTeams.push({
-
-clubName:clubName,
-
-rating:rating,
-
-players:[...squad],
-
-wins:wins,
-
-losses:losses,
-
-premiers:premiers,
-
-date:
-new Date()
-.toLocaleDateString(),
-
-seasonResults:results,
-
-finalsResults:finals,
-
-awards:awards
-
-});
-
-
-data.currentTeam=squad;
-
-data.currentDrafted=drafted;
-
-data.currentTeamName="";
-
-data.seasonPlayed=true;
-
-
-saveUsers(users);
-
-
-/* ==========================================
-DISPLAY RESULTS
-========================================== */
-
-document.getElementById(
-"seasonResults"
-).innerHTML=
-
-`
-
-<div class="card center">
-
-<h1>
-🏉 ${clubName}
-</h1>
-
-<h2>
-SEASON FINISHED
-</h2>
-
-<h2>
-${wins} Wins |
-${losses} Losses
-</h2>
-
-<h3>
-Team Rating:
-${rating} OVR
-</h3>
-
-<h3>
-Ladder Points:
-${points}
-</h3>
-
-</div>
-
-${finals}
-
-${awards}
-
-<hr>
-
-<h2 class="center">
-📅 SEASON RESULTS
-</h2>
-
-${results}
-
-<div class="card center">
-
-<h2>
-💾 TEAM SAVED
-</h2>
-
-<p>
-Your completed team has been saved.
-</p>
-
-<button
-onclick="startNewTeam()"
-class="green">
-
-🏆 PLAY AGAIN / NEW TEAM
-
-</button>
-
-</div>
-
-`;
-
-
-document.getElementById(
-"seasonButton"
-).disabled=true;
-
-
-document.getElementById(
-"spinButton"
-).disabled=true;
-
-
-updateProfile();
-
-}
-
-
-/* ==========================================
-FINALS
-========================================== */
 
 function runFinals(
-rating,
-stats
+    rating,
+    stats
 ){
 
-let html=
+    let html = `
 
-`
+        <div class="card center">
 
-<div class="card center">
+            <h1>
+                🔥 FINALS QUALIFIED 🔥
+            </h1>
 
-<h1>
-🔥 FINALS QUALIFIED 🔥
-</h1>
+            <p>
+                ${clubName}
+                made the finals!
+            </p>
 
-<p>
-${clubName} made the finals!
-</p>
+        </div>
 
-</div>
+    `;
 
-`;
 
+    let premiers = false;
 
-let premiers=false;
 
+    const rounds = [
 
-let rounds=[
+        "Qualifying Final",
 
-"Qualifying Final",
-"Semi Final",
-"Preliminary Final",
-"🏆 GRAND FINAL"
+        "Semi Final",
 
-];
+        "Preliminary Final",
 
+        "🏆 GRAND FINAL"
 
-for(
-let round of rounds
-){
+    ];
 
 
-let chance=
-0.5+
-((rating-90)*0.01);
+    for(
+        const round of rounds
+    ){
 
+        let chance =
+            0.50 +
+            (
+                (rating - 90)
+                * 0.01
+            );
 
-chance=
-Math.max(
-0.25,
-Math.min(
-0.85,
-chance
-)
-);
 
+        chance =
+            Math.max(
+                0.25,
+                Math.min(
+                    0.85,
+                    chance
+                )
+            );
 
-let won=
-Math.random()<chance;
 
+        const won =
+            Math.random()
+            <
+            chance;
 
-let yourScore=
-Math.floor(
-Math.random()*45
-)+65;
 
+        let yourScore =
+            Math.floor(
+                Math.random()
+                * 45
+            ) + 65;
 
-let enemyScore=
-Math.floor(
-Math.random()*45
-)+65;
 
+        let enemyScore =
+            Math.floor(
+                Math.random()
+                * 45
+            ) + 65;
 
-if(won){
 
-if(yourScore<=enemyScore){
+        if(won){
 
-yourScore=
-enemyScore+1;
+            if(
+                yourScore <=
+                enemyScore
+            ){
 
-}
+                yourScore =
+                    enemyScore + 1;
 
-}else{
+            }
 
-if(enemyScore<=yourScore){
+        }else{
 
-enemyScore=
-yourScore+1;
+            if(
+                enemyScore <=
+                yourScore
+            ){
 
-}
+                enemyScore =
+                    yourScore + 1;
 
-}
+            }
 
+        }
 
-let performances=[];
 
+        html += `
 
-squad.forEach(
-player=>{
+            <div class="final">
 
+                <h2>
+                    ${round}
+                </h2>
 
-let performance=
-player[2]+
-Math.random()*30;
+                <h3>
+                    ${clubName}
+                    vs
+                    Random Opponent
+                </h3>
 
+                <h2>
+                    ${yourScore}
+                    -
+                    ${enemyScore}
+                </h2>
 
-if(isForward(player)){
+                <h2 class="${
+                    won
+                    ?
+                    "win"
+                    :
+                    "loss"
+                }">
 
-performance+=
-Math.random()*12;
+                    ${
+                        won
+                        ?
+                        "🟢 VICTORY"
+                        :
+                        "🔴 ELIMINATED"
+                    }
 
-}
+                </h2>
 
+            </div>
 
-performances.push({
+        `;
 
-player:player,
 
-score:performance
+        if(!won){
 
-});
+            return {
 
+                html:html,
 
-let goalChance=0.08;
+                premiers:false
 
+            };
 
-if(isForward(player)){
+        }
 
-goalChance=0.50;
 
-}
+        if(
+            round ===
+            "🏆 GRAND FINAL"
+        ){
 
+            premiers = true;
 
-if(
-player[0]==="Jesse Berka"
-){
 
-goalChance=0.03;
+            html += `
 
-}
+                <div class="premiers">
 
+                    🏆🏆🏆
 
-if(player[1]==="FF"){
+                    <h1>
+                        PREMIERS!
+                    </h1>
 
-goalChance=0.60;
+                    <p>
+                        ${clubName}
+                        are EFNL PREMIERS!
+                    </p>
 
-}
+                    🏆🏆🏆
 
+                </div>
 
-if(
-Math.random()<goalChance
-){
+            `;
 
-let goals=
-Math.floor(
-Math.random()*3
-)+1;
+        }
 
+    }
 
-stats[
-player[0]
-].goals+=goals;
 
-}
+    return {
 
-});
+        html:html,
 
+        premiers:premiers
 
-performances.sort(
-(a,b)=>b.score-a.score
-);
-
-
-if(performances[0]){
-
-stats[
-performances[0]
-.player[0]
-].votes+=3;
-
-}
-
-if(performances[1]){
-
-stats[
-performances[1]
-.player[0]
-].votes+=2;
-
-}
-
-if(performances[2]){
-
-stats[
-performances[2]
-.player[0]
-].votes+=1;
-
-}
-
-
-let opponent=[
-
-"South Croydon",
-"Blackburn",
-"Montrose",
-"Heathmont",
-"Beaconsfield",
-"Lysterfield"
-
-][
-Math.floor(
-Math.random()*6
-)
-];
-
-
-html+=`
-
-<div class="final">
-
-<h2>
-${round}
-</h2>
-
-<h3>
-${clubName}
-vs
-${opponent}
-</h3>
-
-<h2>
-${yourScore} - ${enemyScore}
-</h2>
-
-<h2 class="${
-won
-?
-"win"
-:
-"loss"
-}">
-
-${
-won
-?
-"🟢 VICTORY"
-:
-"🔴 ELIMINATED"
-}
-
-</h2>
-
-</div>
-
-`;
-
-
-if(!won){
-
-return{
-
-html:html,
-
-premiers:false
-
-};
-
-}
-
-
-if(
-round==="🏆 GRAND FINAL"
-){
-
-premiers=true;
-
-
-html+=`
-
-<div class="premiers">
-
-🏆🏆🏆
-
-<h1>
-PREMIERS!
-</h1>
-
-<p>
-${clubName}
-are EFNL PREMIERS!
-</p>
-
-🏆🏆🏆
-
-</div>
-
-`;
-
-}
-
-}
-
-
-return{
-
-html:html,
-
-premiers:premiers
-
-};
+    };
 
 }
 
 
 /* ==========================================
-COLEMAN / BROWNLOW
+COLEMAN + BROWNLOW
 ========================================== */
 
-function generateAwards(stats){
 
-let players=
-Object.values(stats);
+function generateAwards(
+    stats
+){
 
-
-if(!players.length){
-
-return "";
-
-}
+    const players =
+        Object.values(stats);
 
 
-let coleman=
-[...players].sort(
-(a,b)=>b.goals-a.goals
-)[0];
+    if(!players.length){
+        return "";
+    }
 
 
-let brownlow=
-[...players].sort(
-(a,b)=>b.votes-a.votes
-)[0];
+    const coleman =
+        [...players]
+        .sort(
+            (a,b)=>
+                b.goals -
+                a.goals
+        )[0];
 
 
-return`
-
-<div class="award">
-
-<h1>
-🥇 COLEMAN MEDAL
-</h1>
-
-<p>
-Leading goalkicker
-</p>
-
-<div class="award-winner">
-⭐ ${coleman.player[0]}
-</div>
-
-<h2>
-${coleman.goals} GOALS
-</h2>
-
-<p>
-${coleman.player[1]} |
-${coleman.player[2]} OVR
-</p>
-
-</div>
+    const brownlow =
+        [...players]
+        .sort(
+            (a,b)=>
+                b.votes -
+                a.votes
+        )[0];
 
 
-<div class="award">
+    return `
 
-<h1>
-🏅 BROWNLOW MEDAL
-</h1>
+        <div class="award">
 
-<p>
-Best and fairest
-</p>
+            <h1>
+                🥇 COLEMAN MEDAL
+            </h1>
 
-<div class="award-winner">
-⭐ ${brownlow.player[0]}
-</div>
+            <p>
+                Leading goalkicker
+            </p>
 
-<h2>
-${brownlow.votes} VOTES
-</h2>
+            <div class="award-winner">
+                ⭐ ${coleman.player[0]}
+            </div>
 
-<p>
-${brownlow.player[1]} |
-${brownlow.player[2]} OVR
-</p>
+            <h2>
+                ${coleman.goals} GOALS
+            </h2>
 
-</div>
+        </div>
 
-`;
+
+        <div class="award">
+
+            <h1>
+                🏅 BROWNLOW MEDAL
+            </h1>
+
+            <p>
+                Best and fairest
+            </p>
+
+            <div class="award-winner">
+                ⭐ ${brownlow.player[0]}
+            </div>
+
+            <h2>
+                ${brownlow.votes} VOTES
+            </h2>
+
+        </div>
+
+    `;
 
 }
 
 
 /* ==========================================
-NEW TEAM
+PLAY AGAIN
 ========================================== */
+
 
 function startNewTeam(){
 
-squad=[];
+    /*
+    Old team stays saved.
+    New team starts empty.
+    */
 
-drafted=[];
+    squad = [];
 
-currentTeam="";
+    drafted = [];
 
-spinning=false;
+    currentTeam = "";
 
-hasSpun=false;
+    spinning = false;
 
-seasonPlayed=false;
+    hasSpun = false;
 
-clubName="My EFNL Club";
+    seasonPlayed = false;
 
-
-document.getElementById(
-"clubNameDisplay"
-).innerText=
-clubName;
-
-
-document.getElementById(
-"spinner"
-).innerText=
-"🎰 PRESS SPIN";
+    clubName =
+        "My EFNL Club";
 
 
-document.getElementById(
-"players"
-).innerHTML="";
+    document
+    .getElementById(
+        "clubNameDisplay"
+    )
+    .innerText =
+        clubName;
 
 
-document.getElementById(
-"seasonResults"
-).innerHTML="";
+    document
+    .getElementById(
+        "spinner"
+    )
+    .innerText =
+        "🎰 PRESS SPIN";
 
 
-document.getElementById(
-"seasonButton"
-).disabled=false;
+    document
+    .getElementById(
+        "players"
+    )
+    .innerHTML = "";
 
 
-update();
+    document
+    .getElementById(
+        "seasonResults"
+    )
+    .innerHTML = "";
 
-saveGame();
 
-setSpinState();
+    document
+    .getElementById(
+        "seasonButton"
+    )
+    .disabled = false;
 
-showPage("draft");
+
+    update();
+
+    saveGame();
+
+    setSpinState();
+
+    showPage("draft");
 
 }
 
 
 /* ==========================================
-PROFILE
+PROFILE UPDATE
 ========================================== */
+
 
 function updateProfile(){
 
-if(!currentUser){
-
-return;
-
-}
+    if(!currentUser){
+        return;
+    }
 
 
-let users=
-getUsers();
-
-let data=
-users[currentUser];
+    const users =
+        getUsers();
 
 
-if(!data){
-
-return;
-
-}
+    const data =
+        users[currentUser];
 
 
-if(!data.career){
-
-data.career={
-
-seasons:0,
-wins:0,
-losses:0,
-premierships:0
-
-};
-
-}
+    if(!data){
+        return;
+    }
 
 
-document.getElementById(
-"profileUsername"
-).innerText=
-currentUser;
+    document
+    .getElementById(
+        "profileUsername"
+    )
+    .innerText =
+        currentUser;
 
 
-document.getElementById(
-"profileClub"
-).innerText=
-"Club: "+clubName;
+    document
+    .getElementById(
+        "profileClub"
+    )
+    .innerText =
+        "Club: " +
+        clubName;
 
 
-document.getElementById(
-"profileSeasons"
-).innerText=
-data.career.seasons;
+    document
+    .getElementById(
+        "profileSeasons"
+    )
+    .innerText =
+        data.career.seasons;
 
 
-document.getElementById(
-"profileWins"
-).innerText=
-data.career.wins;
+    document
+    .getElementById(
+        "profileWins"
+    )
+    .innerText =
+        data.career.wins;
 
 
-document.getElementById(
-"profileLosses"
-).innerText=
-data.career.losses;
+    document
+    .getElementById(
+        "profileLosses"
+    )
+    .innerText =
+        data.career.losses;
 
 
-document.getElementById(
-"profileFlags"
-).innerText=
-data.career.premierships;
+    document
+    .getElementById(
+        "profileFlags"
+    )
+    .innerText =
+        data.career.premierships;
 
 
-document.getElementById(
-"careerSeasons"
-).innerText=
-data.career.seasons;
+    document
+    .getElementById(
+        "careerSeasons"
+    )
+    .innerText =
+        data.career.seasons;
 
 
-document.getElementById(
-"careerWins"
-).innerText=
-data.career.wins;
+    document
+    .getElementById(
+        "careerWins"
+    )
+    .innerText =
+        data.career.wins;
 
 
-document.getElementById(
-"careerLosses"
-).innerText=
-data.career.losses;
+    document
+    .getElementById(
+        "careerLosses"
+    )
+    .innerText =
+        data.career.losses;
 
 
-document.getElementById(
-"careerPremierships"
-).innerText=
-data.career.premierships;
+    document
+    .getElementById(
+        "careerPremierships"
+    )
+    .innerText =
+        data.career.premierships;
 
 
-document.getElementById(
-"welcomeText"
-).innerText=
-"Welcome back, "+currentUser;
+    document
+    .getElementById(
+        "welcomeText"
+    )
+    .innerText =
+        "Welcome back, " +
+        currentUser;
 
 
-let games=
-data.career.wins+
-data.career.losses;
+    const games =
+        data.career.wins +
+        data.career.losses;
 
 
-document.getElementById(
-"profileRecord"
-).innerText=
-
-games
-?
-`${data.career.wins}-${data.career.losses} career record`
-:
-"No seasons played yet.";
+    document
+    .getElementById(
+        "profileRecord"
+    )
+    .innerText =
+        games
+        ?
+        `${data.career.wins}-${data.career.losses} career record`
+        :
+        "No seasons played yet.";
 
 }
 
@@ -2887,106 +3009,106 @@ games
 SAVED TEAMS
 ========================================== */
 
+
 function showSavedTeams(){
 
-let users=
-getUsers();
-
-let data=
-users[currentUser];
+    const users =
+        getUsers();
 
 
-let box=
-document.getElementById(
-"savedTeams"
-);
+    const data =
+        users[currentUser];
 
 
-if(
-!data ||
-!data.savedTeams ||
-!data.savedTeams.length
-){
-
-box.innerHTML=
-"No saved teams yet.";
-
-return;
-
-}
+    const box =
+        document.getElementById(
+            "savedTeams"
+        );
 
 
-box.innerHTML="";
+    if(
+        !data ||
+        !data.savedTeams ||
+        data.savedTeams.length === 0
+    ){
+
+        box.innerHTML =
+            "No saved teams yet.";
+
+        return;
+
+    }
 
 
-data.savedTeams
-.slice()
-.reverse()
-.forEach(
-team=>{
+    box.innerHTML = "";
 
 
-let div=
-document.createElement(
-"div"
-);
+    data.savedTeams
+    .slice()
+    .reverse()
+    .forEach(team=>{
+
+        const div =
+            document.createElement(
+                "div"
+            );
 
 
-div.className="card";
+        div.className =
+            "card";
 
 
-div.innerHTML=
+        div.innerHTML = `
 
-`
+            <h2>
+                🏟️ ${team.clubName}
+            </h2>
 
-<h2>
-🏟️ ${team.clubName}
-</h2>
+            <p>
+                ⭐ ${team.rating} OVR
+            </p>
 
-<p>
-⭐ ${team.rating} OVR
-</p>
+            <p>
+                📊 ${team.wins}-${team.losses}
+            </p>
 
-<p>
-📊 ${team.wins}-${team.losses}
-</p>
+            <p>
+                ${
+                    team.premiers
+                    ?
+                    "🏆 PREMIERS"
+                    :
+                    "Season completed"
+                }
+            </p>
 
-<p>
+            <p class="small">
+                ${team.date}
+            </p>
 
-${
-team.premiers
-?
-"🏆 PREMIERS"
-:
-"Season completed"
-}
+            <button>
+                VIEW SEASON
+            </button>
 
-</p>
-
-<p class="small">
-${team.date}
-</p>
-
-<button>
-VIEW SEASON
-</button>
-
-`;
+        `;
 
 
-div.querySelector(
-"button"
-).onclick=
-function(){
+        div
+        .querySelector(
+            "button"
+        )
+        .onclick = function(){
 
-viewSavedTeam(team);
+            viewSavedTeam(
+                team
+            );
 
-};
+        };
 
 
-box.appendChild(div);
+        box.appendChild(div);
 
-});
+    });
 
 }
 
@@ -2995,89 +3117,91 @@ box.appendChild(div);
 VIEW SAVED TEAM
 ========================================== */
 
+
 function viewSavedTeam(team){
 
-let box=
-document.getElementById(
-"savedTeams"
-);
+    const box =
+        document.getElementById(
+            "savedTeams"
+        );
 
 
-let players=
-team.players
-.map(
-p=>
-`⭐ ${p[0]} | ${p[1]} | ${p[2]} OVR`
-)
-.join("<br>");
+    const players =
+        team.players
+        .map(
+            p =>
+                `⭐ ${p[0]} | ${p[1]} | ${p[2]} OVR`
+        )
+        .join("<br>");
 
 
-box.innerHTML=
+    box.innerHTML = `
 
-`
+        <div class="card">
 
-<div class="card">
+            <h1>
+                🏟️ ${team.clubName}
+            </h1>
 
-<h1>
-🏟️ ${team.clubName}
-</h1>
+            <h2>
+                ⭐ ${team.rating} OVR
+            </h2>
 
-<h2>
-⭐ ${team.rating} OVR
-</h2>
+            <h3>
+                Record:
+                ${team.wins}-${team.losses}
+            </h3>
 
-<h3>
-Record:
-${team.wins}-${team.losses}
-</h3>
+            ${
+                team.premiers
+                ?
+                "<h2>🏆 PREMIERS</h2>"
+                :
+                ""
+            }
 
-${
-team.premiers
-?
-"<h2>🏆 PREMIERS</h2>"
-:
-""
-}
+            <hr>
 
-<hr>
+            <h2>
+                👥 Squad
+            </h2>
 
-<h2>
-👥 Squad
-</h2>
+            ${players}
 
-${players}
+            <hr>
 
-<hr>
+            <h2>
+                📅 Season
+            </h2>
 
-<h2>
-📅 Season
-</h2>
+            ${team.seasonResults}
 
-${team.seasonResults}
+            <hr>
 
-<hr>
+            <h2>
+                🔥 Finals
+            </h2>
 
-<h2>
-🔥 Finals
-</h2>
+            ${team.finalsResults}
 
-${team.finalsResults}
+            <hr>
 
-<hr>
+            <h2>
+                🏅 Awards
+            </h2>
 
-<h2>
-🏅 Awards
-</h2>
+            ${team.awards}
 
-${team.awards}
+            <button
+                onclick="showSavedTeams()">
 
-<button onclick="showSavedTeams()">
-← BACK
-</button>
+                ← BACK
 
-</div>
+            </button>
 
-`;
+        </div>
+
+    `;
 
 }
 
@@ -3086,52 +3210,66 @@ ${team.awards}
 LOGOUT
 ========================================== */
 
+
 function logout(){
 
-saveGame();
-
-currentUser=null;
-
-squad=[];
-
-drafted=[];
-
-currentTeam="";
-
-spinning=false;
-
-hasSpun=false;
-
-seasonPlayed=false;
-
-clubName="My EFNL Club";
+    saveGame();
 
 
-document.getElementById(
-"app"
-).style.display="none";
+    currentUser = null;
+
+    squad = [];
+
+    drafted = [];
+
+    currentTeam = "";
+
+    spinning = false;
+
+    hasSpun = false;
+
+    seasonPlayed = false;
 
 
-document.querySelectorAll(
-".page"
-).forEach(
-p=>p.classList.remove("active")
-);
+    document
+    .getElementById(
+        "app"
+    )
+    .style
+    .display = "none";
 
 
-document.getElementById(
-"loginPage"
-).classList.add("active");
+    document
+    .querySelectorAll(
+        ".page"
+    )
+    .forEach(p=>
+        p.classList.remove(
+            "active"
+        )
+    );
 
 
-document.getElementById(
-"usernameInput"
-).value="";
+    document
+    .getElementById(
+        "loginPage"
+    )
+    .classList
+    .add("active");
 
 
-document.getElementById(
-"passwordInput"
-).value="";
+    document
+    .getElementById(
+        "usernameInput"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "passwordInput"
+    )
+    .value = "";
 
 }
 
@@ -3140,29 +3278,36 @@ document.getElementById(
 ENTER TO LOGIN
 ========================================== */
 
-document.getElementById(
-"passwordInput"
-).addEventListener(
-"keydown",
-function(event){
 
-if(event.key==="Enter"){
+document
+.getElementById(
+    "passwordInput"
+)
+.addEventListener(
+    "keydown",
+    function(event){
 
-login();
+        if(
+            event.key ===
+            "Enter"
+        ){
 
-}
+            login();
 
-});
+        }
+
+    }
+);
 
 
 /* ==========================================
-STARTUP
+START
 ========================================== */
+
 
 setSpinState();
 
 </script>
 
 </body>
-
 </html>
