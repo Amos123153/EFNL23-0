@@ -7,7 +7,6 @@
 <title>EFNL Ultimate Draft</title>
 
 <style>
-
 *{
     box-sizing:border-box;
 }
@@ -97,7 +96,6 @@ button:disabled{
     padding:15px;
     margin:10px auto;
     max-width:650px;
-
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -145,13 +143,10 @@ input{
     width:100%;
     padding:14px;
     margin:8px 0;
-
     background:#111;
     color:white;
-
     border:1px solid #555;
     border-radius:9px;
-
     font-size:16px;
 }
 
@@ -204,11 +199,6 @@ input{
     font-size:22px;
 }
 
-.cheepa{
-    background:#33220a;
-    border:2px solid #ffb300;
-}
-
 .green{
     background:#174f2d;
 }
@@ -227,7 +217,6 @@ input{
 }
 
 @media(max-width:700px){
-
     .stat-grid{
         grid-template-columns:repeat(2,1fr);
     }
@@ -236,14 +225,11 @@ input{
         flex-direction:column;
         align-items:flex-start;
     }
-
 }
-
 </style>
 </head>
 
 <body>
-
 
 <!-- ============================= -->
 <!-- LOGIN -->
@@ -288,10 +274,7 @@ input{
 
         </div>
 
-        <p
-            id="authMessage"
-            class="center">
-        </p>
+        <p id="authMessage" class="center"></p>
 
     </div>
 
@@ -302,11 +285,7 @@ input{
 <!-- MAIN APP -->
 <!-- ============================= -->
 
-<div
-    id="app"
-    style="display:none;"
->
-
+<div id="app" style="display:none;">
 
     <div class="header">
 
@@ -360,8 +339,7 @@ input{
                 Win the premiership.
             </p>
 
-            <button
-                onclick="showPage('draft')">
+            <button onclick="showPage('draft')">
                 🎰 START DRAFT
             </button>
 
@@ -371,62 +349,23 @@ input{
         <div class="stat-grid">
 
             <div class="stat">
-
-                <div
-                    id="careerSeasons"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Seasons
-                </div>
-
+                <div id="careerSeasons" class="stat-number">0</div>
+                <div class="stat-label">Seasons</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="careerWins"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Wins
-                </div>
-
+                <div id="careerWins" class="stat-number">0</div>
+                <div class="stat-label">Wins</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="careerLosses"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Losses
-                </div>
-
+                <div id="careerLosses" class="stat-number">0</div>
+                <div class="stat-label">Losses</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="careerPremierships"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Premierships
-                </div>
-
+                <div id="careerPremierships" class="stat-number">0</div>
+                <div class="stat-label">Premierships</div>
             </div>
 
         </div>
@@ -434,9 +373,7 @@ input{
 
         <div class="card">
 
-            <h2>
-                🏟️ Current Club
-            </h2>
+            <h2>🏟️ Current Club</h2>
 
             <h2 id="homeClub">
                 My EFNL Club
@@ -476,19 +413,13 @@ input{
         </div>
 
 
-        <h2
-            id="count"
-            class="center">
+        <h2 id="count" class="center">
             Squad: 0 / 10
         </h2>
 
 
-        <div
-            id="spinner"
-            class="center">
-
+        <div id="spinner" class="center">
             🎰 PRESS SPIN
-
         </div>
 
 
@@ -510,9 +441,7 @@ input{
 
         <div class="card">
 
-            <h2>
-                Your Team
-            </h2>
+            <h2>Your Team</h2>
 
             <div id="teamlist">
                 No players drafted
@@ -521,12 +450,8 @@ input{
         </div>
 
 
-        <h2
-            id="rating"
-            class="center">
-
+        <h2 id="rating" class="center">
             Team Rating: 0 OVR
-
         </h2>
 
 
@@ -556,13 +481,9 @@ input{
 
         <div class="card">
 
-            <h2>
-                👤 Profile
-            </h2>
+            <h2>👤 Profile</h2>
 
-            <h1 id="profileUsername">
-                -
-            </h1>
+            <h1 id="profileUsername">-</h1>
 
             <p id="profileClub">
                 Club: -
@@ -574,62 +495,23 @@ input{
         <div class="stat-grid">
 
             <div class="stat">
-
-                <div
-                    id="profileSeasons"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Seasons
-                </div>
-
+                <div id="profileSeasons" class="stat-number">0</div>
+                <div class="stat-label">Seasons</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="profileWins"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Wins
-                </div>
-
+                <div id="profileWins" class="stat-number">0</div>
+                <div class="stat-label">Wins</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="profileLosses"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Losses
-                </div>
-
+                <div id="profileLosses" class="stat-number">0</div>
+                <div class="stat-label">Losses</div>
             </div>
 
-
             <div class="stat">
-
-                <div
-                    id="profileFlags"
-                    class="stat-number">
-                    0
-                </div>
-
-                <div class="stat-label">
-                    Premierships
-                </div>
-
+                <div id="profileFlags" class="stat-number">0</div>
+                <div class="stat-label">Premierships</div>
             </div>
 
         </div>
@@ -637,9 +519,7 @@ input{
 
         <div class="card">
 
-            <h2>
-                📊 Career Record
-            </h2>
+            <h2>📊 Career Record</h2>
 
             <p id="profileRecord">
                 No seasons played yet.
@@ -661,9 +541,7 @@ input{
         </h2>
 
         <div id="savedTeams">
-
             No saved teams yet.
-
         </div>
 
     </div>
@@ -673,33 +551,22 @@ input{
 
 <script>
 
-
 /* ==========================================
 PLAYER DATABASE
 ========================================== */
 
-
 const clubs = {
-
 
     "South Croydon":[
 
         ["Samuel Carbone","MID",99],
-
         ["Noah Martin","MID",98],
-
         ["Koby Stevens","MID/FWD",96],
-
         ["Amos Flavel","RUCK",95],
-
         ["Rowe Darby","HF",92],
-
         ["Raphael Tupola","BACK",91],
-
         ["Kasen Williams","BACK",89],
-
         ["Dan Latu","HB",92],
-
         ["Hunter Gale","HB",96]
 
     ],
@@ -708,27 +575,16 @@ const clubs = {
     "Blackburn":[
 
         ["Lenny Woodhouse","MID",99],
-
         ["Lewis Hollywood","UTIL",98],
-
         ["Ethan Keeningham","WING/MID",93],
-
         ["Josh StClair","FULL FORWARD",93],
-
         ["Zander Brosolo","MID",92],
-
         ["Connor Reilley","MID",90],
-
         ["Eddie Flesser","BACK",92],
-
         ["Jonothan Tsotinas","MID",88],
-
         ["Beau Dove","HF/MID",95],
-
         ["Lachie Symcock","FB",94],
-
         ["Ollie Little","FWD",92],
-
         ["Finn Gallagher","MID/FWD",93]
 
     ],
@@ -737,19 +593,12 @@ const clubs = {
     "Montrose":[
 
         ["Isaac Connors","MID",98],
-
         ["Arlo Trigwell","CHB",97],
-
         ["Darcy McKensie","RUCK",96],
-
         ["Noah McCartney","UTIL",95],
-
         ["Oliver Dowell","FWD",94],
-
         ["Jack Lorkin","WING/MID",93],
-
         ["James Atkinson","HF",87],
-
         ["Blake Jackson","FWD",87]
 
     ],
@@ -758,11 +607,8 @@ const clubs = {
     "Heathmont":[
 
         ["Johnny Bailiss","HB",98],
-
         ["Cooper Rio","MID",97],
-
         ["Luke Guilliano","RUCK",96],
-
         ["Jesse Berka","HF/RUCK",85]
 
     ],
@@ -771,14 +617,14 @@ const clubs = {
     "Beaconsfield":[
 
         ["Max Moody","MID/RUCK",98],
-
         ["Ryder Terek","WING",89],
-
         ["Fraser Jones","HB/HF",88],
-
         ["Jackson Brown","FWD",86],
-
         ["Liam Watson","FWD",85],
+
+        /*
+        Ryker stays 94 OVR FF
+        */
 
         ["Ryker Holl","FF",94]
 
@@ -788,25 +634,10 @@ const clubs = {
     "Lysterfield":[
 
         ["Phoenix Kidman","MID",95],
-
         ["Jude Peace","UTIL",94],
-
         ["Kyan Stone","FWD",87],
-
         ["Kobe Masterson","FWD",93],
-
         ["Zayne Weinert","HB",91]
-
-    ],
-
-
-    /* ======================================
-    CHEEPA
-    ====================================== */
-
-    "Cheepa":[
-
-        ["Jackson Oliver","MID",200]
 
     ]
 
@@ -816,7 +647,6 @@ const clubs = {
 /* ==========================================
 GAME VARIABLES
 ========================================== */
-
 
 let currentUser = null;
 
@@ -839,15 +669,12 @@ let clubName = "My EFNL Club";
 USER DATABASE
 ========================================== */
 
-
 function getUsers(){
 
     try{
 
         return JSON.parse(
-            localStorage.getItem(
-                "efnlUsers"
-            ) || "{}"
+            localStorage.getItem("efnlUsers") || "{}"
         );
 
     }catch(error){
@@ -873,23 +700,18 @@ function saveUsers(users){
 REGISTER
 ========================================== */
 
-
 function register(){
 
     const username =
         document
-        .getElementById(
-            "usernameInput"
-        )
+        .getElementById("usernameInput")
         .value
         .trim();
 
 
     const password =
         document
-        .getElementById(
-            "passwordInput"
-        )
+        .getElementById("passwordInput")
         .value;
 
 
@@ -935,15 +757,10 @@ function register(){
         seasonPlayed:false,
 
         career:{
-
             seasons:0,
-
             wins:0,
-
             losses:0,
-
             premierships:0
-
         },
 
         savedTeams:[]
@@ -953,9 +770,7 @@ function register(){
 
     saveUsers(users);
 
-
     currentUser = username;
-
 
     loadUser();
 
@@ -970,23 +785,18 @@ function register(){
 LOGIN
 ========================================== */
 
-
 function login(){
 
     const username =
         document
-        .getElementById(
-            "usernameInput"
-        )
+        .getElementById("usernameInput")
         .value
         .trim();
 
 
     const password =
         document
-        .getElementById(
-            "passwordInput"
-        )
+        .getElementById("passwordInput")
         .value;
 
 
@@ -1005,9 +815,7 @@ function login(){
     }
 
 
-    if(
-        users[username].password !== password
-    ){
+    if(users[username].password !== password){
 
         showAuthMessage(
             "❌ Incorrect password.",
@@ -1020,7 +828,6 @@ function login(){
 
 
     currentUser = username;
-
 
     loadUser();
 
@@ -1035,17 +842,10 @@ function login(){
 AUTH MESSAGE
 ========================================== */
 
-
-function showAuthMessage(
-    message,
-    type
-){
+function showAuthMessage(message,type){
 
     const box =
-        document.getElementById(
-            "authMessage"
-        );
-
+        document.getElementById("authMessage");
 
     box.innerText = message;
 
@@ -1059,21 +859,16 @@ function showAuthMessage(
 SHOW APP
 ========================================== */
 
-
 function showApp(){
 
     document
-    .getElementById(
-        "loginPage"
-    )
+    .getElementById("loginPage")
     .classList
     .remove("active");
 
 
     document
-    .getElementById(
-        "app"
-    )
+    .getElementById("app")
     .style
     .display = "block";
 
@@ -1083,7 +878,6 @@ function showApp(){
 /* ==========================================
 LOAD USER
 ========================================== */
-
 
 function loadUser(){
 
@@ -1110,13 +904,11 @@ function loadUser(){
 
 
     clubName =
-        data.clubName ||
-        "My EFNL Club";
+        data.clubName || "My EFNL Club";
 
 
     seasonPlayed =
-        data.seasonPlayed ||
-        false;
+        data.seasonPlayed || false;
 
 
     spinning = false;
@@ -1125,9 +917,7 @@ function loadUser(){
 
 
     document
-    .getElementById(
-        "clubNameDisplay"
-    )
+    .getElementById("clubNameDisplay")
     .innerText = clubName;
 
 
@@ -1143,7 +933,6 @@ function loadUser(){
 /* ==========================================
 SAVE GAME
 ========================================== */
-
 
 function saveGame(){
 
@@ -1182,7 +971,6 @@ function saveGame(){
 NAVIGATION
 ========================================== */
 
-
 function showPage(page){
 
     document
@@ -1191,9 +979,7 @@ function showPage(page){
 
         if(p.id !== "loginPage"){
 
-            p.classList.remove(
-                "active"
-            );
+            p.classList.remove("active");
 
         }
 
@@ -1206,24 +992,18 @@ function showPage(page){
 
     if(target){
 
-        target.classList.add(
-            "active"
-        );
+        target.classList.add("active");
 
     }
 
 
     if(page === "profile"){
-
         updateProfile();
-
     }
 
 
     if(page === "saves"){
-
         showSavedTeams();
-
     }
 
 }
@@ -1232,7 +1012,6 @@ function showPage(page){
 /* ==========================================
 CREATE CLUB
 ========================================== */
-
 
 function createClub(){
 
@@ -1260,14 +1039,11 @@ function createClub(){
 
 
     clubName =
-        name.trim() ||
-        "My EFNL Club";
+        name.trim() || "My EFNL Club";
 
 
     document
-    .getElementById(
-        "clubNameDisplay"
-    )
+    .getElementById("clubNameDisplay")
     .innerText = clubName;
 
 
@@ -1282,13 +1058,10 @@ function createClub(){
 SPIN BUTTON STATE
 ========================================== */
 
-
 function setSpinState(){
 
     const button =
-        document.getElementById(
-            "spinButton"
-        );
+        document.getElementById("spinButton");
 
 
     if(!button){
@@ -1315,21 +1088,16 @@ function setSpinState(){
 
 
 /* ==========================================
-GET AVAILABLE TEAMS
+AVAILABLE TEAMS
 ========================================== */
-
 
 function getAvailableTeams(){
 
-    return Object.keys(
-        clubs
-    ).filter(team=>{
+    return Object.keys(clubs).filter(team=>{
 
         return clubs[team].some(
             player =>
-                !drafted.includes(
-                    player[0]
-                )
+                !drafted.includes(player[0])
         );
 
     });
@@ -1341,12 +1109,7 @@ function getAvailableTeams(){
 SPIN TEAM
 ========================================== */
 
-
 function spinTeam(){
-
-    /*
-    Prevent double spins.
-    */
 
     if(
         spinning ||
@@ -1367,7 +1130,7 @@ function spinTeam(){
     if(teams.length === 0){
 
         alert(
-            "There are no teams left!"
+            "There are no teams available!"
         );
 
         return;
@@ -1381,15 +1144,11 @@ function spinTeam(){
 
 
     const button =
-        document.getElementById(
-            "spinButton"
-        );
+        document.getElementById("spinButton");
 
 
     const spinner =
-        document.getElementById(
-            "spinner"
-        );
+        document.getElementById("spinner");
 
 
     button.disabled = true;
@@ -1398,26 +1157,20 @@ function spinTeam(){
     let spins = 0;
 
 
-    /*
-    Wheel animation.
-    */
-
     const interval =
         setInterval(()=>{
 
             const randomTeam =
                 teams[
                     Math.floor(
-                        Math.random()
-                        *
+                        Math.random() *
                         teams.length
                     )
                 ];
 
 
             spinner.innerText =
-                "🎰 " +
-                randomTeam;
+                "🎰 " + randomTeam;
 
 
             spins++;
@@ -1425,99 +1178,46 @@ function spinTeam(){
 
             if(spins >= 20){
 
-                clearInterval(
-                    interval
-                );
+                clearInterval(interval);
 
 
-                let selectedTeam;
+                selectedTeam();
 
-
-                /*
-                CHEEPA = 5%
-                */
-
-                if(
-                    teams.includes(
-                        "Cheepa"
-                    ) &&
-                    Math.random() < 0.05
-                ){
-
-                    selectedTeam =
-                        "Cheepa";
-
-                }else{
-
-                    const normalTeams =
-                        teams.filter(
-                            team =>
-                                team !==
-                                "Cheepa"
-                        );
-
-
-                    if(
-                        normalTeams.length
-                    ){
-
-                        selectedTeam =
-                            normalTeams[
-                                Math.floor(
-                                    Math.random()
-                                    *
-                                    normalTeams.length
-                                )
-                            ];
-
-                    }else{
-
-                        selectedTeam =
-                            "Cheepa";
-
-                    }
-
-                }
-
-
-                currentTeam =
-                    selectedTeam;
-
-
-                if(
-                    currentTeam ===
-                    "Cheepa"
-                ){
-
-                    spinner.innerText =
-                        "🧀 CHEEPA 🧀";
-
-                }else{
-
-                    spinner.innerText =
-                        "🎯 " +
-                        currentTeam;
-
-                }
-
-
-                spinning = false;
-
-
-                /*
-                IMPORTANT:
-                Player selection opens
-                only AFTER the wheel stops.
-                */
-
-                showPlayers();
-
-
-                saveGame();
 
             }
 
         },100);
+
+
+    function selectedTeam(){
+
+        /*
+        No Cheepa.
+        Every available club has
+        the same chance.
+        */
+
+        currentTeam =
+            teams[
+                Math.floor(
+                    Math.random() *
+                    teams.length
+                )
+            ];
+
+
+        spinner.innerText =
+            "🎯 " + currentTeam;
+
+
+        spinning = false;
+
+
+        showPlayers();
+
+        saveGame();
+
+    }
 
 }
 
@@ -1526,45 +1226,14 @@ function spinTeam(){
 SHOW PLAYERS
 ========================================== */
 
-
 function showPlayers(){
 
     const box =
-        document.getElementById(
-            "players"
-        );
+        document.getElementById("players");
 
 
     box.innerHTML =
         "<h2 class='center'>Pick ONE Player</h2>";
-
-
-    if(
-        currentTeam ===
-        "Cheepa"
-    ){
-
-        box.innerHTML += `
-
-            <div class="card cheepa center">
-
-                <h1>
-                    🧀 CHEEPA 🧀
-                </h1>
-
-                <h2>
-                    RARE 5% TEAM
-                </h2>
-
-                <p>
-                    You hit the rare team!
-                </p>
-
-            </div>
-
-        `;
-
-    }
 
 
     const players =
@@ -1574,9 +1243,7 @@ function showPlayers(){
     players.forEach(player=>{
 
         if(
-            drafted.includes(
-                player[0]
-            )
+            drafted.includes(player[0])
         ){
 
             return;
@@ -1585,13 +1252,10 @@ function showPlayers(){
 
 
         const div =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
-        div.className =
-            "player";
+        div.className = "player";
 
 
         div.innerHTML = `
@@ -1620,14 +1284,10 @@ function showPlayers(){
 
 
         div
-        .querySelector(
-            "button"
-        )
+        .querySelector("button")
         .onclick = function(){
 
-            draftPlayer(
-                player
-            );
+            draftPlayer(player);
 
         };
 
@@ -1642,7 +1302,6 @@ function showPlayers(){
 /* ==========================================
 DRAFT PLAYER
 ========================================== */
-
 
 function draftPlayer(player){
 
@@ -1659,14 +1318,8 @@ function draftPlayer(player){
 
     squad.push(player);
 
-    drafted.push(
-        player[0]
-    );
+    drafted.push(player[0]);
 
-
-    /*
-    Reset spin state.
-    */
 
     hasSpun = false;
 
@@ -1676,17 +1329,13 @@ function draftPlayer(player){
 
 
     document
-    .getElementById(
-        "spinner"
-    )
+    .getElementById("spinner")
     .innerText =
         "🎰 PRESS SPIN";
 
 
     document
-    .getElementById(
-        "players"
-    )
+    .getElementById("players")
     .innerHTML = `
 
         <div class="card center">
@@ -1696,8 +1345,7 @@ function draftPlayer(player){
             </h2>
 
             <p>
-                ${player[1]}
-                |
+                ${player[1]} |
                 ${player[2]} OVR
             </p>
 
@@ -1717,14 +1365,10 @@ function draftPlayer(player){
     setSpinState();
 
 
-    if(
-        squad.length >= 10
-    ){
+    if(squad.length >= 10){
 
         document
-        .getElementById(
-            "spinner"
-        )
+        .getElementById("spinner")
         .innerText =
             "🏆 SQUAD COMPLETE";
 
@@ -1734,29 +1378,22 @@ function draftPlayer(player){
 
 
 /* ==========================================
-UPDATE SCREEN
+UPDATE
 ========================================== */
-
 
 function update(){
 
     document
-    .getElementById(
-        "count"
-    )
+    .getElementById("count")
     .innerText =
         `Squad: ${squad.length} / 10`;
 
 
     const list =
-        document.getElementById(
-            "teamlist"
-        );
+        document.getElementById("teamlist");
 
 
-    if(
-        squad.length === 0
-    ){
+    if(squad.length === 0){
 
         list.innerText =
             "No players drafted";
@@ -1788,33 +1425,26 @@ function update(){
         squad.length
         ?
         Math.round(
-            total /
-            squad.length
+            total / squad.length
         )
         :
         0;
 
 
     document
-    .getElementById(
-        "rating"
-    )
+    .getElementById("rating")
     .innerText =
         `Team Rating: ${rating} OVR`;
 
 
     document
-    .getElementById(
-        "homeClub"
-    )
+    .getElementById("homeClub")
     .innerText =
         clubName;
 
 
     document
-    .getElementById(
-        "homeRating"
-    )
+    .getElementById("homeRating")
     .innerText =
         `Team Rating: ${rating} OVR`;
 
@@ -1822,9 +1452,8 @@ function update(){
 
 
 /* ==========================================
-FORWARD CHECK
+POSITION CHECKS
 ========================================== */
-
 
 function isForward(player){
 
@@ -1842,16 +1471,20 @@ function isForward(player){
 }
 
 
+function isFullForward(player){
+
+    return player[1].toUpperCase() === "FF";
+
+}
+
+
 /* ==========================================
 PLAY SEASON
 ========================================== */
 
-
 function playSeason(){
 
-    if(
-        squad.length < 10
-    ){
+    if(squad.length < 10){
 
         alert(
             "You need to draft 10 players first!"
@@ -1885,16 +1518,9 @@ function playSeason(){
         );
 
 
-    /*
-    Premiership percentage.
-    */
-
     let premiershipOdds =
         18 +
-        (
-            (rating - 90)
-            * 6
-        );
+        ((rating - 90) * 6);
 
 
     premiershipOdds =
@@ -1935,9 +1561,7 @@ Press OK to play the season.`
 
     squad.forEach(player=>{
 
-        stats[
-            player[0]
-        ] = {
+        stats[player[0]] = {
 
             player:player,
 
@@ -1971,21 +1595,18 @@ Press OK to play the season.`
     ];
 
 
-    /*
-    18 HOME & AWAY ROUNDS.
-    */
+    /* 18 ROUND SEASON */
 
     for(
-        let round = 1;
-        round <= 18;
+        let round=1;
+        round<=18;
         round++
     ){
 
         const opponent =
             opponents[
                 Math.floor(
-                    Math.random()
-                    *
+                    Math.random() *
                     opponents.length
                 )
             ];
@@ -1993,10 +1614,7 @@ Press OK to play the season.`
 
         let winChance =
             0.50 +
-            (
-                (rating - 90)
-                * 0.007
-            );
+            ((rating - 90) * 0.007);
 
 
         winChance =
@@ -2010,22 +1628,18 @@ Press OK to play the season.`
 
 
         const win =
-            Math.random()
-            <
-            winChance;
+            Math.random() < winChance;
 
 
         let yourScore =
             Math.floor(
-                Math.random()
-                * 50
+                Math.random()*50
             ) + 60;
 
 
         let enemyScore =
             Math.floor(
-                Math.random()
-                * 50
+                Math.random()*50
             ) + 60;
 
 
@@ -2036,16 +1650,12 @@ Press OK to play the season.`
             points += 4;
 
 
-            if(
-                yourScore <=
-                enemyScore
-            ){
+            if(yourScore <= enemyScore){
 
                 yourScore =
                     enemyScore +
                     Math.floor(
-                        Math.random()
-                        * 10
+                        Math.random()*10
                     ) + 1;
 
             }
@@ -2055,22 +1665,22 @@ Press OK to play the season.`
             losses++;
 
 
-            if(
-                enemyScore <=
-                yourScore
-            ){
+            if(enemyScore <= yourScore){
 
                 enemyScore =
                     yourScore +
                     Math.floor(
-                        Math.random()
-                        * 10
+                        Math.random()*10
                     ) + 1;
 
             }
 
         }
 
+
+        /*
+        PLAYER PERFORMANCE
+        */
 
         const performances = [];
 
@@ -2079,17 +1689,17 @@ Press OK to play the season.`
 
             let performance =
                 player[2] +
-                Math.random()
-                * 30;
+                Math.random()*20;
 
 
-            if(
-                isForward(player)
-            ){
+            /*
+            Small positional boost.
+            */
+
+            if(isForward(player)){
 
                 performance +=
-                    Math.random()
-                    * 12;
+                    Math.random()*5;
 
             }
 
@@ -2103,75 +1713,116 @@ Press OK to play the season.`
             });
 
 
-            let goalChance =
-                0.08;
+            /*
+            GOAL SYSTEM
+            */
+
+            let goalChance = 0.08;
 
 
-            if(
-                isForward(player)
-            ){
+            if(isForward(player)){
 
-                goalChance =
-                    0.45;
+                goalChance = 0.22;
 
             }
 
 
             /*
-            Jesse = 3%
+            FF gets a moderate boost,
+            not an automatic goal factory.
             */
 
-            if(
-                player[0] ===
-                "Jesse Berka"
-            ){
+            if(isFullForward(player)){
 
-                goalChance =
-                    0.03;
+                goalChance = 0.30;
+
+            }
+
+
+            /*
+            Ryker Holl gets realistic FF
+            numbers rather than dominating
+            every single game.
+            */
+
+            if(player[0] === "Ryker Holl"){
+
+                goalChance = 0.28;
+
+            }
+
+
+            /*
+            Jesse gets his requested
+            low chance.
+            */
+
+            if(player[0] === "Jesse Berka"){
+
+                goalChance = 0.03;
 
             }
 
 
             if(
-                player[1] ===
-                "FF"
-            ){
-
-                goalChance =
-                    0.55;
-
-            }
-
-
-            if(
-                Math.random()
-                <
+                Math.random() <
                 goalChance
             ){
 
+                let goals =
+                    1;
+
+
+                /*
+                Most games only produce
+                1 to 2 goals for a player.
+                */
+
+                if(
+                    Math.random() < 0.18
+                ){
+
+                    goals++;
+
+                }
+
+
+                if(
+                    Math.random() < 0.05 &&
+                    isFullForward(player)
+                ){
+
+                    goals++;
+
+                }
+
+
                 stats[
                     player[0]
-                ].goals +=
-                    Math.floor(
-                        Math.random()
-                        * 4
-                    ) + 1;
+                ].goals += goals;
 
             }
 
         });
 
 
+        /*
+        BROWNLOW VOTES
+        */
+
         performances.sort(
             (a,b)=>
-                b.score -
-                a.score
+                b.score-a.score
         );
 
 
-        if(
-            performances[0]
-        ){
+        /*
+        Only the top players get
+        votes, making Brownlow
+        results much less random.
+        */
+
+        if(performances[0]){
 
             stats[
                 performances[0]
@@ -2182,7 +1833,8 @@ Press OK to play the season.`
 
 
         if(
-            performances[1]
+            performances[1] &&
+            Math.random() < 0.90
         ){
 
             stats[
@@ -2194,7 +1846,8 @@ Press OK to play the season.`
 
 
         if(
-            performances[2]
+            performances[2] &&
+            Math.random() < 0.75
         ){
 
             stats[
@@ -2225,18 +1878,14 @@ Press OK to play the season.`
 
                 <h2 class="${
                     win
-                    ?
-                    "win"
-                    :
-                    "loss"
+                    ? "win"
+                    : "loss"
                 }">
 
                     ${
                         win
-                        ?
-                        "🟢 WIN"
-                        :
-                        "🔴 LOSS"
+                        ? "🟢 WIN"
+                        : "🔴 LOSS"
                     }
 
                 </h2>
@@ -2259,23 +1908,20 @@ Press OK to play the season.`
     }
 
 
-    /*
+    /* ======================================
     FINALS
-    */
+    ====================================== */
 
     let finals = "";
 
     let premiers = false;
 
 
-    if(
-        wins >= 10
-    ){
+    if(wins >= 10){
 
         const finalResult =
             runFinals(
-                rating,
-                stats
+                rating
             );
 
 
@@ -2317,19 +1963,9 @@ Press OK to play the season.`
     }
 
 
-    /*
-    AWARDS
-    */
-
     const awards =
-        generateAwards(
-            stats
-        );
+        generateAwards(stats);
 
-
-    /*
-    SAVE EVERYTHING.
-    */
 
     const users =
         getUsers();
@@ -2362,9 +1998,7 @@ Press OK to play the season.`
 
         rating:rating,
 
-        players:[
-            ...squad
-        ],
+        players:[...squad],
 
         wins:wins,
 
@@ -2376,14 +2010,11 @@ Press OK to play the season.`
             new Date()
             .toLocaleDateString(),
 
-        seasonResults:
-            results,
+        seasonResults:results,
 
-        finalsResults:
-            finals,
+        finalsResults:finals,
 
-        awards:
-            awards
+        awards:awards
 
     });
 
@@ -2404,14 +2035,8 @@ Press OK to play the season.`
     saveUsers(users);
 
 
-    /*
-    DISPLAY SEASON.
-    */
-
     document
-    .getElementById(
-        "seasonResults"
-    )
+    .getElementById("seasonResults")
     .innerHTML = `
 
         <div class="card center">
@@ -2461,8 +2086,8 @@ Press OK to play the season.`
             </h2>
 
             <p>
-                This team has been saved to
-                your profile.
+                Your completed team and
+                season have been saved.
             </p>
 
             <button
@@ -2479,16 +2104,12 @@ Press OK to play the season.`
 
 
     document
-    .getElementById(
-        "seasonButton"
-    )
+    .getElementById("seasonButton")
     .disabled = true;
 
 
     document
-    .getElementById(
-        "spinButton"
-    )
+    .getElementById("spinButton")
     .disabled = true;
 
 
@@ -2501,11 +2122,7 @@ Press OK to play the season.`
 FINALS
 ========================================== */
 
-
-function runFinals(
-    rating,
-    stats
-){
+function runFinals(rating){
 
     let html = `
 
@@ -2531,26 +2148,18 @@ function runFinals(
     const rounds = [
 
         "Qualifying Final",
-
         "Semi Final",
-
         "Preliminary Final",
-
         "🏆 GRAND FINAL"
 
     ];
 
 
-    for(
-        const round of rounds
-    ){
+    for(const round of rounds){
 
         let chance =
             0.50 +
-            (
-                (rating - 90)
-                * 0.01
-            );
+            ((rating - 90) * 0.01);
 
 
         chance =
@@ -2564,46 +2173,36 @@ function runFinals(
 
 
         const won =
-            Math.random()
-            <
-            chance;
+            Math.random() < chance;
 
 
         let yourScore =
             Math.floor(
-                Math.random()
-                * 45
+                Math.random()*45
             ) + 65;
 
 
         let enemyScore =
             Math.floor(
-                Math.random()
-                * 45
+                Math.random()*45
             ) + 65;
 
 
         if(won){
 
-            if(
-                yourScore <=
-                enemyScore
-            ){
+            if(yourScore <= enemyScore){
 
                 yourScore =
-                    enemyScore + 1;
+                    enemyScore+1;
 
             }
 
         }else{
 
-            if(
-                enemyScore <=
-                yourScore
-            ){
+            if(enemyScore <= yourScore){
 
                 enemyScore =
-                    yourScore + 1;
+                    yourScore+1;
 
             }
 
@@ -2632,18 +2231,14 @@ function runFinals(
 
                 <h2 class="${
                     won
-                    ?
-                    "win"
-                    :
-                    "loss"
+                    ? "win"
+                    : "loss"
                 }">
 
                     ${
                         won
-                        ?
-                        "🟢 VICTORY"
-                        :
-                        "🔴 ELIMINATED"
+                        ? "🟢 VICTORY"
+                        : "🔴 ELIMINATED"
                     }
 
                 </h2>
@@ -2656,11 +2251,8 @@ function runFinals(
         if(!won){
 
             return {
-
                 html:html,
-
                 premiers:false
-
             };
 
         }
@@ -2701,11 +2293,8 @@ function runFinals(
 
 
     return {
-
         html:html,
-
         premiers:premiers
-
     };
 
 }
@@ -2715,10 +2304,7 @@ function runFinals(
 COLEMAN + BROWNLOW
 ========================================== */
 
-
-function generateAwards(
-    stats
-){
+function generateAwards(stats){
 
     const players =
         Object.values(stats);
@@ -2733,8 +2319,7 @@ function generateAwards(
         [...players]
         .sort(
             (a,b)=>
-                b.goals -
-                a.goals
+                b.goals-a.goals
         )[0];
 
 
@@ -2742,8 +2327,7 @@ function generateAwards(
         [...players]
         .sort(
             (a,b)=>
-                b.votes -
-                a.votes
+                b.votes-a.votes
         )[0];
 
 
@@ -2799,12 +2383,12 @@ function generateAwards(
 PLAY AGAIN
 ========================================== */
 
-
 function startNewTeam(){
 
     /*
-    Old team stays saved.
-    New team starts empty.
+    IMPORTANT:
+    The old team remains saved.
+    Only the active team resets.
     */
 
     squad = [];
@@ -2824,39 +2408,29 @@ function startNewTeam(){
 
 
     document
-    .getElementById(
-        "clubNameDisplay"
-    )
+    .getElementById("clubNameDisplay")
     .innerText =
         clubName;
 
 
     document
-    .getElementById(
-        "spinner"
-    )
+    .getElementById("spinner")
     .innerText =
         "🎰 PRESS SPIN";
 
 
     document
-    .getElementById(
-        "players"
-    )
+    .getElementById("players")
     .innerHTML = "";
 
 
     document
-    .getElementById(
-        "seasonResults"
-    )
+    .getElementById("seasonResults")
     .innerHTML = "";
 
 
     document
-    .getElementById(
-        "seasonButton"
-    )
+    .getElementById("seasonButton")
     .disabled = false;
 
 
@@ -2872,9 +2446,8 @@ function startNewTeam(){
 
 
 /* ==========================================
-PROFILE UPDATE
+PROFILE
 ========================================== */
-
 
 function updateProfile(){
 
@@ -2897,90 +2470,67 @@ function updateProfile(){
 
 
     document
-    .getElementById(
-        "profileUsername"
-    )
+    .getElementById("profileUsername")
     .innerText =
         currentUser;
 
 
     document
-    .getElementById(
-        "profileClub"
-    )
+    .getElementById("profileClub")
     .innerText =
-        "Club: " +
-        clubName;
+        "Club: " + clubName;
 
 
     document
-    .getElementById(
-        "profileSeasons"
-    )
+    .getElementById("profileSeasons")
     .innerText =
         data.career.seasons;
 
 
     document
-    .getElementById(
-        "profileWins"
-    )
+    .getElementById("profileWins")
     .innerText =
         data.career.wins;
 
 
     document
-    .getElementById(
-        "profileLosses"
-    )
+    .getElementById("profileLosses")
     .innerText =
         data.career.losses;
 
 
     document
-    .getElementById(
-        "profileFlags"
-    )
+    .getElementById("profileFlags")
     .innerText =
         data.career.premierships;
 
 
     document
-    .getElementById(
-        "careerSeasons"
-    )
+    .getElementById("careerSeasons")
     .innerText =
         data.career.seasons;
 
 
     document
-    .getElementById(
-        "careerWins"
-    )
+    .getElementById("careerWins")
     .innerText =
         data.career.wins;
 
 
     document
-    .getElementById(
-        "careerLosses"
-    )
+    .getElementById("careerLosses")
     .innerText =
         data.career.losses;
 
 
     document
-    .getElementById(
-        "careerPremierships"
-    )
+    .getElementById("careerPremierships")
     .innerText =
         data.career.premierships;
 
 
     document
-    .getElementById(
-        "welcomeText"
-    )
+    .getElementById("welcomeText")
     .innerText =
         "Welcome back, " +
         currentUser;
@@ -2992,9 +2542,7 @@ function updateProfile(){
 
 
     document
-    .getElementById(
-        "profileRecord"
-    )
+    .getElementById("profileRecord")
     .innerText =
         games
         ?
@@ -3009,7 +2557,6 @@ function updateProfile(){
 SAVED TEAMS
 ========================================== */
 
-
 function showSavedTeams(){
 
     const users =
@@ -3021,9 +2568,7 @@ function showSavedTeams(){
 
 
     const box =
-        document.getElementById(
-            "savedTeams"
-        );
+        document.getElementById("savedTeams");
 
 
     if(
@@ -3049,13 +2594,10 @@ function showSavedTeams(){
     .forEach(team=>{
 
         const div =
-            document.createElement(
-                "div"
-            );
+            document.createElement("div");
 
 
-        div.className =
-            "card";
+        div.className = "card";
 
 
         div.innerHTML = `
@@ -3094,14 +2636,10 @@ function showSavedTeams(){
 
 
         div
-        .querySelector(
-            "button"
-        )
+        .querySelector("button")
         .onclick = function(){
 
-            viewSavedTeam(
-                team
-            );
+            viewSavedTeam(team);
 
         };
 
@@ -3117,13 +2655,10 @@ function showSavedTeams(){
 VIEW SAVED TEAM
 ========================================== */
 
-
 function viewSavedTeam(team){
 
     const box =
-        document.getElementById(
-            "savedTeams"
-        );
+        document.getElementById("savedTeams");
 
 
     const players =
@@ -3210,7 +2745,6 @@ function viewSavedTeam(team){
 LOGOUT
 ========================================== */
 
-
 function logout(){
 
     saveGame();
@@ -3232,43 +2766,31 @@ function logout(){
 
 
     document
-    .getElementById(
-        "app"
-    )
+    .getElementById("app")
     .style
     .display = "none";
 
 
     document
-    .querySelectorAll(
-        ".page"
-    )
+    .querySelectorAll(".page")
     .forEach(p=>
-        p.classList.remove(
-            "active"
-        )
+        p.classList.remove("active")
     );
 
 
     document
-    .getElementById(
-        "loginPage"
-    )
+    .getElementById("loginPage")
     .classList
     .add("active");
 
 
     document
-    .getElementById(
-        "usernameInput"
-    )
+    .getElementById("usernameInput")
     .value = "";
 
 
     document
-    .getElementById(
-        "passwordInput"
-    )
+    .getElementById("passwordInput")
     .value = "";
 
 }
@@ -3278,19 +2800,13 @@ function logout(){
 ENTER TO LOGIN
 ========================================== */
 
-
 document
-.getElementById(
-    "passwordInput"
-)
+.getElementById("passwordInput")
 .addEventListener(
     "keydown",
     function(event){
 
-        if(
-            event.key ===
-            "Enter"
-        ){
+        if(event.key === "Enter"){
 
             login();
 
@@ -3303,7 +2819,6 @@ document
 /* ==========================================
 START
 ========================================== */
-
 
 setSpinState();
 
